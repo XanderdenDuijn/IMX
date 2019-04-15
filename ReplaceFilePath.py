@@ -1,5 +1,6 @@
 ## This is a very basic Python script that renames the schemaLocation URL's within the XML Schema files
 ## I am doing this so I can properly validate the XSD file in http://www.utilities-online.info/xsdvalidation/#.XLS40egzaUl
+## Note that this validation method will only work when the IMX repository is a public one
 
 import sys
 import os
