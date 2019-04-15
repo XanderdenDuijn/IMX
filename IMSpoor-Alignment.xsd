@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IMSpoor-BasicTypes.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-BasicTypes.xsd"/>
 	<xs:element name="AlignmentData">
 		<xs:annotation>
 			<xs:documentation>Wrapper voor de alignementsgegevens van de spoortakken in het document</xs:documentation>

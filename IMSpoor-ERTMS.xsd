@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IMSpoor-ERTMS-variables.xsd"/>
-	<xs:include schemaLocation="IMSpoor-ERTMS-packets.xsd"/>
-	<xs:include schemaLocation="IMSpoor-Infra.xsd"/>
-	<xs:include schemaLocation="IMSpoor-Groupings.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-ERTMS-variables.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-ERTMS-packets.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Infra.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Groupings.xsd"/>
 	<xs:element name="ERTMS">
 		<xs:annotation>
 			<xs:documentation>Root element voor de beschrijving van een ERTMS ontwerp.</xs:documentation>
