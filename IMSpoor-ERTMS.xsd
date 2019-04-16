@@ -32,6 +32,7 @@
 				<xs:element ref="RadioBlockCenterAreas" minOccurs="0"/>
 				<xs:element ref="RadioBlockCenters" minOccurs="0"/>
 				<xs:element ref="PositionReportParametersAreas" minOccurs="0"/>
+				<xs:element ref="WeightLimitMarkers" minOccurs="0"/>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -592,6 +593,40 @@
 					<xs:attribute name="timeInterval" type="xs:int" use="required">
 						<xs:annotation>
 							<xs:documentation>Tijdsinterval tussen twee positie rapporten door de trein (T_CYCLOC).</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WeightLimitMarkers">
+		<xs:annotation>
+			<xs:documentation>Een lijst van Tonnagebeperkings markers, ofwel L/H-markers.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="WeightLimitMarker" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WeightLimitMarker">
+		<xs:annotation>
+			<xs:documentation>Een L- of H-marker.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tERTMSExtension">
+					<xs:attribute name="weightLimitMarkerType" type="tWeightLimitMarkerTypeEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Het type marker: L of H. De lijst van opties is voorgedefinieerd.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="signalRef" type="tUUIDRef">
+						<xs:annotation>
+							<xs:documentation>Een PUIC verwijzing naar een L- of H-sein (Signal van het type DistantCargoSignal of CargoSignal). In het geval van een L-marker met een verwijzing naar een H-sein, geeft de L-marker aan dat de bestuurders van treinen bestemd voor het vervoer van goederen de snelheid moeten begrenzen om bij H-Marker te kunnen stoppen. In het geval van een H-marker met een verwijzing naar een L-sein, geeft het L-sein aan dat de bestuurders van treinen bestemd voor het vervoer van goederen de snelheid moeten begrenzen om bij de H-Marker te kunnen stoppen.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>Signal</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1651,6 +1686,25 @@
 			<xs:enumeration value="NotEnergized">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">NotEnergized</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tWeightLimitMarkerTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CargoMarker">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">H-marker</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DistantCargoMarker">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">L-marker</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
