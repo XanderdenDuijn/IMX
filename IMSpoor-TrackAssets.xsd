@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.prorail.nl/IMSpoor" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-BasicTypes.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Infra.xsd"/>
 	<xs:annotation>
@@ -1013,7 +1015,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 				<xs:annotation>
 					<xs:documentation>De waarde van de routetimer in seconden.</xs:documentation>
 				</xs:annotation>
-			</xs:attribute>
+			</xs:attribute>		
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="StopConnection">
@@ -1484,7 +1486,7 @@ en/of goederen kunnen worden aangenomen en afgeleverd.
 			<xs:complexContent>
 				<xs:extension base="tPointObject">
 					<xs:sequence>
-						<xs:element ref="TrackFunctionalViewInfo" minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="RailConnectionInfo" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Relatie met de spoortak. Ten behoeve van de uitwisseling wordt toegestaan dat de relatie met de spoortak in uitzonderlijke gevallen kan ontbreken.</xs:documentation>
 							</xs:annotation>
@@ -1538,6 +1540,7 @@ en/of goederen kunnen worden aangenomen en afgeleverd.
 							<xs:documentation>Type hekwerk  waarmee de overweg wordt beveiligd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
+
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -2975,11 +2978,6 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 			<xs:documentation>Enumeratie van vertreklichtseinen.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-		<xs:enumeration value="Unknown">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="MandatoryDeparture">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">RS 706= Vertrekbevelsein</xs:documentation>
@@ -3449,7 +3447,7 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Normale aankondiging</xs:documentation>
 				</xs:annotation>
-			</xs:enumeration>
+			</xs:enumeration> 
 			<xs:enumeration value="Guaranteed">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Harde aankondiging</xs:documentation>
