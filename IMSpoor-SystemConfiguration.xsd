@@ -2,7 +2,6 @@
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema" 
     xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<!--<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-BasicTypes.xsd"/>-->
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-ERTMS-variables.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-ERTMS-packets.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Infra.xsd"/>
@@ -23,6 +22,8 @@
 				<xs:element ref="RadioBlockCenters" minOccurs="0"/>
 				<xs:element ref="InterlockingAreas" minOccurs="0"/>
 				<xs:element ref="InterlockingUnits" minOccurs="0"/>
+				<xs:element ref="OpenLineTracks" minOccurs="0"/>
+				<xs:element ref="OpenLineSafetySystems" minOccurs="0"/>
 				<xs:element ref="TrainControlSystems" minOccurs="0"/>
 				<xs:element ref="TechnicalSystems" minOccurs="0"/>
 				<xs:element ref="ConditionNotifications" minOccurs="0"/>
@@ -266,6 +267,63 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="OpenLineTracks">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:annotation>
+					<xs:documentation>Een lijst van Vrijebaan Sporen.</xs:documentation>
+				</xs:annotation>
+				<xs:element ref="OpenLineTrack" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OpenLineTrack">
+		<xs:annotation>
+			<xs:documentation>Een Vrijebaanspoor.</xs:documentation>
+			<xs:documentation xml:lang="NL">Vrijebaanspoor</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tPointDemarcation">
+					<xs:attribute name="openLineSafetySystemRef" type="tUUIDRef" use="required">
+						<xs:annotation>
+							<xs:documentation>Een PUIC verwijzing naar het Vrijebaan Beveiligingssysteem.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>OpenLineSafetySystem</ObjectTypeRef>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OpenLineSafetySystems">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:annotation>
+					<xs:documentation>Een lijst van Vrijebaan Beveiligingssystemen.</xs:documentation>
+				</xs:annotation>
+				<xs:element ref="OpenLineSafetySystem" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OpenLineSafetySystem">
+		<xs:annotation>
+			<xs:documentation>Een Vrijebaan Beveiligingssysteem..</xs:documentation>
+			<xs:documentation xml:lang="NL">Vrijebaan Beveiligingssysteem</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tPointObject">
+					<xs:attribute name="openLineSafetySystemType" type="tOpenLineSafetySystemEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Het type vrijebaan beveiligingssysteem type. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>   
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="TrainControlSystems">
 		<xs:annotation>
 			<xs:documentation>Een lijst van Train Control Systems.</xs:documentation>
@@ -328,8 +386,11 @@
 					<xs:documentation>Een PUIC verwijzing naar het systeem dat de toestandsmelding verstuurt.</xs:documentation>
 					<xs:appinfo>
 						<ObjectTypeRef>CentralSafetySystem</ObjectTypeRef>
-						<ObjectTypeRef>TechnicalSystem</ObjectTypeRef>
 						<ObjectTypeRef>RadioBlockCenter</ObjectTypeRef>
+						<ObjectTypeRef>InterlockingUnit</ObjectTypeRef>
+						<ObjectTypeRef>OpenLineSafetySystem</ObjectTypeRef>
+						<ObjectTypeRef>TrainControlSystem</ObjectTypeRef>
+						<ObjectTypeRef>TechnicalSystem</ObjectTypeRef>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
@@ -338,8 +399,11 @@
 					<xs:documentation>Een PUIC verwijzing naar het systeem die de toestandsmelding ontvangt..</xs:documentation>
 					<xs:appinfo>
 						<ObjectTypeRef>CentralSafetySystem</ObjectTypeRef>
-						<ObjectTypeRef>TechnicalSystem</ObjectTypeRef>
 						<ObjectTypeRef>RadioBlockCenter</ObjectTypeRef>
+						<ObjectTypeRef>InterlockingUnit</ObjectTypeRef>
+						<ObjectTypeRef>OpenLineSafetySystem</ObjectTypeRef>
+						<ObjectTypeRef>TrainControlSystem</ObjectTypeRef>
+						<ObjectTypeRef>TechnicalSystem</ObjectTypeRef>
 					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
@@ -360,5 +424,36 @@
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-
+	<xs:simpleType name="tOpenLineSafetySystemEnum">
+		<xs:annotation>
+			<xs:documentation>Enumeratie van type vrijebaan beveiligingssysteem typen.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FourWireAPB">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">4-draads APB</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EightWireAPB">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">8-draads APB</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TravellingDirectionTurn">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Rijrichtinskering</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TravellingDirectionTurnTurnOffLeftTrack">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Rijrichtinskering met ULS</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
