@@ -3,8 +3,6 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" 
     xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-ERTMS-variables.xsd"/>
-	<!--<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-ERTMS-packets.xsd"/>-->
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Infra.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Groupings.xsd"/>
 	<xs:annotation>
 		<xs:documentation>
