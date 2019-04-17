@@ -521,7 +521,6 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 				<xs:element ref="NonCentrallyOperatedAreas" minOccurs="0"/>
 				<xs:element ref="TemporaryShuntingAreas" minOccurs="0"/>
 				<xs:element ref="Workzones" minOccurs="0"/>
-				<xs:element ref="InterlockingAreas" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -772,33 +771,6 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 					<xs:attribute name="controlDelay" type="xs:int">
 						<xs:annotation>
 							<xs:documentation>Tijdvertraging bij het geven en nemen van de werkzone in seconden</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="InterlockingAreas">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:annotation>
-					<xs:documentation>Een lijst van Interlocking gebieden</xs:documentation>
-				</xs:annotation>
-				<xs:element ref="InterlockingArea" minOccurs="1" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="InterlockingArea">
-		<xs:annotation>
-			<xs:documentation>Interlocking Gebied een gebied waarbinnen een interlocking systeem de spoorse infrastructuur controleert ter voorkoming van conflicteren treinbewegingen.</xs:documentation>
-			<xs:documentation xml:lang="NL">Interlocking Gebied</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tPointDemarcation">
-					<xs:attribute name="direction" type="tDirectionEnum" use="required">
-						<xs:annotation>
-							<xs:documentation>De ontworpen richting van het gebied ter ondersteuning van identificatie van toegangsroutes.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
