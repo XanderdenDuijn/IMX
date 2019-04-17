@@ -2934,23 +2934,4 @@ in het spoor kunnen worden gezet.</xs:documentation>
 			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-        	<xs:simpleType name="tNetworkTypeEnum">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Unknown">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="A">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">A</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="B">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">B</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
 </xs:schema>
