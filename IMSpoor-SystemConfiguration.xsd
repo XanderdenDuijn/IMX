@@ -287,7 +287,7 @@
 				<xs:extension base="tPointDemarcation">
 					<xs:attribute name="openLineSafetySystemRef" type="tUUIDRef" use="required">
 						<xs:annotation>
-							<xs:documentation>Een PUIC verwijzing naar het Vrijebaan Beveiligingssysteem.</xs:documentation>
+							<xs:documentation>Een PUIC verwijzing naar het Vrijebaan Beveiligingssysteem die het Vrijebaanspoor beveiligd.</xs:documentation>
 							<xs:appinfo>
 								<ObjectTypeRef>OpenLineSafetySystem</ObjectTypeRef>
 							</xs:appinfo>
@@ -318,6 +318,14 @@
 					<xs:attribute name="openLineSafetySystemType" type="tOpenLineSafetySystemEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Het type vrijebaan beveiligingssysteem type. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="controlledOperationalPointRef" type="tUUIDRef" use="required">
+						<xs:annotation>
+							<xs:documentation>Een PUIC verwijzing naar het bediende dienstregelpunt dat de richting bepaalt van de vrije baan die het vrije baan beveiligingssysteem beveiligd..</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>OperationalPoint</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>   
