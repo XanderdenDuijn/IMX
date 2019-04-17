@@ -1216,7 +1216,7 @@ treinvervoer.</xs:documentation>
 			<xs:complexContent>
 				<xs:extension base="tPolygonObject">
 					<xs:sequence>
-						<xs:element ref="TunnelTrackFragment" minOccurs="0"  maxOccurs="unbounded">
+						<xs:element ref="TunnelTrackFragment" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Een lijst van Spoortak-fragmenten, inclusief bodem- en civiele snelheid, die zich bevinden in de tunnelbuis.</xs:documentation>
 							</xs:annotation>
@@ -1238,9 +1238,10 @@ treinvervoer.</xs:documentation>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="TunnelTrackFragment">
-        <xs:annotation>
-        <xs:documentation>Een spoortak fragment in de tunnelbuis. In een tunnelbuis liggen mogelijk meerdere spoortakken met verschillende bodem- en civiele snelheden..</xs:documentation>
-        </xs:annotation>
+		<xs:annotation>
+			<xs:documentation>Een spoortak fragment in de tunnelbuis. In een tunnelbuis liggen mogelijk meerdere spoortakken met verschillende bodem- en civiele snelheden..</xs:documentation>
+			<xs:documentation xml:lang="NL">TunnelSpoor</xs:documentation>
+		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tTrackFragment">
