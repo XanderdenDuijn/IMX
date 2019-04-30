@@ -286,7 +286,6 @@
 						</xs:element>
 						<xs:element ref="DepartureTrackExtension" minOccurs="0"/>
 						<xs:element ref="UsefullLength" minOccurs="0" maxOccurs="unbounded"/>
-						<xs:element ref="StandStillTimer" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="signalRef" type="tUUIDRef" use="required">
 						<xs:annotation>
