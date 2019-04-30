@@ -543,7 +543,7 @@
 							<xs:documentation>
         Een PUIC verwijzing naar een (master) wisselverwarmingskast (SwitchPointHeatingCabinet) waarmee de
         (slave) wisselverwarmingskast verbonden is.
-       </xs:documentation>
+							</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1216,13 +1216,13 @@ treinvervoer.</xs:documentation>
 			<xs:complexContent>
 				<xs:extension base="tPolygonObject">
 					<xs:sequence>
+						<xs:element ref="TunnelTrackFragment" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Een lijst van Spoortak-fragmenten, inclusief bodem- en civiele snelheid, die zich bevinden in de tunnelbuis.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 						<xs:element ref="TTITimer" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
-					<xs:attribute name="tunnelFloorSpeed" type="xs:int">
-						<xs:annotation>
-							<xs:documentation>De bodemsnelheid voor de tunnelbuis. In km/u.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
 					<xs:attribute name="ttiHasStallDetection" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Indicatie of de Tunnel Technische Installatie stilstandbepaling heeft</xs:documentation>
@@ -1231,6 +1231,28 @@ treinvervoer.</xs:documentation>
 					<xs:attribute name="ttiName" type="tString50" use="required">
 						<xs:annotation>
 							<xs:documentation>Naam van de Tunnel Technische Installatie van de tunnelbuis</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TunnelTrackFragment">
+		<xs:annotation>
+			<xs:documentation>Een spoortak fragment in de tunnelbuis. In een tunnelbuis liggen mogelijk meerdere spoortakken met verschillende bodem- en civiele snelheden..</xs:documentation>
+			<xs:documentation xml:lang="NL">TunnelSpoor</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tTrackFragment">
+					<xs:attribute name="tunnelFloorSpeed" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>De bodemsnelheid voor goederentreinen op de spoortak in de tunnelbuis. In km/u.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="tunnelCivilSpeed" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>De maximaal toegestane civiele snelheid op de spoortak in de  tunnelbuis. In km/u.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1881,7 +1903,7 @@ in het spoor kunnen worden gezet.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPolygonObject"/>
+				<xs:extension base="tPointObject"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -2910,11 +2932,6 @@ in het spoor kunnen worden gezet.</xs:documentation>
 					<xs:documentation xml:lang="NL">Auto Transformator Station</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="CathodicProtection">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">Kathodische Bescherming Kast</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>                        
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

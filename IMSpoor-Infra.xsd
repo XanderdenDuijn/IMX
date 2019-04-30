@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.prorail.nl/IMSpoor" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Alignment.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-TrackAssets.xsd"/>
 	<xs:annotation>
@@ -97,7 +99,7 @@
 						<xs:documentation>PUIC relatie naar de WisselverwarmingKast-installatiekast (SwitchPointHeatingCabinet).</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="divergingDirection" type="tSwitchSideEnum">
+				<xs:attribute name="divergingDirection" type="tSwitchSideEnum" use="required">
 					<xs:annotation>
 						<xs:documentation>De richting van het afbuigende been van het wissel.</xs:documentation>
 					</xs:annotation>
@@ -309,6 +311,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 						<xs:element ref="Joint" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="SwitchMechanism" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="Passage" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="FoulingPoint" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="angleRatio" type="tAngleRatioEnum" use="required">
 						<xs:annotation>
@@ -486,7 +489,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 					</xs:attribute>
 					<xs:attribute name="trainType" type="tTrainTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Indicatie of de spoortak een veiligheidskop is.</xs:documentation>
+							<xs:documentation>Type trein waar de spoortak voor bedoeld is. De lijst van opties is voorgedefiniëerd..</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -561,7 +564,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 		<xs:complexType>
 			<xs:attribute name="passageRefs" type="tUUIDRefList" use="required">
 				<xs:annotation>
-					<xs:documentation>De verzameling van wissel- of kruisbenen welke het pad van poort tot poort beschrijven.</xs:documentation>
+					<xs:documentation>De geordende lijst van PUIC referenties naar de wissel- of kruisbenen welke het pad van poort fromIndex  tot poort  toIndex beschrijven.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="fromIndex" type="tPortIndex" use="required">

@@ -13,6 +13,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Signals" minOccurs="0"/>
+				<xs:element ref="DepartureSignals" minOccurs="0"/>
 				<xs:element ref="Signs" minOccurs="0"/>
 				<xs:element ref="StopMarkerBoards" minOccurs="0"/>
 				<xs:element ref="BaliseGroups" minOccurs="0"/>
@@ -115,7 +116,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointTrackAsset"/>
+				<xs:extension base="tATBLoop"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -799,11 +800,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 						<xs:element ref="IlluminatedSign" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="ReflectorPost" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="StopConnection" minOccurs="0"/>
-						<xs:element name="DepartureCondition" type="tDepartureCondition" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>De voorwaarden voor het tonen van een vertrek lichtsein gelden alleen voor Signals van het type DepartureDouble, DepartureSingle, DepartureDoubleCountDown en DepartureSingleCountDown</xs:documentation>
-							</xs:annotation>
-						</xs:element>
+						<xs:element ref="RouteTimer" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="signalType" type="tSignalEnum" use="required">
 						<xs:annotation>
@@ -855,19 +852,9 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 							<xs:documentation>Geeft aan dat een richtingaanwijzer, beter bekend als de Koeienkop RS252, aanwezig is.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="routeTimerValue" type="tTimerValue">
-						<xs:annotation>
-							<xs:documentation>De waarde van de routetimer in seconden</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
 					<xs:attribute name="rollOnBlockDemarcationRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de afrijdlas behorende bij het lichtsein.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="releaseTime" type="tTimerValue">
-						<xs:annotation>
-							<xs:documentation>De herroeptijd van het lichtsein</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="tunnelTubeRef" type="tUUIDRef">
@@ -898,6 +885,81 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 							<xs:documentation>Een PUIC verwijzing naar Stopmarkeerbord.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
+					<xs:attribute name="floodBarrierRef" type="tUUIDRef">
+						<xs:annotation>
+							<xs:documentation>Een PUIC verwijzing naar de waterkering die wordt afgedekt door het lichtsein.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>FloodBarrier</ObjectTypeRef>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DepartureSignals">
+		<xs:annotation>
+			<xs:documentation>Een verzameling vertrekseinlichten.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DepartureSignal" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DepartureSignal">
+		<xs:annotation>
+			<xs:documentation>Een vertrekseinlicht</xs:documentation>
+			<xs:documentation xml:lang="NL">Vertrekseinlicht</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tPointTrackAsset">
+					<xs:sequence>
+						<xs:element name="DepartureCondition" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>De voorwaarden voor het tonen van een vertrekseinlicht.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="SignalCondition" type="tUUIDRefList" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Een lijst met PUIC verwijzingen naar seinen die uit de stand stop zijn. </xs:documentation>
+											<xs:appinfo>
+												<ObjectTypeRef>Signal</ObjectTypeRef>
+											</xs:appinfo>
+										</xs:annotation>
+									</xs:element>
+									<xs:element ref="SwitchPosition" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="departureSignalType" type="tDepartureSignalEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Type van het vertrekseinlicht. De lijst van opties is voorgedefinieerd.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="signalPosition" type="tSignalPositionEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Lichtseinplaatsing (hoog, laag, verhoogd). De lijst van opties is voorgedefinieerd.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="isOutOfService" type="tTrueFalseEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Tijdelijke buitendienststelling.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="hasArrowMarker" type="tTrueFalseEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Indicatie of er een pijlbord aanwezig is.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="isDimmable" type="tTrueFalseEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Een indicatie dat de lamp van het vertrekseinlicht dimbaar is.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -915,7 +977,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 	<xs:element name="FictitiousSignal">
 		<xs:annotation>
 			<xs:documentation>Een Fictief-Sein is een niet werkelijk bestaand sein, wat wel in de beveiliging is opgenomen, bijvoorbeeld softwarematig.</xs:documentation>
-                        <xs:documentation xml:lang="NL">Fictief sein</xs:documentation>
+			<xs:documentation xml:lang="NL">Fictief sein</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -925,13 +987,33 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 							<xs:documentation>Het fysieke sein, bord of stootjuk waaraan het fictieve sein is gekoppeld.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-                                         <xs:attribute name="rollOnBlockDemarcationRef" type="tUUIDRef">
+					<xs:attribute name="rollOnBlockDemarcationRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de afrijdlas behorende bij het fictieve sein.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RouteTimer">
+		<xs:annotation>
+			<xs:documentation>Routetimer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="singularRouteRef" type="tUUIDRef">
+				<xs:annotation>
+					<xs:documentation>Een PUIC verwijzing naar de naderende EV-Route.</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>SingularRoute</ObjectTypeRef>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="routeTimerValue" type="tTimerValue">
+				<xs:annotation>
+					<xs:documentation>De waarde van de routetimer in seconden.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="StopConnection">
@@ -1071,6 +1153,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 				<xs:extension base="tPointTrackAsset">
 					<xs:sequence>
 						<xs:element ref="ReflectorPost" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="RouteTimer" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="hasLamp" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
@@ -1102,11 +1185,6 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 							<xs:documentation>Stop Marker Board plaatsing (hoog, laag, verhoogd). De lijst van opties is voorgedefinieerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="routeTimerValue" type="tTimerValue">
-						<xs:annotation>
-							<xs:documentation>De waarde van de routetimer in seconden</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
 					<xs:attribute name="ttiTimerValue" type="tTimerValue">
 						<xs:annotation>
 							<xs:documentation>De Timer-waarde voor een Tunnel Technische Installatie (TTI) seconden</xs:documentation>
@@ -1120,6 +1198,19 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="controlDelay" type="tTimerValue">
 						<xs:annotation>
 							<xs:documentation>De vertragingstijd voor het StopMarkerBoard in stand stop te komen.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="floodBarrierRef" type="tUUIDRef">
+						<xs:annotation>
+							<xs:documentation>Een PUIC verwijzing naar de waterkering die wordt afgedekt door het SMB.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>FloodBarrier</ObjectTypeRef>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="porType" type="tPorTypeEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Type betrouwbaarheidsmelding (POR) van de afrijdsectie behorende bij het SMB.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1262,7 +1353,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 		<xs:complexContent>
 			<xs:extension base="tPointTrackAsset">
 				<xs:sequence>
-					<xs:element name="foulingJunctionRefs" type="tUUIDRefList" minOccurs="0">
+					<xs:element name="FoulingJunctionRefs" type="tUUIDRefList" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar wissel(s) of kruising(en) waarvan de las binnen de profielvrije ruimte ligt.</xs:documentation>
 						</xs:annotation>
@@ -1391,8 +1482,13 @@ en/of goederen kunnen worden aangenomen en afgeleverd.
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointTrackAsset">
+				<xs:extension base="tPointObject">
 					<xs:sequence>
+						<xs:element ref="TrackFunctionalViewInfo" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Relatie met de spoortak. Ten behoeve van de uitwisseling wordt toegestaan dat de relatie met de spoortak in uitzonderlijke gevallen kan ontbreken.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 						<xs:element ref="Flooring" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="PoleInstallation" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="LevelCrossingBattery" minOccurs="0" maxOccurs="1"/>
@@ -1435,6 +1531,11 @@ en/of goederen kunnen worden aangenomen en afgeleverd.
 					<xs:attribute name="isLowLoaderSensitive" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Diepladergevoelig</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="levelCrossingBarrierType" type="tLevelCrossingBarrierTypeEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Type hekwerk  waarmee de overweg wordt beveiligd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1655,7 +1756,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tLineTrackAsset"/>
+				<xs:extension base="tATBLoop"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1708,7 +1809,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tLineTrackAsset">
+				<xs:extension base="tATBLoop">
 					<xs:attribute name="intersectionCount" type="xs:int">
 						<xs:annotation>
 							<xs:documentation>Het aantal keringen in de ATBNG Lus</xs:documentation>
@@ -1826,7 +1927,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointTrackAsset">
+				<xs:extension base="tLineTrackAsset">
 					<xs:attribute name="switchRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar het bijbehorende wissel.</xs:documentation>
@@ -1951,6 +2052,16 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="SwitchPosition">
+		<xs:annotation>
+			<xs:documentation xml:lang="NL">Wisselstand</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tSwitchMechanismPosition"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
 	<xs:complexType name="tTrackFunctionalViewInfo">
 		<xs:attribute name="trackFunctionalViewRef" type="tUUIDRef" use="required">
 			<xs:annotation>
@@ -2061,6 +2172,17 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 				<xs:documentation>De stand van de wisselsteller</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="tATBLoop">
+		<xs:complexContent>
+			<xs:extension base="tLineTrackAsset">
+				<xs:attribute name="turnOffTime" type="tTimerValue">
+					<xs:annotation>
+						<xs:documentation>Uitschakeltijd. De tijd dat de ATB lus actief blijft na activatie. </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:simpleType name="tDetectorTypeEnum">
 		<xs:annotation>
@@ -2630,6 +2752,11 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 					<xs:documentation xml:lang="NL">RS 244a/b= Afsluitlantaarn beweegbare brug</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="CommandSign">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Opdrachtbord</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="tSpeedSignEnum">
@@ -2806,31 +2933,6 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 					<xs:documentation xml:lang="NL">Technisch sein. Dit betreft een lichtsein in combinatie met een bord met een zwarte driehoek (RS 215a, RS 220, RS 220a, RS 221, RS 221a, RS 222)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="MandatoryDeparture">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 706= Vertrekbevelsein</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="DepartureDouble">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 706= Afzonderlijk geplaatst dubbelzijdig vertreklichtsein</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="DepartureSingle">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 706= Afzonderlijk geplaatst enkelzijdig vertreklichtsein</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="DepartureDoubleCountDown">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 706= Afzonderlijk geplaatst dubbelzijdig vertreklichtsein met afteller</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="DepartureSingleCountDown">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 706= Afzonderlijk geplaatst enkelzijdig vertreklichtsein met afteller</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
 			<xs:enumeration value="DistantSignal">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">RS217= Voorsein</xs:documentation>
@@ -2864,6 +2966,48 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 			<xs:enumeration value="MarshallingPermission">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">RS 268a/b en RS 269a/b= Indicatie van toestemming om spoorvoertuigen naar of over de heuvel te duwen.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tDepartureSignalEnum">
+		<xs:annotation>
+			<xs:documentation>Enumeratie van vertreklichtseinen.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+		<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MandatoryDeparture">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">RS 706= Vertrekbevelsein</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DepartureCountDown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">RS 706= Afteller zonder vertreklichtsein</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DepartureDouble">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">RS 706= Afzonderlijk geplaatst dubbelzijdig vertreklichtsein</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DepartureSingle">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">RS 706= Afzonderlijk geplaatst enkelzijdig vertreklichtsein</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DepartureDoubleCountDown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">RS 706= Afzonderlijk geplaatst dubbelzijdig vertreklichtsein met afteller</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DepartureSingleCountDown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">RS 706= Afzonderlijk geplaatst enkelzijdig vertreklichtsein met afteller</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -2972,6 +3116,48 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 			<xs:enumeration value="PedestrianCrossingAtLevelCrossing">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Overpad bij een overweg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tLevelCrossingBarrierTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Enumeratie van type hekwerken.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="None">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Geen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SwingGate">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Klaphek</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CountryFence">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Landhek</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MEBELA">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">MEBELA</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZigzagFence">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Zigzaghek</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HOB">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">HOB</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="PrivatePedestrianCrossing">
@@ -3214,6 +3400,30 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 			<xs:enumeration value="Low">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Laag geplaatst sein</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tPorTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="None">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Geen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Conventional">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Conventioneel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ERTMS">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">ERTMS</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
