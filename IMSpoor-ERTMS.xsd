@@ -1165,7 +1165,7 @@
 	</xs:element>
 	<xs:element name="SectionTimer">
 		<xs:annotation>
-			<xs:documentation>Per EV-Route kan een Section-Timer worden gedefinieerd. Het betreft een locatie op de baan welke de trein gepasseerd moet zijn binnen de gestelde tijdslimiet. </xs:documentation>
+			<xs:documentation>Geldigheidsduur van een MA. De geldigheid eindigt als de trein binnen de waarde van T_SECTIONTIMER de SectionTimerStopLocation nog niet bereikt heeft.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
