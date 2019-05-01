@@ -111,7 +111,7 @@
 					</xs:attribute>
 					<xs:attribute name="shuntingModeRoute" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Een indicatie dat het eindsein van de route een Shunt-mode aangeeft.</xs:documentation>
+							<xs:documentation>Indicatie dat de trein vanaf het eindsein een MA met shunting mode profile aangeboden krijgt.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="noStopIfInSRBaliseGroupRef" type="tUUIDRef">
