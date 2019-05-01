@@ -924,9 +924,20 @@
 			<xs:complexContent>
 				<xs:extension base="tERTMSExtension">
 					<xs:sequence>
-						<xs:element ref="DangerPoint" minOccurs="0"/>
-						<xs:element ref="Overlap" minOccurs="0"/>
-						<xs:element name="PermittedSpeedAtEoA" type="tV_EMA" minOccurs="0"/>
+						<xs:element name="EndOfAuthority" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="DangerPoint" minOccurs="0"/>
+									<xs:element ref="Overlap" minOccurs="0"/>
+									<xs:element name="PermittedSpeedAtEoA" type="tV_EMA" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="endOfAuthorityLocation" type="xs:int">
+									<xs:annotation>
+										<xs:documentation>De locatie van de EoA beschreven middels de afstand voorafgaand aan het lichtsein.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
 						<xs:element ref="TAA" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Een of meer TAA's</xs:documentation>
