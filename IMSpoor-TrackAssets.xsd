@@ -51,7 +51,6 @@
 				<xs:element ref="ATBEGLoops" minOccurs="0"/>
 				<xs:element ref="LoadingGauges" minOccurs="0"/>
 				<xs:element ref="Blockings" minOccurs="0"/>
-				<xs:element ref="FictitiousSignals" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -911,38 +910,6 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="stopMarkerBoardRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar Stopmarkeerbord.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="FictitiousSignals">
-		<xs:annotation>
-			<xs:documentation>Een verzameling fictieve seinen.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="FictitiousSignal" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="FictitiousSignal">
-		<xs:annotation>
-			<xs:documentation>Een Fictief-Sein is een niet werkelijk bestaand sein, wat wel in de beveiliging is opgenomen, bijvoorbeeld softwarematig.</xs:documentation>
-                        <xs:documentation xml:lang="NL">Fictief sein</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tPointTrackAsset">
-					<xs:attribute name="physicalObjectRef" type="tUUIDRef">
-						<xs:annotation>
-							<xs:documentation>Het fysieke sein, bord of stootjuk waaraan het fictieve sein is gekoppeld.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-                                         <xs:attribute name="rollOnBlockDemarcationRef" type="tUUIDRef">
-						<xs:annotation>
-							<xs:documentation>Een PUIC verwijzing naar de las behorende bij  het fictieve sein.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>

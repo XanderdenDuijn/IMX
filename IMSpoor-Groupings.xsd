@@ -84,7 +84,6 @@
 			<xs:extension base="tLocatedFragmentsObject"/>
 		</xs:complexContent>
 	</xs:complexType>
-
 	<xs:element name="StopSignalPassageDetection">
 		<xs:annotation>
 			<xs:documentation>Aanvullende beveiliging op STS-passage van seinen.</xs:documentation>
