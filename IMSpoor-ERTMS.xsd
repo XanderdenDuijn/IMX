@@ -33,7 +33,6 @@
 				<xs:element ref="RadioBlockCenters" minOccurs="0"/>
 				<xs:element ref="PositionReportParametersAreas" minOccurs="0"/>
 				<xs:element ref="ObjectControllers" minOccurs="0"/>
-				<xs:element ref="WeightLimitMarkers" minOccurs="0"/>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -112,7 +111,7 @@
 					</xs:attribute>
 					<xs:attribute name="shuntingModeRoute" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Indicatie dat de trein vanaf het eindsein een MA met shunting mode profile aangeboden krijgt.</xs:documentation>
+							<xs:documentation>Een indicatie dat het eindsein van de route een Shunt-mode aangeeft.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="noStopIfInSRBaliseGroupRef" type="tUUIDRef">
@@ -266,15 +265,15 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="CBGDepartureTrack">
+	<xs:element name="DepartureTrack">
 		<xs:annotation>
-			<xs:documentation>Een vertrek- en keerspoor in de context van ERTMS is een spoor
+			<xs:documentation>Een vertrekspoor in de context van ERTMS is een spoor
                      waarbij een Movement Authority nodig is voor een vertrek op
                      basis van een vervolgrijweg (in dezelfde richting of voor
                      een kerende trein). Een spoor – en daarmee ook een
                      vertrekspoor – bestaat uit een verzameling secties en een
                      sein dat de begrenzing van het vertrekspoor vormt.</xs:documentation>
-			<xs:documentation xml:lang="NL">Vertrekspoor-CBG</xs:documentation>
+			<xs:documentation xml:lang="NL">Vertrekspoor</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -287,13 +286,11 @@
 						</xs:element>
 						<xs:element ref="DepartureTrackExtension" minOccurs="0"/>
 						<xs:element ref="UsefullLength" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="StandStillTimer" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="signalRef" type="tUUIDRef" use="required">
 						<xs:annotation>
 							<xs:documentation>Referentie naar het (vertrek)sein. Hiermee wordt de  rijrichting bepaald.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>Signal</ObjectTypeRef>
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="isReverseTrack" type="tTrueFalseEnum" use="required">
@@ -311,93 +308,11 @@
 							<xs:documentation>De timerwaarde in seconden</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="NCBGDepartureTrack">
-		<xs:annotation>
-			<xs:documentation>Een vertrekspoor NCBG in de context van ERTMS is een spoor
-                     waarbij een Movement Authority nodig is voor een vertrek op
-                     basis van een vervolgrijweg (in dezelfde richting of voor
-                     een kerende trein). </xs:documentation>
-			<xs:documentation xml:lang="NL">Vertrekspoor-NCBG</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tTrackAggregation">
-					<xs:attribute name="signalRef" type="tUUIDRef" use="required">
-						<xs:annotation>
-							<xs:documentation>Referentie naar het (vertrek)sein. Hiermee wordt de
-                         rijrichting bepaald.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>Signal</ObjectTypeRef>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:attribute>
 					<xs:attribute name="baliseGroup8mRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de 8m balise groep bij een ingekort vertrekspoor in een NCBG.</xs:documentation>
 							<xs:appinfo>
 								<ObjectTypeRef>BaliseGroup</ObjectTypeRef>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="speedLimit" type="xs:int" use="required">
-						<xs:annotation>
-							<xs:documentation>De maximale snelheid aan het begin van het vertrekspoor (V_NVSTIFF).</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="WorkzoneDepartureTrack">
-		<xs:annotation>
-			<xs:documentation>Een vertrekspoor werkzone in de context van ERTMS is een spoor
-                     waarbij een Movement Authority nodig is voor een vertrek op
-                     basis van een vervolgrijweg (in dezelfde richting of voor
-                     een kerende trein).</xs:documentation>
-			<xs:documentation xml:lang="NL">Vertrekspoor-Werkzone</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tTrackAggregation">
-					<xs:attribute name="signalRef" type="tUUIDRef" use="required">
-						<xs:annotation>
-							<xs:documentation>Referentie naar het (vertrek)sein. Hiermee wordt de
-                         rijrichting bepaald.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>Signal</ObjectTypeRef>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="speedLimit" type="xs:int" use="required">
-						<xs:annotation>
-							<xs:documentation>De maximale snelheid op het vertrekspoor.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TemporaryShuntingDepartureTrack">
-		<xs:annotation>
-			<xs:documentation>Een vertrekspoor VR in de context van ERTMS is een spoor
-                     waarbij een Movement Authority nodig is voor een vertrek op
-                     basis van een vervolgrijweg (in dezelfde richting of voor
-                     een kerende trein)..</xs:documentation>
-			<xs:documentation xml:lang="NL">Vertrekspoor-VR-Gebied</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tTrackAggregation">
-					<xs:attribute name="signalRef" type="tUUIDRef" use="required">
-						<xs:annotation>
-							<xs:documentation>Referentie naar het (vertrek)sein. Hiermee wordt de
-                         rijrichting bepaald.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>Signal</ObjectTypeRef>
 							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
@@ -432,38 +347,7 @@
 	<xs:element name="DepartureTracks">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="CBGDepartureTracks" minOccurs="0"/>
-				<xs:element ref="NCBGDepartureTracks" minOccurs="0"/>
-				<xs:element ref="WorkzoneDepartureTracks" minOccurs="0"/>
-				<xs:element ref="TemporaryShuntingDepartureTracks" minOccurs="0"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="CBGDepartureTracks">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="CBGDepartureTrack" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="NCBGDepartureTracks">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="NCBGDepartureTrack" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="WorkzoneDepartureTracks">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="WorkzoneDepartureTrack" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="TemporaryShuntingDepartureTracks">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="TemporaryShuntingDepartureTrack" maxOccurs="unbounded"/>
+				<xs:element ref="DepartureTrack" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -724,40 +608,6 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="WeightLimitMarkers">
-		<xs:annotation>
-			<xs:documentation>Een lijst van Tonnagebeperkings markers, ofwel L/H-markers.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="WeightLimitMarker" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="WeightLimitMarker">
-		<xs:annotation>
-			<xs:documentation>Een L- of H-marker.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tERTMSExtension">
-					<xs:attribute name="weightLimitMarkerType" type="tWeightLimitMarkerTypeEnum" use="required">
-						<xs:annotation>
-							<xs:documentation>Het type marker: L of H. De lijst van opties is voorgedefinieerd.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="signalRef" type="tUUIDRef">
-						<xs:annotation>
-							<xs:documentation>Een PUIC verwijzing naar een L- of H-sein (Signal van het type DistantCargoSignal of CargoSignal). In het geval van een L-marker met een verwijzing naar een H-sein, geeft de L-marker aan dat de bestuurders van treinen bestemd voor het vervoer van goederen de snelheid moeten begrenzen om bij H-Marker te kunnen stoppen. In het geval van een H-marker met een verwijzing naar een L-sein, geeft het L-sein aan dat de bestuurders van treinen bestemd voor het vervoer van goederen de snelheid moeten begrenzen om bij de H-Marker te kunnen stoppen.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>Signal</ObjectTypeRef>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
 	<xs:element name="ERTMSSwitch">
 		<xs:annotation>
 			<xs:documentation>Dit object bevat de ERTMS-specifieke eisen voor een wissel.</xs:documentation>
@@ -959,20 +809,9 @@
 			<xs:complexContent>
 				<xs:extension base="tERTMSExtension">
 					<xs:sequence>
-						<xs:element name="EndOfAuthority" minOccurs="0">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element ref="DangerPoint" minOccurs="0"/>
-									<xs:element ref="Overlap" minOccurs="0"/>
-									<xs:element name="PermittedSpeedAtEoA" type="tV_EMA" minOccurs="0"/>
-								</xs:sequence>
-								<xs:attribute name="endOfAuthorityLocation" type="xs:int">
-									<xs:annotation>
-										<xs:documentation>De locatie van de EoA beschreven middels de afstand voorafgaand aan het lichtsein.</xs:documentation>
-									</xs:annotation>
-								</xs:attribute>
-							</xs:complexType>
-						</xs:element>
+						<xs:element ref="DangerPoint" minOccurs="0"/>
+						<xs:element ref="Overlap" minOccurs="0"/>
+						<xs:element name="PermittedSpeedAtEoA" type="tV_EMA" minOccurs="0"/>
 						<xs:element ref="TAA" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Een of meer TAA's</xs:documentation>
@@ -1200,7 +1039,7 @@
 	</xs:element>
 	<xs:element name="SectionTimer">
 		<xs:annotation>
-			<xs:documentation>Geldigheidsduur van een MA. De geldigheid eindigt als de trein binnen de waarde van T_SECTIONTIMER de SectionTimerStopLocation nog niet bereikt heeft.</xs:documentation>
+			<xs:documentation>Per EV-Route kan een Section-Timer worden gedefinieerd. Het betreft een locatie op de baan welke de trein gepasseerd moet zijn binnen de gestelde tijdslimiet. </xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -1917,25 +1756,6 @@
 			<xs:enumeration value="Fixed">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Vast</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="tWeightLimitMarkerTypeEnum">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Unknown">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="CargoMarker">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">H-marker</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="DistantCargoMarker">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">L-marker</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
