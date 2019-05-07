@@ -616,7 +616,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -632,7 +632,7 @@
 	</xs:element>
 	<xs:element name="M_CURRENT">
 		<xs:annotation>
-			<xs:documentation>Allowed current consumption</xs:documentation>
+			<xs:documentation>Allowed current consumption.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
@@ -746,7 +746,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1011,7 +1011,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1021,7 +1021,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1031,7 +1031,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1061,7 +1061,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1071,7 +1071,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1081,7 +1081,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1091,7 +1091,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1101,7 +1101,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1111,7 +1111,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1141,7 +1141,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1151,7 +1151,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1161,7 +1161,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1171,7 +1171,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1181,7 +1181,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1191,7 +1191,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1201,7 +1201,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1211,7 +1211,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1221,7 +1221,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1231,7 +1231,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1241,7 +1241,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1251,7 +1251,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1281,7 +1281,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1291,7 +1291,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1301,7 +1301,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1311,7 +1311,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1331,7 +1331,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1341,7 +1341,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1361,7 +1361,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1371,7 +1371,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1381,7 +1381,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1401,7 +1401,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1451,7 +1451,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1461,7 +1461,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1471,7 +1471,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1481,7 +1481,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1491,7 +1491,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="boolean"/>
+				<xs:extension base="uint1"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
@@ -1605,6 +1605,16 @@
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="T_EMA">
+		<xs:annotation>
+			<xs:documentation>Time for which the target speed is valid measured from the moment information is received.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="uint10"/>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="T_VBC">
 		<xs:annotation>
 			<xs:documentation>VBC validity period</xs:documentation>
@@ -1635,6 +1645,15 @@
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:complexType name="tV_EMA">
+		<xs:annotation>
+			<xs:documentation>Permitted speed at the End of Movement Authority</xs:documentation>
+			<xs:documentation>V_EMA</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="tSpeed"/>
+		</xs:simpleContent>
+	</xs:complexType>
 	<xs:element name="V_EMA">
 		<xs:annotation>
 			<xs:documentation>Permitted speed at the End of Movement Authority</xs:documentation>
@@ -1825,14 +1844,14 @@
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="D_VALIDV">
+	<xs:element name="D_VALIDNV">
 		<xs:complexType>
 			<xs:simpleContent>
 				<xs:extension base="tLength"/>
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="M_POSTION">
+	<xs:element name="M_POSITION">
 		<xs:complexType>
 			<xs:simpleContent>
 				<xs:extension base="uint24"/>
@@ -1986,10 +2005,7 @@
 		<xs:annotation>
 			<xs:documentation>An electric current in amperes, ranging from 0..10000, with a step size of 10A.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:integer">
-			<xs:maxInclusive value="100000"/>
-			<xs:minInclusive value="0"/>
-		</xs:restriction>
+		<xs:restriction base="uint10"/>
 	</xs:simpleType>
 	<xs:simpleType name="uint5">
 		<xs:annotation>
@@ -2024,6 +2040,15 @@
 		</xs:annotation>
 		<xs:restriction base="xs:integer">
 			<xs:maxInclusive value="3"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="uint1">
+		<xs:annotation>
+			<xs:documentation>[0,1]</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:maxInclusive value="1"/>
 			<xs:minInclusive value="0"/>
 		</xs:restriction>
 	</xs:simpleType>

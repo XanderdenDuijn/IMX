@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.prorail.nl/IMSpoor" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Alignment.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-TrackAssets.xsd"/>
 	<xs:annotation>
@@ -21,7 +23,7 @@
 	<xs:element name="RailTopology">
 		<xs:annotation>
 			<xs:documentation>Wrapper voor de pure spoornetwerktopologie in knopen (Nodes) en verbindingen (Links).
-						</xs:documentation>
+			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -37,8 +39,8 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="Junctions" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="Tracks" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="RailConnections" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="TrackPhysicalViews" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="TrackFunctionalViews" minOccurs="0" maxOccurs="1"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -61,7 +63,7 @@
 	<xs:complexType name="tJunction">
 		<xs:annotation>
 			<xs:documentation>Een abstracte implementatie van een knooppunt, zoals een wissel of stootjuk, inclusief de geografie ervan.
-		</xs:documentation>
+			</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tPointObject"/>
@@ -81,20 +83,20 @@
 					<xs:element ref="FoulingPoint" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="SwitchMechanism" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="Passage" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="DivergingPassageRefs" type="tUUIDRefList">
+						<xs:annotation>
+							<xs:documentation>Een lijst met PUIC verwijzingen naar de benen (passages).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 				<xs:attribute name="angleRatio" type="tAngleRatioEnum" use="required">
 					<xs:annotation>
 						<xs:documentation>De hoekverhouding van het Wissel</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="divergingSpeed" type="tDivergingSpeedEnum" use="required">
+				<xs:attribute name="switchPointHeatingCabinetRef" type="tUUIDRef">
 					<xs:annotation>
-						<xs:documentation>De maximale snelheid door het wissel over het afbuigende been. In kilometers per uur.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="switchHeatingCabinetRef" type="tUUIDRef">
-					<xs:annotation>
-						<xs:documentation>PUIC relatie naar de WisselverwarmingKast-installatiekast.</xs:documentation>
+						<xs:documentation>PUIC relatie naar de WisselverwarmingKast-installatiekast (SwitchPointHeatingCabinet).</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="divergingDirection" type="tSwitchSideEnum" use="required">
@@ -117,13 +119,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tSwitch">
-					<xs:attribute name="isSymmetric" type="tTrueFalseEnum" use="required">
-						<xs:annotation>
-							<xs:documentation>Indicatie of het wissel een symmetrische wissel betreft</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
+				<xs:extension base="tSwitch"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -158,6 +154,20 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:complexType name="tMovableTrackElement">
+		<xs:annotation>
+			<xs:documentation>Een abstract type voor beweegbare spoorelementen.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tPointObject">
+				<xs:attribute name="operatingType" type="tOperatingTypeEnum" use="required">
+					<xs:annotation>
+						<xs:documentation>Bedientype. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:element name="VCrossing">
 		<xs:annotation>
 			<xs:documentation>Een puntstuk is het fysiek metalen object waarmee de scherpe hoek tussen de twee snijdende spoorstaven van
@@ -166,10 +176,15 @@ een wissel of een kruising is gerealiseerd.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointObject">
+				<xs:extension base="tMovableTrackElement">
 					<xs:attribute name="isMovable" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Indicatie of het puntstuk beweegbaar is.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="hasSwitchChecker" type="tTrueFalseEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Geeft aan of het wissel een tongcontrole heeft.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -184,7 +199,13 @@ spoorstaaf mogelijk maakt.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointObject"/>
+				<xs:extension base="tMovableTrackElement">
+					<xs:attribute name="isMovable" type="tTrueFalseEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Indicatie of het kruisstuk een beweegbare punt heeft.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -218,7 +239,13 @@ de voorkant van een wissel.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointObject"/>
+				<xs:extension base="tMovableTrackElement">
+					<xs:attribute name="hasSwitchChecker" type="tTrueFalseEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Geeft aan of het wissel een tongcontrole heeft.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -244,11 +271,6 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 					<xs:attribute name="preferredPosition" type="tSwitchSideEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Geeft de voorkeursstand van het wissel aan.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="hasSwitchChecker" type="tTrueFalseEnum" use="required">
-						<xs:annotation>
-							<xs:documentation>Geeft aan of het wissel een tongcontrole heeft.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="isSpringSwitch" type="tTrueFalseEnum" use="required">
@@ -289,15 +311,16 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 						<xs:element ref="Joint" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="SwitchMechanism" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="Passage" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="FoulingPoint" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="angleRatio" type="tAngleRatioEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>De hoekverhouding van het Kruis</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="switchHeatingCabinetRef" type="tUUIDRef">
+					<xs:attribute name="switchPointHeatingCabinetRef" type="tUUIDRef">
 						<xs:annotation>
-							<xs:documentation>PUIC relatie naar de Wisselverwarming-installatiekast.</xs:documentation>
+							<xs:documentation>PUIC relatie naar de Wisselverwarming-installatiekast (SwitchPointHeatingCabinet).</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="hasMovableOverheadLine" type="tTrueFalseEnum" use="required">
@@ -348,20 +371,20 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Tracks">
+	<xs:element name="TrackPhysicalViews">
 		<xs:annotation>
-			<xs:documentation>Een verzameling spoortakken, de implementatie van een edge</xs:documentation>
+			<xs:documentation>Een verzameling fysieke spoortakken, de implementatie van een edge</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Track" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="TrackPhysicalView" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Track">
+	<xs:element name="TrackPhysicalView">
 		<xs:annotation>
-			<xs:documentation>Een fysieke-spoortak, een implementatie van een edge, inclusief de geografie ervan.</xs:documentation>
-			<xs:documentation xml:lang="NL">Spoortak</xs:documentation>
+			<xs:documentation>Een fysieke spoortak, een implementatie van een edge, inclusief de geografie ervan.</xs:documentation>
+			<xs:documentation xml:lang="NL">Fysieke Spoortak</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -397,24 +420,29 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 							<xs:documentation>Kantcode van het been.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
+					<xs:attribute name="passageSpeed" type="xs:int" use="required">
+						<xs:annotation>
+							<xs:documentation>De maximumsnelheid waarmee de trein de passage mag passeren.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="RailConnections">
+	<xs:element name="TrackFunctionalViews">
 		<xs:annotation>
-			<xs:documentation>Een verzameling RailVerbindingen</xs:documentation>
+			<xs:documentation>Een verzameling Functionele Spoortakken</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="RailConnection" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="TrackFunctionalView" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="RailConnection">
+	<xs:element name="TrackFunctionalView">
 		<xs:annotation>
-			<xs:documentation>Een RailVerbinding is een relatieobject van spoortakken en wissel- of kruisbenen. Dit object vormt de basis waarmee objecten op het spoorsenetwerkk kunnen worden geprojecteerd.</xs:documentation>
-			<xs:documentation xml:lang="NL">RailVerbinding</xs:documentation>
+			<xs:documentation>Een Functionele Spoortak is een relatieobject van fysieke spoortakken en wissel- of kruisbenen. Dit object vormt de basis waarmee objecten op het spoorse netwerk kunnen worden geprojecteerd.</xs:documentation>
+			<xs:documentation xml:lang="NL">Functionele Spoortak</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -424,19 +452,19 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 							<xs:documentation>Optionele lijst van relaties tot de wissel- of kruisbenen.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="trackRef" type="tUUIDRef">
+					<xs:attribute name="trackPhysicalViewRef" type="tUUIDRef">
 						<xs:annotation>
-							<xs:documentation>Optionele relatie tot de spoortak.</xs:documentation>
+							<xs:documentation>Optionele relatie tot de fysieke spoortak.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="functionalBegin" type="xs:double">
 						<xs:annotation>
-							<xs:documentation>De measure van het functionele begin van de RailVerbinding. Alleen van toepassing bij de aanwezigheid van een stootjuk op de spoortak.</xs:documentation>
+							<xs:documentation>De measure van het functionele begin van de functionele spoortak. Alleen van toepassing bij de aanwezigheid van een stootjuk op de spoortak.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="functionalEnd" type="xs:double">
 						<xs:annotation>
-							<xs:documentation>De measure van het functionele einde van de RailVerbinding. Alleen van toepassing bij de aanwezigheid van een stootjuk op de spoortak.</xs:documentation>
+							<xs:documentation>De measure van het functionele einde van de functionele spoortak. Alleen van toepassing bij de aanwezigheid van een stootjuk op de spoortak.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="voltageClass" type="tVoltageClassEnum" use="required">
@@ -461,7 +489,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 					</xs:attribute>
 					<xs:attribute name="trainType" type="tTrainTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Indicatie of de spoortak een veiligheidskop is.</xs:documentation>
+							<xs:documentation>Type trein waar de spoortak voor bedoeld is. De lijst van opties is voorgedefiniëerd..</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -536,7 +564,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 		<xs:complexType>
 			<xs:attribute name="passageRefs" type="tUUIDRefList" use="required">
 				<xs:annotation>
-					<xs:documentation>De verzameling van wissel- of kruisbenen welke het pad van poort tot poort beschrijven.</xs:documentation>
+					<xs:documentation>De geordende lijst van PUIC referenties naar de wissel- of kruisbenen welke het pad van poort fromIndex  tot poort  toIndex beschrijven.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="fromIndex" type="tPortIndex" use="required">
@@ -581,7 +609,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 				<xs:element name="FromMicroNode" type="tNodePort"/>
 				<xs:element name="ToMicroNode" type="tNodePort"/>
 			</xs:sequence>
-			<xs:attribute name="railConnectionRef" type="tUUIDRef" use="required">
+			<xs:attribute name="trackFunctionalViewRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>PUIC verwijzing naar de bijbehorende spoortak.</xs:documentation>
 				</xs:annotation>
@@ -836,6 +864,11 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 					<xs:documentation xml:lang="NL">Rechtsleidend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="Symmetric">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Symmetrisch</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="tLockTypeEnum">
@@ -866,6 +899,30 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 			<xs:enumeration value="ElectricLock">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Elektrisch bediend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tOperatingTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NotApplicable">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Niet van toepassing</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Manual">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">handmatig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Central">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">centraal bediend</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>

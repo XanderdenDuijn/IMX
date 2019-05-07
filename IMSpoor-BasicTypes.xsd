@@ -496,7 +496,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="tLifeCycleStatusEnum">
 		<xs:annotation>
-			<xs:documentation>'bestaand' (as built) . Aanvullend IMSpoor: 'voorlopig ontwerp ', 'definitief  ontwerp' en 'Gesloopt' (was built). De statusovergang naar 'bestaand' (as built) vindt plaats nadat de gemeten geometrie is opgeleverd.</xs:documentation>
+			<xs:documentation>'Bestaand' (as built) . Aanvullend IMSpoor: 'Voorlopig ontwerp ', 'Definitief  ontwerp' en 'Gesloopt' (was built).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Unknown">

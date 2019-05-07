@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.prorail.nl/IMSpoor" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-BasicTypes.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-TrackAssets.xsd"/>
 	<xs:element name="Groupings">
@@ -24,6 +26,8 @@
 			<xs:sequence>
 				<xs:element ref="OperationalPointTracks" minOccurs="0"/>
 				<xs:element ref="PPCTracks" minOccurs="0"/>
+				<xs:element ref="Routes" minOccurs="0"/>
+				<xs:element ref="MovementPlans" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -33,7 +37,7 @@
 			<xs:documentation xml:lang="NL">Grenspunt</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="railConnectionRef" type="tUUIDRef" use="required">
+			<xs:attribute name="trackFunctionalViewRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Referentie naar de Track waarop dit object wordt geprojecteerd.</xs:documentation>
 				</xs:annotation>
@@ -67,7 +71,7 @@
 							<xs:documentation>Een lijst van grenspunten</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="TrackFragments" type="tTrackFragments">
+					<xs:element name="TrackFragments" type="tTrackFragments" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Een lijst van Spoortak-fragmenten.</xs:documentation>
 						</xs:annotation>
@@ -82,6 +86,229 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tLocatedFragmentsObject"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MovementPlans">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="MovementPlan" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MovementPlan">
+		<xs:annotation>
+			<xs:documentation>Plan met toegedeelde en geprioriteerde routes bij een rijweg.</xs:documentation>
+			<xs:documentation xml:lang="NL">Rijwegplan</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tBaseObject">
+					<xs:sequence>
+						<xs:element ref="TrainMovement" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TrainMovement">
+		<xs:annotation>
+			<xs:documentation>Rijweg. Een ontworpen treinbeweging van een trein in het kader van procesleiding</xs:documentation>
+			<xs:documentation xml:lang="NL">Rijweg</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tBaseObject">
+					<xs:sequence>
+						<xs:element ref="PrioritizedRoute" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="fromSignalRef" type="tUUIDRef" use="required">
+						<xs:annotation>
+							<xs:documentation>PUIC verwijzing naar begin-object van de rijweg.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="toSignalRef" type="tUUIDRef" use="required">
+						<xs:annotation>
+							<xs:documentation>PUIC verwijzing naar eind-object van de rijweg.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="fromPPCTrackRef" type="tUUIDRef" use="optional">
+						<xs:annotation>
+							<xs:documentation>PUIC verwijzing naar begin-spoor van de rijweg.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="toPPCTrackRef" type="tUUIDRef" use="optional">
+						<xs:annotation>
+							<xs:documentation>PUIC verwijzing naar eind-spoor van de rijweg.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PrioritizedRoute">
+		<xs:annotation>
+			<xs:documentation>Een route met een dwangnummer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="routeRef" type="tUUIDRef" use="required">
+				<xs:annotation>
+					<xs:documentation>Een PUIC verwijzing naar een enkelvoudige of samengestelde route.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="priority" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Het dwangnummer van de route.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Routes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="SingularRoute" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="CombinedRoute" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CombinedRoute">
+		<xs:annotation>
+			<xs:documentation>Een samengestelde route</xs:documentation>
+			<xs:documentation xml:lang="NL">Samengestelde Route</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tBaseObject">
+					<xs:sequence>
+						<xs:element name="RouteRefs" type="tUUIDRefList">
+							<xs:annotation>
+								<xs:documentation>Een lijst van PUIC referentie naar een of meer enkelvoudige routes of samengestelde routes.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SingularRoute">
+		<xs:annotation>
+			<xs:documentation>Een enkelvoudige route (seinstap) met de daarbij ontworpen treinbeveiligingsaspecten</xs:documentation>
+			<xs:documentation xml:lang="NL">Route</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tRoute">
+					<xs:sequence>
+						<xs:element name="ExcludedBaliseGroupRefs" type="tUUIDRefList" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Een lijst van PUIC verwijzingen naar balises die NIET opgenomen zijn in de Link list bij een L2 MA.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="tRoute">
+		<xs:complexContent>
+			<xs:extension base="tTrackAggregation">
+				<xs:sequence>
+					<xs:element ref="SwitchPosition" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>De lijst van stellerstanden voor de route. Ten behoeve van flankzone bewaking</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="MandatoryFlankProtection" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Een of meer eis-wissels. Ten behoeve van flankzone bewaking.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="OptionalFlankProtection" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Een of meer verzoek-wissels</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="SectionOccupationDetection" type="tUUIDRefList" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Een lijst van PUIC verwijzingen naar secties welke uitgelezen moeten worden ten behoeve van flankzone bewaking</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RedSignalFlankProtection" type="tUUIDRefList" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Een PUIC verwijzing naar een seinbeeldrelatie (SignalAspectRelation) ten behoeve van flankbewaking. De seinbeeldrelatie moet een Rood-Rood koppeling zijn.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="StopSignalPassageDetection" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Aanvullende beveiliging op STS-passage van seinen. Mogelijke objecten zijn Signal, Sign en StopMarkerBoard</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="LinkListBaliseGroupRefs" type="tUUIDRefList" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Een lijst van PUIC verwijzingen naar balises die opgenomen zijn in de Link list bij een L1 MA.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="startObject" type="tUUIDRef" use="required">
+					<xs:annotation>
+						<xs:documentation>De PUIC verwijzing naar het beginobject van een route. Dit object kan een Bord, Stop Marker Board of Lichtsein zijn</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="endObject" type="tUUIDRef" use="required">
+					<xs:annotation>
+						<xs:documentation>De PUIC verwijzing naar het eindobject van een route. (Bord, Stop Marker Board, Lichtsein, Stootjuk of Fictief Sein)</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="isTunnelEntryRoute" type="tTrueFalseEnum" use="required">
+					<xs:annotation>
+						<xs:documentation>Geeft aan of de route toegang geeft tot een tunnel.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="releaseDelay" type="tTimerValue">
+					<xs:annotation>
+						<xs:documentation>Vertragingstijd voor het handmatige restrijwegvrijmaking in seconden</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="isReleaseAutomatic" type="tTrueFalseEnum" use="required">
+					<xs:annotation>
+						<xs:documentation>Indicatie of restrijwegvrijmaking automatisch gebeurt.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="levelCrossingWarningSystemRefs" type="tUUIDRefList">
+					<xs:annotation>
+						<xs:documentation>Een PUIC verwijzing naar een WIDO waarvan deze route een aankondiging is.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="hasElectricTraction" type="tTrueFalseEnum" use="required">
+					<xs:annotation>
+						<xs:documentation>Een indicatie of er electrische tractie aanwezig is voor deze route. Anders alleen geschikt voor diesel materieel.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="isAutomaticlyControlled" type="tTrueFalseEnum" use="required">
+					<xs:annotation>
+						<xs:documentation>Een indicatie of de route automatisch instelbaar is.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="driveBySightRoute" type="tTrueFalseEnum" use="required">
+					<xs:annotation>
+						<xs:documentation>Een indicatie dat het eindsein van de route een ROZ seinbeeld geeft.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="lrString" type="tString100">
+					<xs:annotation>
+						<xs:documentation>Een reeks stellerstanden welke vastgelegd moeten worden om de route te reserveren. Dit is een presentatievorm welke afleidbaar is uit de route.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="controllerCabinetRef" type="tUUIDRef">
+					<xs:annotation>
+						<xs:documentation>Een PUIC verwijzing naar een medewerkerskastje welke bedienbaar wordt bij het instellen van de route.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="hasOverheadLineSwitch" type="tTrueFalseEnum" use="required">
+					<xs:annotation>
+						<xs:documentation>Een indicatie of een bovenleidingsschakelaar in de route is opgenomen.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:element name="StopSignalPassageDetection">
@@ -116,16 +343,6 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="SwitchPosition">
-		<xs:annotation>
-			<xs:documentation xml:lang="NL">Wisselstand</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tSwitchMechanismPosition"/>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
 	<xs:element name="UsefullLength" type="tDirectionalLength">
 		<xs:annotation>
 			<xs:documentation>De maximale doorlopende lengte in meters van een spoor waarop een trein in normale omstandigheden moet stoppen rekening houdend met een passende stoptolerantie. Normale exploitatie betekent dat er geen sprake is van gestoord bedrijf namelijk normale adhesie, werkende seinen, alle systemen functioneren naar behoren)</xs:documentation>
@@ -141,7 +358,7 @@
 	<xs:element name="OperationalPointTrack">
 		<xs:annotation>
 			<xs:documentation>Een dienstregelpuntspoor is een spoor in de benaming en afbakening conform het lokale gebruik op een dienstregelpunt.
-	</xs:documentation>
+			</xs:documentation>
 			<xs:documentation xml:lang="NL">Dienstregelpuntspoor</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -175,11 +392,6 @@
 							<xs:documentation>Verwijzing naar aanliggende perron.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="platformNumber" type="xs:int" use="optional">
-						<xs:annotation>
-							<xs:documentation>Nummer van het perron waarlangs het spoor loopt.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
 					<xs:attribute name="function" type="tOperationalPointTrackFunctionEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>De functiecode van het dienstregelpuntspoor. De lijst van opties is voorgedefiniëerd.</xs:documentation>
@@ -204,9 +416,9 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tTrackAggregation">
-					<xs:attribute name="beginDemarcatorRef" type="tUUIDRef" use="required"/>
-					<xs:attribute name="endDemarcatorRef" type="tUUIDRef" use="required"/>
+				<xs:extension base="tObjectDemarcation">
+					<xs:attribute name="demarcatorOneSideRef" type="tUUIDRef" use="required"/>
+					<xs:attribute name="demarcatorOtherSideRef" type="tUUIDRef" use="required"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -221,6 +433,7 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 				<xs:element ref="GeocodeAreas" minOccurs="0"/>
 				<xs:element ref="ProRailRegions" minOccurs="0"/>
 				<xs:element ref="ProcessContractAreas" minOccurs="0"/>
+				<xs:element ref="PGOAreas" minOccurs="0"/>
 				<xs:element ref="CalamityOrganisationAreas" minOccurs="0"/>
 				<xs:element ref="IncidentManagementPrimaryAreas" minOccurs="0"/>
 				<xs:element ref="IncidentManagementReplacementAreas" minOccurs="0"/>
@@ -284,6 +497,13 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="PGOAreas">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PGOArea" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="Demarcations">
 		<xs:annotation>
 			<xs:documentation>Verzameling van groepen demarcaties en demarcatie-aggregaties.</xs:documentation>
@@ -301,7 +521,7 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 				<xs:element ref="NonCentrallyOperatedAreas" minOccurs="0"/>
 				<xs:element ref="TemporaryShuntingAreas" minOccurs="0"/>
 				<xs:element ref="Workzones" minOccurs="0"/>
-				<xs:element ref="InterlockingAreas" minOccurs="0"/>
+				<xs:element ref="WeightLimitAreas" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -454,7 +674,18 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointDemarcation">
+				<xs:extension base="tObjectDemarcation">
+					<xs:sequence>
+						<xs:element name="BoundarySignRefs" type="tUUIDRefList">
+							<xs:annotation>
+								<xs:documentation>Een lijst van PUIC relaties naar de begrenzende objecten (Stopmarkerboard, Stopbord, Facultatief Stopbord, Bord einde beveiliging of Opdrachtbord)</xs:documentation>
+								<xs:appinfo>
+									<ObjectTypeRef>StopMarkerBoard</ObjectTypeRef>
+									<ObjectTypeRef>Sign</ObjectTypeRef>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
 					<xs:attribute name="direction" type="tDirectionEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>De ontworpen richting van het gebied ter ondersteuning van identificatie van toegangsroutes.</xs:documentation>
@@ -498,12 +729,12 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 								<xs:documentation>Een of meer eis-wissels voor het in of uitrijden van het gebied</xs:documentation>
 							</xs:annotation>
 						</xs:element>
+						<xs:element name="CivilConstructionRefs" type="tUUIDRefList">
+							<xs:annotation>
+								<xs:documentation>Een lijst met PUIC verwijzingen naar 1 of meerdere beweegbare bruggen welke voorwaardelijk zijn voor het bedienen van het vrijgave rangeergebied.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
-					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
-						<xs:annotation>
-							<xs:documentation>Een PUIC verwijzing naar een beweegbare brug welke voorwaardelijk is voor het bedienen van het vrijgave rangeergebied.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -547,29 +778,24 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="InterlockingAreas">
+	<xs:element name="WeightLimitAreas">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:annotation>
-					<xs:documentation>Een lijst van Interlocking gebieden</xs:documentation>
+					<xs:documentation>Een lijst van Tonnagebeperkingsgebieden.</xs:documentation>
 				</xs:annotation>
-				<xs:element ref="InterlockingArea" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="WeightLimitArea" minOccurs="1" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="InterlockingArea">
+	<xs:element name="WeightLimitArea">
 		<xs:annotation>
-			<xs:documentation>Interlocking Gebied een gebied waarbinnen een interlocking systeem de spoorse infrastructuur controleert ter voorkoming van conflicteren treinbewegingen.</xs:documentation>
-			<xs:documentation xml:lang="NL">Interlocking Gebied</xs:documentation>
+			<xs:documentation>Tonnagebeperkingsgebied.</xs:documentation>
+			<xs:documentation xml:lang="NL">Tonnagebeperkingsgebied</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tPointDemarcation">
-					<xs:attribute name="direction" type="tDirectionEnum" use="required">
-						<xs:annotation>
-							<xs:documentation>De ontworpen richting van het gebied ter ondersteuning van identificatie van toegangsroutes.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -601,7 +827,7 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tMultiLineObject">
+				<xs:extension base="tBaseObject">
 					<xs:sequence>
 						<xs:element name="ControlledOperationalPointRefs" type="tUUIDRefList"/>
 						<xs:element name="EntrySignalRefs" type="tUUIDRefList" minOccurs="0"/>
@@ -612,16 +838,17 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 	</xs:element>
 	<xs:element name="TrafficControlArea">
 		<xs:annotation>
-			<xs:documentation>Een bedienpost is een post van waar centraal seinen en wissels worden bediend. Het is opgebouwd uit een verzameling PPLG's, vrije banen en Nietbediende dienstregelpunten.</xs:documentation>
+			<xs:documentation>Een bedienpost is een post van waar centraal seinen en wissels worden bediend. Het is opgebouwd uit een verzameling PPLG's, vrije banen en niet bediende dienstregelpunten.</xs:documentation>
 			<xs:documentation xml:lang="NL">VL-Post</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tMultiLineObject">
+				<xs:extension base="tBaseObject">
 					<xs:sequence>
 						<xs:element name="PPCRefs" type="tUUIDRefList"/>
 						<xs:element name="UncontrolledOperationalPointRefs" type="tUUIDRefList"/>
 						<xs:element name="OpenLineRefs" type="tUUIDRefList"/>
+						<xs:element name="AdjacentTrafficControlAreaRefs" type="tUUIDRefList"/>
 					</xs:sequence>
 				</xs:extension>
 			</xs:complexContent>
@@ -634,7 +861,7 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 		<xs:complexContent>
 			<xs:extension base="tBaseObject">
 				<xs:sequence>
-					<xs:element name="TrackFragments" type="tTrackFragments">
+					<xs:element name="TrackFragments" type="tTrackFragments" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>Een lijst van Spoortak-fragmenten.</xs:documentation>
 						</xs:annotation>
@@ -679,7 +906,11 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 		<xs:complexContent>
 			<xs:extension base="tMultiPolygonObject">
 				<xs:sequence>
-					<xs:element name="IDRefList" type="tUUIDRefList"/>
+					<xs:element name="IDRefList" type="tUUIDRefList">
+						<xs:annotation>
+							<xs:documentation>PUIC verwijzingen naar de geografische gebieden waar het aggregaat uit is samengesteld.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -725,16 +956,6 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 							<xs:documentation>Het soort procescontractgebied</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="pgoArea" type="tString50">
-						<xs:annotation>
-							<xs:documentation>De naam van het PGO-gebied waaronder het PCA valt.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="pgoNumber" type="xs:integer">
-						<xs:annotation>
-							<xs:documentation>Het nummer van het PGO-gebied waaronder het procescontractgebied. valt</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
 					<xs:attribute name="number" type="xs:integer">
 						<xs:annotation>
 							<xs:documentation>Het nummer van het procescontractgebied.</xs:documentation>
@@ -743,6 +964,23 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 					<xs:attribute name="contractor" type="tString50">
 						<xs:annotation>
 							<xs:documentation>De naam van de aannemer.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PGOArea">
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>PGO-gebied die is samengesteld uit PCA-gebieden.</xs:documentation>
+				<xs:documentation xml:lang="NL">PGO-gebied</xs:documentation>
+			</xs:annotation>
+			<xs:complexContent>
+				<xs:extension base="tAreaAggregation">
+					<xs:attribute name="number" type="xs:integer">
+						<xs:annotation>
+							<xs:documentation>Het nummer van het procescontractgebied.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -853,7 +1091,7 @@ en dat een functie vervult bij het opzetten en vastleggen van de dienstregeling.
 							<xs:documentation>Het bedieningscode van het dienstregelpunt. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="isServiced" type="tTrueFalseEnum" use="required">
+					<xs:attribute name="isControlled" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Geeft aan of het dienstregelpunt bediend of onbediend is.</xs:documentation>
 						</xs:annotation>
@@ -866,7 +1104,7 @@ en dat een functie vervult bij het opzetten en vastleggen van de dienstregeling.
 					<xs:attribute name="uicCode" type="tString50">
 						<xs:annotation>
 							<xs:documentation>Unieke code voor het dienstregelpunt uitgegeven door Union Internationale des Chemins de fer
-</xs:documentation>
+							</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="passThroughMandatory" type="tTrueFalseEnum" use="required">
@@ -884,6 +1122,16 @@ en dat een functie vervult bij het opzetten en vastleggen van de dienstregeling.
 							<xs:documentation>Stationsgrootte</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
+					<xs:attribute name="hasWorkshop" type="tTrueFalseEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Indicatie of werkplaats aanwezig is.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="hasGasStation" type="tTrueFalseEnum" use="required">
+						<xs:annotation>
+							<xs:documentation>Indicatie of tankplaats aanwezig is.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -894,6 +1142,25 @@ en dat een functie vervult bij het opzetten en vastleggen van de dienstregeling.
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tObjectDemarcation">
+				<xs:sequence>
+					<xs:element name="ReleaseMethod" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Rijwegvrijmaking</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="releasePrinciple" type="tReleasePrinciple"  use="required">
+								<xs:annotation>
+									<xs:documentation>Vrijmakingsprincipe. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="direction" type="tFunctionalDirectionEnum" use="required">
+								<xs:annotation>
+									<xs:documentation>De richting ten opzichte van de default richting van de spoortak behorende bij de sectie gewijze rijwegvrijmaking.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
 				<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 					<xs:annotation>
 						<xs:documentation>Een PUIC verwijzing naar een beweegbare burg waarvan de sectie de brugsectie is.</xs:documentation>
@@ -902,6 +1169,11 @@ en dat een functie vervult bij het opzetten en vastleggen van de dienstregeling.
 				<xs:attribute name="controllerCabinetRef" type="tUUIDRef">
 					<xs:annotation>
 						<xs:documentation>Een PUIC verwijzing naar een medewerkerskastje (HC-kastje) welke bedienbaar wordt bij het bezet melden van de sectie.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="isTrapSectionSituation" type="tTrueFalseEnum" use="required">
+					<xs:annotation>
+						<xs:documentation>Indicatie of er een trap situatie ontstaat.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>
@@ -962,9 +1234,9 @@ bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor één do
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
-					<xs:attribute name="tunerunitRef" type="tUUIDRef" use="optional">
+					<xs:attribute name="tuningUnitRef" type="tUUIDRef" use="optional">
 						<xs:annotation>
-							<xs:documentation>Een Tuner tbv toonfrequente-detectie.</xs:documentation>
+							<xs:documentation>Een PUIC verwijzing een tuningunit t.b.v. toonfrequente-detectie.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="afSectionType" type="tAfSectionTypeEnum" use="required">
@@ -1110,7 +1382,12 @@ bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor één do
 	<xs:complexType name="tSignalAspect">
 		<xs:attribute name="aspectProducer" type="tUUIDRef" use="required">
 			<xs:annotation>
-				<xs:documentation>Seinbeeld gever. Bord of lichtsein.</xs:documentation>
+				<xs:documentation>Seinbeeld gever. Bord, lichtsein of SMB.</xs:documentation>
+				<xs:appinfo>
+					<ObjectTypeRef>Sign</ObjectTypeRef>
+					<ObjectTypeRef>Signal</ObjectTypeRef>
+					<ObjectTypeRef>StopMarkerBoard</ObjectTypeRef>
+				</xs:appinfo>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="aspect" type="tString100" use="required">
@@ -1511,7 +1788,7 @@ bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor één do
 			</xs:enumeration>
 			<xs:enumeration value="GRS75hz">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">GRS 50hz</xs:documentation>
+					<xs:documentation xml:lang="NL">GRS 75hz</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -1699,4 +1976,31 @@ bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor één do
 			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-</xs:schema>
+	<xs:simpleType name="tReleasePrinciple">
+		<xs:annotation>
+			<xs:documentation>Vrijmakingsprincipe.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Active">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Aktief</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Passive">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Passief</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SimplifiedActive">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Vereinfacht Aktief</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>	

@@ -9,7 +9,7 @@
 		<xs:annotation>
 			<xs:documentation>
         Root element van een IMSpoorXML document (IMX)
-      </xs:documentation>
+			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice>
@@ -27,7 +27,7 @@
 		<xs:annotation>
 			<xs:documentation>
         Abstract type voor een sectie met spoorse gegevens
-      </xs:documentation>
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element ref="RailInfrastructure" minOccurs="0"/>
@@ -56,7 +56,7 @@
 			<xs:annotation>
 				<xs:documentation>
           Type met samenvatting van Was/Wordt in de vorm van lijsten met UUIDs van de nieuwe, gewijzigde en verwijderde objecten.
-        </xs:documentation>
+				</xs:documentation>
 			</xs:annotation>
 			<xs:sequence>
 				<xs:element name="Created" type="tUUIDRefList" minOccurs="0"/>
@@ -154,7 +154,7 @@
 			<xs:annotation>
 				<xs:documentation>
           Reservering voor eventuele uitbreidingen die niet tot de kern van IMSpoor behoren. Op dit moment vallen hier de domeinen ERTMS en BGT onder.
-        </xs:documentation>
+				</xs:documentation>
 				<xs:documentation xml:lang="NL">Extensies</xs:documentation>
 			</xs:annotation>
 			<xs:sequence>
