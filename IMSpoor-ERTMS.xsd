@@ -70,33 +70,7 @@
 								<xs:documentation>Een lijst van PUIC verwijzingen naar balises die NIET opgenomen zijn in de Link list bij een L2 MA.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="VBCProfile" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>VBC-profiel</xs:documentation>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="VirtualBaliseCoverRefs" type="tUUIDRefList">
-										<xs:annotation>
-											<xs:documentation>Een lijst met PUIC verwijzingen naar virtueel afgeschermde balise groepen.</xs:documentation>
-											<xs:appinfo>
-												<ObjectTypeRef>BaliseGroup</ObjectTypeRef>
-											</xs:appinfo>
-										</xs:annotation>
-									</xs:element>
-								</xs:sequence>
-								<xs:attribute name="profileCode" type="uint6">
-									<xs:annotation>
-										<xs:documentation>VBC-profiel code</xs:documentation>
-									</xs:annotation>
-								</xs:attribute>
-								<xs:attribute name="validity" type="xs:int">
-									<xs:annotation>
-										<xs:documentation>Houdbaarheidsperiode van het VBC-profiel</xs:documentation>
-									</xs:annotation>
-								</xs:attribute>
-							</xs:complexType>
-						</xs:element>
+						<xs:element ref="VBCProfile" minOccurs="0"/>
 						<xs:element ref="StandStillDetection" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="singularRouteRef" type="tUUIDRef" use="required">
@@ -115,10 +89,40 @@
 					<xs:attribute name="noStopIfInSRBaliseGroupRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de balisegroep in de EV-Route waarbij geen Stop-If-In-SR mag worden gegeven.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>BaliseGroup</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="VBCProfile">
+		<xs:annotation>
+			<xs:documentation>VBC-profiel</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="VirtualBaliseCoverRefs" type="tUUIDRefList">
+					<xs:annotation>
+						<xs:documentation>Een lijst met PUIC verwijzingen naar virtueel afgeschermde balise groepen.</xs:documentation>
+						<xs:appinfo>
+							<ObjectTypeRef>BaliseGroup</ObjectTypeRef>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="profileCode" type="uint6">
+				<xs:annotation>
+					<xs:documentation>VBC-profiel code</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="validity" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>Houdbaarheidsperiode van het VBC-profiel</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="StandStillDetection">
@@ -250,6 +254,11 @@
 						<xs:element name="SectionRefs" type="tUUIDRefList">
 							<xs:annotation>
 								<xs:documentation>Een lijst van PUIC Referenties naar secties.</xs:documentation>
+								<xs:appinfo>
+									<ObjectTypeRef>TrackCircuit</ObjectTypeRef>
+									<ObjectTypeRef>AxleCounterSection</ObjectTypeRef>
+									<ObjectTypeRef>AFSection</ObjectTypeRef>
+								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
 						<xs:element ref="UsefullLength" minOccurs="0" maxOccurs="unbounded"/>
@@ -280,6 +289,11 @@
 						<xs:element name="SectionRefs" type="tUUIDRefList">
 							<xs:annotation>
 								<xs:documentation>Een lijst van PUIC Referenties naar secties.</xs:documentation>
+								<xs:appinfo>
+									<ObjectTypeRef>TrackCircuit</ObjectTypeRef>
+									<ObjectTypeRef>AxleCounterSection</ObjectTypeRef>
+									<ObjectTypeRef>AFSection</ObjectTypeRef>
+								</xs:appinfo>
 							</xs:annotation>
 						</xs:element>
 						<xs:element ref="DepartureTrackExtension" minOccurs="0"/>
@@ -416,6 +430,11 @@
 				<xs:element name="SectionRef" type="tUUIDRef">
 					<xs:annotation>
 						<xs:documentation>Een PUIC verwijzing naar een sectie.</xs:documentation>
+						<xs:appinfo>
+							<ObjectTypeRef>TrackCircuit</ObjectTypeRef>
+							<ObjectTypeRef>AxleCounterSection</ObjectTypeRef>
+							<ObjectTypeRef>AFSection</ObjectTypeRef>
+						</xs:appinfo>
 					</xs:annotation>
 				</xs:element>
 			</xs:sequence>
@@ -592,7 +611,8 @@
 	</xs:element>
 	<xs:element name="WeightLimitMarker">
 		<xs:annotation>
-			<xs:documentation>Een L- of H-marker.</xs:documentation>
+			<xs:documentation>Een H- of L-marker.</xs:documentation>
+                        <xs:documentation xml:lang="NL">H- of L-marker</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -748,7 +768,7 @@
 					<xs:attribute name="operationalPointTrackRef" type="tUUIDRef" use="optional">
 						<xs:annotation>
 							<xs:documentation>De PUIC verwijzing naar het dienstregelpuntspoor (perronspoor) waar vanuit de trein vertrekt.</xs:documentation>
-						</xs:annotation>
+							<xs:appinfo><ObjectTypeRef>OperationalPointTrack</ObjectTypeRef></xs:appinfo></xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -775,6 +795,11 @@
 					<xs:documentation>Een PUIC verwijzing naar een dwangpunt. De dwangpunten
                        zijn; De afrijdlas van een brugsectie, de afrijdlas van
                        een overweg of een open span inrichting</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>InsulatedJoint</ObjectTypeRef>
+						<ObjectTypeRef>AudioFrequencyJoint</ObjectTypeRef>
+						<ObjectTypeRef>OverheadSectionBreak</ObjectTypeRef>
+					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -794,6 +819,11 @@
 			<xs:attribute name="blockDemarcationRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar een sectie-begrenzer</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>InsulatedJoint</ObjectTypeRef>
+						<ObjectTypeRef>AudioFrequencyJoint</ObjectTypeRef>
+						<ObjectTypeRef>AxleCounterDetectionPoint</ObjectTypeRef>
+					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="distance" type="xs:decimal" use="required">
@@ -815,20 +845,7 @@
 			<xs:complexContent>
 				<xs:extension base="tERTMSExtension">
 					<xs:sequence>
-						<xs:element name="EndOfAuthority" minOccurs="0">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element ref="DangerPoint" minOccurs="0"/>
-									<xs:element ref="Overlap" minOccurs="0"/>
-									<xs:element name="PermittedSpeedAtEoA" type="tV_EMA" minOccurs="0"/>
-								</xs:sequence>
-								<xs:attribute name="endOfAuthorityLocation" type="xs:int">
-									<xs:annotation>
-										<xs:documentation>De locatie van de EoA beschreven middels de afstand voorafgaand aan het lichtsein.</xs:documentation>
-									</xs:annotation>
-								</xs:attribute>
-							</xs:complexType>
-						</xs:element>
+						<xs:element ref="EndOfAuthority" minOccurs="0"/>
 						<xs:element ref="TAA" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Een of meer TAA's</xs:documentation>
@@ -844,9 +861,9 @@
 								<xs:documentation>Lange nadering afstand voor het tijdloos vrijmaken van de rijwegen</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="BaliseList" type="tUUIDRefList" minOccurs="0">
+						<xs:element name="BaliseGroupRefs" type="tUUIDRefList" minOccurs="0">
 							<xs:annotation>
-								<xs:documentation>Een ontworpen lijst van Balisegroepen.</xs:documentation>
+								<xs:documentation>Een ontworpen lijst van Balisegroepen. Ook wel bekend als de baliselijst.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element ref="ModeProfile" minOccurs="0"/>
@@ -868,6 +885,20 @@
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EndOfAuthority">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DangerPoint" minOccurs="0"/>
+				<xs:element ref="Overlap" minOccurs="0"/>
+				<xs:element name="PermittedSpeedAtEoA" type="tV_EMA" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="endOfAuthorityLocation" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>De locatie van de EoA beschreven middels de afstand voorafgaand aan het lichtsein.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="ModeProfile">
@@ -957,6 +988,11 @@
 			<xs:attribute name="sectionRef" type="tUUIDRef">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar een sectie</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>TrackCircuit</ObjectTypeRef>
+						<ObjectTypeRef>AxleCounterSection</ObjectTypeRef>
+						<ObjectTypeRef>AFSection</ObjectTypeRef>
+					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -1004,7 +1040,7 @@
 					<xs:attribute name="radioBlockCenterRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar een RBC waaraan de CES moet worden doorgegeven voorbij een RBC-RBC grens.</xs:documentation>
-						</xs:annotation>
+							<xs:appinfo><ObjectTypeRef>RadioBlockCenter</ObjectTypeRef></xs:appinfo></xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1023,7 +1059,7 @@
 			<xs:attribute name="workzoneRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar een werkzone (Workzone).</xs:documentation>
-				</xs:annotation>
+					<xs:appinfo><ObjectTypeRef>Workzone</ObjectTypeRef></xs:appinfo></xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
@@ -1032,7 +1068,7 @@
 			<xs:attribute name="temporaryShuntingAreaRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar een vrijgave rangeergebied</xs:documentation>
-				</xs:annotation>
+					<xs:appinfo><ObjectTypeRef>TemporaryShuntingArea</ObjectTypeRef></xs:appinfo></xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
@@ -1098,7 +1134,7 @@
 						<xs:element ref="Variable" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="VariableSet" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
-					<xs:attribute name="setNumber" use="required">
+					<xs:attribute name="setNumber" type="xs:int"  use="required">
 						<xs:annotation>
 							<xs:documentation>Setnummer. Een integer die de plaats in de reeks National Value Sets beschrijft.</xs:documentation>
 						</xs:annotation>
@@ -1125,7 +1161,14 @@
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tPointTrackAsset">
-					<xs:attribute name="nationalValueSetRef" type="tUUIDRef" use="required"/>
+					<xs:attribute name="nationalValueSetRef" type="tUUIDRef" use="required">
+						<xs:annotation>
+							<xs:documentation>Een PUIC verwijzing naar de NationalValueSet</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>NationalValueSet</ObjectTypeRef>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
@@ -1141,12 +1184,19 @@
 		<xs:annotation>
 			<xs:documentation>Dit element definieert een andere conditie dan een
                      wisselstand of een seinbeeld. De conditie bestaat uit de
-                     referentie naar een object (objectRef) en een waarde
-                     (value).</xs:documentation>
+                     referentie naar een object (objectRef) en een status (state). In principe kan verwezen worden naar ieder type object
+			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="state" type="tStateEnum" use="required"/>
-			<xs:attribute name="objectRef" type="tUUIDRef" use="required"/>
+			<xs:attribute name="objectRef" type="tUUIDRef" use="required">
+				<xs:annotation>
+					<xs:documentation>Een PUIC verwijzing naar het object</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>*</ObjectTypeRef>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Overlap">
@@ -1171,7 +1221,14 @@
 		<xs:complexType>
 			<xs:attribute name="basicSpeed" type="xs:int" use="optional"/>
 			<xs:attribute name="unrestricted" type="xs:boolean" use="optional"/>
-			<xs:attribute name="passageRef" type="tUUIDRef" use="required"/>
+			<xs:attribute name="passageRef" type="tUUIDRef" use="required">
+				<xs:annotation>
+					<xs:documentation>Een PUIC verwijzing naar het wissel-/kruisingbeen</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>Passage</ObjectTypeRef>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="PriorityList">
@@ -1202,7 +1259,14 @@
 		<xs:complexType>
 			<xs:attribute name="speed" type="xs:int" use="optional"/>
 			<xs:attribute name="flashingSpeedindication" type="xs:boolean" use="optional"/>
-			<xs:attribute name="signalRef" type="tUUIDRef" use="optional"/>
+			<xs:attribute name="signalRef" type="tUUIDRef" use="optional">
+				<xs:annotation>
+					<xs:documentation>Een PUIC verwijzing naar het sein</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>Signal</ObjectTypeRef>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:attribute>
 			<xs:attribute name="signalAspectColor" type="tSignalAspectColorEnum" use="required"/>
 		</xs:complexType>
 	</xs:element>
@@ -1243,7 +1307,14 @@
                      wisselstand.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="switchMechanismRef" type="tUUIDRef" use="optional"/>
+			<xs:attribute name="switchMechanismRef" type="tUUIDRef" use="optional">
+				<xs:annotation>
+					<xs:documentation>Een PUIC verwijzing naar de wisselsteller</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>SwitchMechanism</ObjectTypeRef>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:attribute>
 			<xs:attribute name="switchPosition" type="tSwitchSideEnum" use="required"/>
 		</xs:complexType>
 	</xs:element>
@@ -1304,12 +1375,12 @@
 					<xs:attribute name="phaseBreakRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar een fasescheiding</xs:documentation>
-						</xs:annotation>
+							<xs:appinfo><ObjectTypeRef>PhaseBreak</ObjectTypeRef></xs:appinfo></xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="tunnelTubeRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar een tunnelbuis waarin de stopzone ligt</xs:documentation>
-						</xs:annotation>
+							<xs:appinfo><ObjectTypeRef>TunnelTube</ObjectTypeRef></xs:appinfo></xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1330,7 +1401,7 @@
 					<xs:attribute name="platformRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar het perron</xs:documentation>
-						</xs:annotation>
+							<xs:appinfo><ObjectTypeRef>Platform</ObjectTypeRef></xs:appinfo></xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1391,7 +1462,7 @@
 			<xs:attribute name="kilometerRibbonRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Referentie naar het kilometerlint</xs:documentation>
-				</xs:annotation>
+					<xs:appinfo><ObjectTypeRef>KilometerRibbon</ObjectTypeRef></xs:appinfo></xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="measure" type="xs:double" use="required">
 				<xs:annotation>
@@ -1545,28 +1616,12 @@
 			<xs:complexContent>
 				<xs:extension base="tPointObject">
 					<xs:sequence>
-						<xs:element name="NetworkSwitchConnection" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Netwerk-Switch koppeling</xs:documentation>
-							</xs:annotation>
-							<xs:complexType>                                            
-								<xs:attribute name="network" type="tNetworkTypeEnum" use="required">
-									<xs:annotation>
-										<xs:documentation>Het netwerk waar de Netwerk-Switch toegang tot geeft.</xs:documentation>
-									</xs:annotation>
-								</xs:attribute>
-								<xs:attribute name="portNumber" type="xs:int" use="required">
-									<xs:annotation>
-										<xs:documentation>Het poortnummer van de Netwerk-Switch waar de Object-Controller op aangesloten is.</xs:documentation>
-									</xs:annotation>
-								</xs:attribute>
-							</xs:complexType>
-						</xs:element>
+						<xs:element ref="NetworkSwitchConnection" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="equipmentRoomRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de Technische-ruimte waar de Object-Controller in gemonteerd is.</xs:documentation>
-						</xs:annotation>
+							<xs:appinfo><ObjectTypeRef>EquipmentRoom</ObjectTypeRef></xs:appinfo></xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="ipAddressAssignmentType" type="tIPAddressAssignmentTypeEnum" use="required">
 						<xs:annotation>
@@ -1580,6 +1635,23 @@
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="NetworkSwitchConnection">
+		<xs:annotation>
+			<xs:documentation>Netwerk-Switch koppeling</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>                                            
+			<xs:attribute name="network" type="tNetworkTypeEnum" use="required">
+				<xs:annotation>
+					<xs:documentation>Het netwerk waar de Netwerk-Switch toegang tot geeft.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="portNumber" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>Het poortnummer van de Netwerk-Switch waar de Object-Controller op aangesloten is.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:complexType name="tTrackCondition">

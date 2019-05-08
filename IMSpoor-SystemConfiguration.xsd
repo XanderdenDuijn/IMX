@@ -101,7 +101,7 @@
 					<xs:attribute name="trainControlSystemRef" type="tUUIDRef" use="required">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de TCS waar de CSS toestandsmeldingen aan rapporteert..</xs:documentation>
-						</xs:annotation>
+							<xs:appinfo><ObjectTypeRef>TrainControlSystem</ObjectTypeRef></xs:appinfo></xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -156,26 +156,7 @@
 			<xs:complexContent>
 				<xs:extension base="tPointObject">
 					<xs:sequence>
-						<xs:element name="RBC-RBCCommunication" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation/>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:attribute name="radioBlockCenterRef" type="tUUIDRef" use="required">
-									<xs:annotation>
-										<xs:documentation>Een PUIC verwijzing naar de aangrenzende RBC waar mee gecommuniceerd wordt.</xs:documentation>
-										<xs:appinfo>
-											<ObjectTypeRef>RadioBlockCenter</ObjectTypeRef>
-										</xs:appinfo>
-									</xs:annotation>
-								</xs:attribute>
-								<xs:attribute name="lifeSignTimer" type="tTimerValue">
-									<xs:annotation>
-										<xs:documentation>De interval waarde in seconden waarmee de twee RBC's communiceren.</xs:documentation>
-									</xs:annotation>
-								</xs:attribute>			
-							</xs:complexType>
-						</xs:element>
+						<xs:element ref="RBC-RBCCommunication" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="NID_C"/>
 						<xs:element ref="NID_RBC"/>
 						<xs:element ref="NID_RADIO"/>
@@ -207,6 +188,26 @@
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RBC-RBCCommunication">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="radioBlockCenterRef" type="tUUIDRef" use="required">
+				<xs:annotation>
+					<xs:documentation>Een PUIC verwijzing naar de aangrenzende RBC waar mee gecommuniceerd wordt.</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>RadioBlockCenter</ObjectTypeRef>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="lifeSignTimer" type="tTimerValue">
+				<xs:annotation>
+					<xs:documentation>De interval waarde in seconden waarmee de twee RBC's communiceren.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>			
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="InterlockingAreas">
@@ -427,6 +428,9 @@
 			<xs:attribute name="objectRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar het functioneel object waar de stand van toestand van wordt gemeld.</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>*</ObjectTypeRef>
+					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="isInverted" type="tTrueFalseEnum" use="required">
