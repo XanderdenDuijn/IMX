@@ -59,7 +59,7 @@
 				<xs:extension base="tERTMSExtension">
 					<xs:sequence>
 						<xs:element ref="SectionTimer" minOccurs="0"/>
-						<xs:element name="BaliseGroupRefs" type="tUUIDRefList">
+						<xs:element name="BaliseListRefs" type="tUUIDRefList">
 							<xs:annotation>
 								<xs:documentation>De lijst van balisegroepen die meegestuurd kunnen
                           worden met een SR-autorisatie. Ook wel als BaliseList.</xs:documentation>
