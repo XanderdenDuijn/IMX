@@ -59,7 +59,7 @@
 				<xs:extension base="tERTMSExtension">
 					<xs:sequence>
 						<xs:element ref="SectionTimer" minOccurs="0"/>
-						<xs:element name="BaliseListRefs" type="tUUIDRefList">
+						<xs:element ref="BaliseListRefs" type="tUUIDRefList">
 							<xs:annotation>
 								<xs:documentation>De lijst van balisegroepen die meegestuurd kunnen
                           worden met een SR-autorisatie. Ook wel als BaliseList.</xs:documentation>
@@ -861,7 +861,7 @@
 								<xs:documentation>Lange nadering afstand voor het tijdloos vrijmaken van de rijwegen</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="BaliseGroupRefs" type="tUUIDRefList" minOccurs="0">
+						<xs:element ref="BaliseListRefs" type="tUUIDRefList" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Een ontworpen lijst van Balisegroepen. Ook wel bekend als de baliselijst.</xs:documentation>
 							</xs:annotation>
@@ -887,6 +887,12 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
+							<xs:element name="BaliseListRefs" type="tUUIDRefList">
+							<xs:annotation>
+								<xs:documentation>De lijst van balisegroepen die meegestuurd kunnen
+                          worden met een SR-autorisatie. Ook wel als BaliseList.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 	<xs:element name="EndOfAuthority">
 		<xs:complexType>
 			<xs:sequence>
