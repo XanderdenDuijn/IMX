@@ -14,7 +14,7 @@
 			<xs:all>
 				<xs:element ref="RailSegments" minOccurs="0"/>
 				<xs:element ref="RailConnectionPoints" minOccurs="0"/>
-				<xs:element ref="ORTrackCircuits" minOccurs="0"/>
+				<xs:element ref="ReturnCurrentTrackCircuits" minOccurs="0"/>
 				<xs:element ref="CableConnections" minOccurs="0"/>
 				<xs:element ref="ReturnCurrentCables" minOccurs="0"/>
 				<xs:element ref="SerialCables" minOccurs="0"/>
