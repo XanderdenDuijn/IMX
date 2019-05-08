@@ -306,7 +306,7 @@
 			<xs:complexContent>
 				<xs:extension base="tCableConnection">  
 					<xs:sequence>
-						<xs:element name="bridgeSwitchConnectionRefs" type="tUUIDRefList" minOccurs="0">
+						<xs:element name="BridgeSwitchConnectionRefs" type="tUUIDRefList" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Een lijst met PUIC verwijzingen (maximaal 2) naar de brugschakelaars waar de ATB-EG Lus op aangesloten is.</xs:documentation>
 								<xs:appinfo>
@@ -339,6 +339,7 @@
 	<xs:element name="SerialCable">
 		<xs:annotation>
 			<xs:documentation>Serieverbinding</xs:documentation>
+                        <xs:documentation xml:lang="NL">Serieverbinding</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
