@@ -339,26 +339,6 @@
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="MandatoryFlankProtection">
-		<xs:annotation>
-			<xs:documentation xml:lang="NL">Eis-wissel configuratie.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tSwitchMechanismPosition"/>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="OptionalFlankProtection">
-		<xs:annotation>
-			<xs:documentation xml:lang="NL">Verzoek-wissel configuratie.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tSwitchMechanismPosition"/>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
 	<xs:element name="UsefullLength" type="tDirectionalLength">
 		<xs:annotation>
 			<xs:documentation>De maximale doorlopende lengte in meters van een spoor waarop een trein in normale omstandigheden moet stoppen rekening houdend met een passende stoptolerantie. Normale exploitatie betekent dat er geen sprake is van gestoord bedrijf namelijk normale adhesie, werkende seinen, alle systemen functioneren naar behoren)</xs:documentation>
