@@ -2,8 +2,8 @@
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" 
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 	xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Alignment.xsd"/>
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-TrackAssets.xsd"/>
+	<xs:include schemaLocation="IMSpoor-Alignment.xsd"/>
+	<xs:include schemaLocation="IMSpoor-TrackAssets.xsd"/>
 	<xs:annotation>
 		<xs:documentation>De elementen in deze XSD vormen de kern van IMSpoorXML. Ze beschrijven de abstracte railtopologie, de geografie en de fysieke implementatie door spoortakken en wissels. Iedere spoortak of wissel/kruisingbeen kan refereren naar de samenstellende alignementsgegevens.
 		</xs:documentation>
@@ -504,99 +504,6 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:complexType name="tRoute">
-		<xs:complexContent>
-			<xs:extension base="tTrackAggregation">
-				<xs:sequence>
-					<xs:element ref="SwitchPosition" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>De lijst van wisselstanden voor de route. Ten behoeve van flankzone bewaking</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="MandatoryFlankProtection" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>Een of meer eis-wissels. Ten behoeve van flankzone bewaking</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="OptionalFlankProtection" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>Een of meer verzoek-wissels</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="SectionOccupationDetection" type="tUUIDRefList" minOccurs="0" maxOccurs="1">
-						<xs:annotation>
-							<xs:documentation>Een lijst van PUIC verwijzingen naar secties welke uitgelezen moeten worden ten behoeve van flankzone bewaking</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="RedSignalFlankProtection" type="tUUIDRefList" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Een PUIC verwijzing naar een seinbeeldrelatie (SignalAspectRelation) ten behoeve van flankbewaking. De seinbeeldrelatie moet een Rood-Rood koppeling zijn.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element ref="StopSignalPassageDetection" minOccurs="0" maxOccurs="unbounded">
-						<xs:annotation>
-							<xs:documentation>Aanvullende beveiliging op STS-passage van seinen. Mogelijke objecten zijn Signal, Sign en StopMarkerBoard</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-				<xs:attribute name="startObject" type="tUUIDRef" use="required">
-					<xs:annotation>
-						<xs:documentation>De PUIC verwijzing naar het beginobject van een route. Dit object kan een Bord, Stop Marker Board of Lichtsein zijn</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="endObject" type="tUUIDRef" use="required">
-					<xs:annotation>
-						<xs:documentation>De PUIC verwijzing naar het eindobject van een route. (Bord,Stop Marker Board,Lichtsein of Stootjuk)</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="isTunnelEntryRoute" type="tTrueFalseEnum" use="required">
-					<xs:annotation>
-						<xs:documentation>Geeft aan of de route toegang geeft tot een tunnel.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="releaseDelay" type="tTimerValue">
-					<xs:annotation>
-						<xs:documentation>Vertragingstijd voor het handmatige restrijwegvrijmaking. In seconden</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="isReleaseAutomatic" type="tTrueFalseEnum" use="required">
-					<xs:annotation>
-						<xs:documentation>Vertragingstijd voor het handmatige restrijwegvrijmaking. In seconden</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="levelCrossingWarningSystemRefs" type="tUUIDRefList">
-					<xs:annotation>
-						<xs:documentation>Een PUIC verwijzing naar een WIDO waarvan deze route een aankondiging is.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="hasElectricTraction" type="tTrueFalseEnum" use="required">
-					<xs:annotation>
-						<xs:documentation>Een indicatie of er electrische tractie aanwezig is voor deze route. Anders alleen geschikt voor diesel materieel.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="isAutomaticlyControlled" type="tTrueFalseEnum" use="required">
-					<xs:annotation>
-						<xs:documentation>Een indicatie of de route automatisch instelbaar is.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="driveBySightRoute" type="tTrueFalseEnum" use="required">
-					<xs:annotation>
-						<xs:documentation>Een indicatie dat het eindsein van de route een ROZ seinbeeld geeft.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="lrString" type="tString100">
-					<xs:annotation>
-						<xs:documentation>Een reeks wisselstanden welke vastgelegd moeten worden om de route te reserveren. Afleidbaar uit trackFragments.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="controllerCabetRef" type="tUUIDRef">
-					<xs:annotation>
-						<xs:documentation>Een PUIC verwijzing naar een medewerkerskastje welke bedienbaar wordt bij het instellen van de route.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="tNodePort">
 		<xs:annotation>
 			<xs:documentation>Type voor referentie aan een node en de interne poort daarvan</xs:documentation>
