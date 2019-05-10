@@ -256,7 +256,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointObject">>
+				<xs:extension base="tPointObject">
 					<xs:attribute name="switchMechanismType" type="tSwitchMechanismEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Het type steller waarmee het wissel gestuurd wordt.</xs:documentation>
