@@ -820,6 +820,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 								<xs:documentation>De voorwaarden voor het tonen van een vertrek lichtsein gelden alleen voor Signals van het type DepartureDouble, DepartureSingle, DepartureDoubleCountDown en DepartureSingleCountDown</xs:documentation>
 							</xs:annotation>
 						</xs:element>
+						<xs:element ref="ATPType" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="signalType" type="tSignalEnum" use="required">
 						<xs:annotation>
@@ -1018,6 +1019,9 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tPointTrackAsset">
+					<xs:sequence>
+						<xs:element ref="ATPType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
 					<xs:attribute name="signType" type="tSignEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Type van het bord. De lijst van opties is voorgedefiniëerd.</xs:documentation>
@@ -1046,6 +1050,11 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
+	</xs:element>
+	<xs:element name="ATPType" type="tATPTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Type ATP of treinbeinvloedingssysteem.</xs:documentation>
+		</xs:annotation>
 	</xs:element>
 	<xs:element name="SpeedSign">
 		<xs:annotation>
@@ -3246,6 +3255,40 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 			<xs:enumeration value="LastAxle">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Laatste as-werking</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="tATPTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ATBEG_ATBVV">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">ATB-EG (ATBVV)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ATBNG">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">ATB-NG</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>            
+			<xs:enumeration value="ETCS_L1_L2_L3">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">ETCS L1, ETCS L2, ETCS L3</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>                        
+			<xs:enumeration value="PZB">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">PZB ("Indusi")</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Memor">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Memor ("Krokodillen")</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
