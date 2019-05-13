@@ -20,13 +20,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tHorizontalTrackElement">
-					<xs:attribute name="angle" type="xs:double" use="required">
-						<xs:annotation>
-							<xs:documentation>De hoek aangegeven in radialen</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
+				<xs:extension base="tHorizontalTrackElement"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -41,16 +35,6 @@
 					<xs:attribute name="radius" type="xs:double" use="required">
 						<xs:annotation>
 							<xs:documentation>De straal in meters. Een positieve radius: CW. Negatieve radius: CCW.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="startAngle" type="xs:double" use="required">
-						<xs:annotation>
-							<xs:documentation>De beginhoek in radialen</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="endAngle" type="xs:double" use="required">
-						<xs:annotation>
-							<xs:documentation>De eindhoek in radialen</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -85,37 +69,47 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tBaseObject" >
-				<xs:sequence>
-					<xs:element name="VerticalAlignment" type="tVerticalAlignment" minOccurs="0"/>
-					<xs:element ref="CantValues" minOccurs="0"/>
-					<xs:element ref="DesignSpeedValues" minOccurs="0"/>
-				</xs:sequence>
-				<xs:attribute name="startX" type="xs:double" use="required">
-					<xs:annotation>
-						<xs:documentation>x-coordinaat van het startpunt, in RD</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="startY" type="xs:double" use="required">
-					<xs:annotation>
-						<xs:documentation>y-coordinaat van het startpunt, in RD</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="endX" type="xs:double" use="required">
-					<xs:annotation>
-						<xs:documentation>x-coordinaat van het eindpunt, in RD</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="endY" type="xs:double" use="required">
-					<xs:annotation>
-						<xs:documentation>y-coordinaat van het eindpunt, in RD</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="length" type="xs:double" use="required">
-					<xs:annotation>
-						<xs:documentation>De ontwikkelde lengte in het horizontale vlak in meters</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-			</xs:extension>
+		<xs:sequence>
+			<xs:element name="VerticalAlignment" type="tVerticalAlignment" minOccurs="0"/>
+			<xs:element ref="CantValues" minOccurs="0"/>
+			<xs:element ref="DesignSpeedValues" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="startX" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>x-coordinaat van het startpunt, in RD</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="startY" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>y-coordinaat van het startpunt, in RD</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="endX" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>x-coordinaat van het eindpunt, in RD</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="endY" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>y-coordinaat van het eindpunt, in RD</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="startAngle" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>De beginhoek in radialen</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="endAngle" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>De eindhoek in radialen</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="length" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>De ontwikkelde lengte in het horizontale vlak in meters</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:element name="CantValues">
@@ -213,6 +207,16 @@
 				<xs:documentation>z-coordinaat van het eindpunt, in NAP</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="startAngle" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>De beginhoek in radialen</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="endAngle" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>De eindhoek in radialen</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="length" type="xs:double" use="required">
 			<xs:annotation>
 				<xs:documentation>De ontwikkelde lengte in het verticale vlak in meters</xs:documentation>
@@ -237,13 +241,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tVerticalTrackElement">
-					<xs:attribute name="angle" type="xs:double" use="required">
-						<xs:annotation>
-							<xs:documentation>De hoek aangegeven in radialen</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>	
-				</xs:extension>
+				<xs:extension base="tVerticalTrackElement"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -258,16 +256,6 @@
 					<xs:attribute name="radius" type="xs:double" use="required">
 						<xs:annotation>
 							<xs:documentation>De straal in meters. Een positieve radius: CW. Negatieve radius: CCW.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="startAngle" type="xs:double" use="required">
-						<xs:annotation>
-							<xs:documentation>De beginhoek in radialen</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="endAngle" type="xs:double" use="required">
-						<xs:annotation>
-							<xs:documentation>De eindhoek in radialen</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>

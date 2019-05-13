@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-BasicTypes.xsd"/>
 	<xs:element name="BGT">
@@ -41,7 +41,7 @@
 				<xs:element ref="WaterBody" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="TrafficArea" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="Railway" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="Hedge" minOccurs="0" maxOccurs="unbounded"/>
+                                <xs:element ref="Hedge" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -51,7 +51,15 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tGenericIMGeoObjectOnSlope"/>
+                <xs:extension base="tGenericIMGeoObject">
+                    <xs:sequence>
+                        <xs:element name="CrestLine" type="tGeographicLocation" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Kruinlijn begroeid terreindeel</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -71,7 +79,15 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tGenericIMGeoObjectOnSlope"/>
+				<xs:extension base="tGenericIMGeoObject">
+                    <xs:sequence>
+                        <xs:element name="CrestLine" type="tGeographicLocation" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Kruinlijn onbegroeid terreindeel</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -91,7 +107,15 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tGenericIMGeoObjectOnSlope"/>
+                <xs:extension base="tGenericIMGeoObject">
+                    <xs:sequence>
+                        <xs:element name="CrestLine" type="tGeographicLocation" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Kruinlijn ondersteunend wegdeel</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -161,7 +185,15 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tGenericIMGeoObjectOnSlope"/>
+                <xs:extension base="tGenericIMGeoObject">
+                    <xs:sequence>
+                        <xs:element name="CrestLine" type="tGeographicLocation" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Kruinlijn wegdeel</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -175,7 +207,7 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Hedge">
+        <xs:element name="Hedge">
 		<xs:annotation>
 			<xs:documentation xml:lang="NL">Haag</xs:documentation>
 		</xs:annotation>
@@ -552,24 +584,6 @@ omgeving overbrugt.</xs:documentation>
 				<xs:attribute name="imgeoType" type="tBGTSubTypeEnum">
 					<xs:annotation>
 						<xs:documentation>Het sub-type van het IMGEO object.</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tGenericIMGeoObjectOnSlope">
-		<xs:complexContent>
-			<xs:extension base="tGenericIMGeoObject">
-				<xs:sequence>
-					<xs:element name="CrestLine" type="tGeographicLocation" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Kruinlijn</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-				<xs:attribute name="isOnSlope" type="tTrueFalseEnum" use="required">
-					<xs:annotation>
-						<xs:documentation>Indicatie of object op talud ligt.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>
