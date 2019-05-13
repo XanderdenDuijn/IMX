@@ -4,8 +4,6 @@
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Furniture.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Infra.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Groupings.xsd"/>
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-ReturnCurrents.xsd"/>
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-SystemConfiguration.xsd"/>
 	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-gml.xsd"/>
 	<xs:element name="IMSpoor">
 		<xs:annotation>
@@ -35,8 +33,6 @@
 			<xs:element ref="RailInfrastructure" minOccurs="0"/>
 			<xs:element ref="Groupings" minOccurs="0"/>
 			<xs:element ref="Furniture" minOccurs="0"/>
-			<xs:element ref="ReturnCurrents" minOccurs="0"/>
-			<xs:element ref="SystemConfiguration" minOccurs="0"/>
 			<xs:element ref="Extensions" minOccurs="0"/>
 			<xs:element name="Remarks" type="tRemarksString" minOccurs="0">
 				<xs:annotation>

@@ -93,7 +93,7 @@
 					<xs:attribute name="temporaryShuntingAreaRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar het vrijgave-rangeer-gebied.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>TemporaryShuntingArea</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -152,7 +152,7 @@
 					<xs:attribute name="bridgeWarningSystemRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de WIBR</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>BridgeWarningSystem</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -179,7 +179,7 @@
 					<xs:attribute name="bridgeWarningSystemRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de WIBR schel.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>BridgeWarningSystem</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -206,7 +206,7 @@
 					<xs:attribute name="switchMechanismRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende wisselsteller.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>SwitchMechanism</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="keyType" type="tKeyTypeEnum" use="required">
 						<xs:annotation>
@@ -248,7 +248,7 @@
 					<xs:attribute name="operationalPointTrackRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar het bijbehorende spoor.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>OperationalPointTrack</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -278,7 +278,7 @@
 					<xs:attribute name="signalRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende lichtsein.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Signal</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -334,7 +334,7 @@
 					<xs:attribute name="switchMechanismRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende wisselsteller.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>SwitchMechanism</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -361,7 +361,7 @@
 					<xs:attribute name="levelCrossingRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende overweg.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>LevelCrossing</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -388,12 +388,12 @@
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een beweegbare brug</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>CivilConstruction</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="floodBarrierRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een waterkering</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>FloodBarrier</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -420,7 +420,7 @@
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een beweegbare brug</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>CivilConstruction</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -447,7 +447,7 @@
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een beweegbare brug</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>CivilConstruction</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -544,9 +544,6 @@
         Een PUIC verwijzing naar een (master) wisselverwarmingskast (SwitchPointHeatingCabinet) waarmee de
         (slave) wisselverwarmingskast verbonden is.
 							</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>SwitchHeatingCabinet</ObjectTypeRef>
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1015,7 +1012,7 @@ t.b.v. hulpdiensten.</xs:documentation>
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een kunstwerk.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>CivilConstruction</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1053,11 +1050,6 @@ t.b.v. hulpdiensten.</xs:documentation>
 					<xs:sequence>
 						<xs:element ref="CivilConstructionPart" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="Lock" minOccurs="0" maxOccurs="1"/>
-						<xs:element name="SignRefs" type="tUUIDRefList" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Een lijst met PUIC verwijzingen met het bijbehorende bord RS 243 en/of RS 244</xs:documentation>
-							</xs:annotation>
-						</xs:element>
 					</xs:sequence>
 					<xs:attribute name="abbreviation" type="tAbbreviationString">
 						<xs:annotation>
@@ -1097,6 +1089,11 @@ t.b.v. hulpdiensten.</xs:documentation>
 					<xs:attribute name="waterWayName" type="tString50">
 						<xs:annotation>
 							<xs:documentation>De naam van de waterweg waarmehet kunstwerk kruist.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="signRefs" type="tUUIDRefList">
+						<xs:annotation>
+							<xs:documentation>Een PUIC relatie met een bijbehorend bord RS 243 en/of RS 244</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="hasBridgeWatcherFunction" type="tTrueFalseEnum" use="required">
@@ -1152,7 +1149,7 @@ treinvervoer.</xs:documentation>
 					<xs:attribute name="tunnelRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar een bijbehorende Tunnel</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Tunnel</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="abbreviation" type="tAbbreviationString">
 						<xs:annotation>
@@ -1201,7 +1198,7 @@ treinvervoer.</xs:documentation>
 			<xs:attribute name="signalRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar een Signal of StopMarkerBoard</xs:documentation>
-					<xs:appinfo><ObjectTypeRef>Signal</ObjectTypeRef></xs:appinfo></xs:annotation>
+				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="delayTime" type="xs:int" use="required">
 				<xs:annotation>
@@ -1280,7 +1277,7 @@ treinvervoer.</xs:documentation>
 					<xs:attribute name="tunnelTubeRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de tunnelbuis.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>TunnelTube</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1584,17 +1581,15 @@ gebied te reduceren.</xs:documentation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tPointObject">
-					<xs:sequence>
-						<xs:element name="ElectronicsConnectionCabinetRefs" type="tUUIDRefList" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Een lijst van PUIC verwijzingen naar EAK's</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-					</xs:sequence>
+					<xs:attribute name="electronicsConnectionCabinetRefs" type="tUUIDRefList">
+						<xs:annotation>
+							<xs:documentation>Een lijst van verwijzingen naar EAK's</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 					<xs:attribute name="equipmentRoomRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar een relaiskast (EquipmentRoom van het type 'RK').</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>EquipmentRoom</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>

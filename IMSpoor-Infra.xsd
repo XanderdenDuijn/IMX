@@ -97,7 +97,7 @@
 				<xs:attribute name="switchPointHeatingCabinetRef" type="tUUIDRef">
 					<xs:annotation>
 						<xs:documentation>PUIC relatie naar de WisselverwarmingKast-installatiekast (SwitchPointHeatingCabinet).</xs:documentation>
-						<xs:appinfo><ObjectTypeRef>SwitchPointHeatingCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="divergingDirection" type="tSwitchSideEnum" use="required">
 					<xs:annotation>
@@ -286,14 +286,11 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 					<xs:attribute name="switchConnectionCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC relatie naar een WAK (Wissel Aansluit Kast)</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>SwitchConnectionCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="interconnectedSwitchMechanismRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC relatie naar een gekoppelde steller. Deze relatie is ook wel bekend als 'gekoppeld wissel'</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>SwitchMechanism</ObjectTypeRef>
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -324,7 +321,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 					<xs:attribute name="switchPointHeatingCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC relatie naar de Wisselverwarming-installatiekast (SwitchPointHeatingCabinet).</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>SwitchPointHeatingCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="hasMovableOverheadLine" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
@@ -343,13 +340,10 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tJunction">
-					<xs:sequence>
-						<xs:element ref="ATPType" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
 					<xs:attribute name="signRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC relatie met een bijbehorend RS243 afsluitlantaarn stop</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Sign</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -453,17 +447,15 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tBaseObject">
-					<xs:sequence>
-						<xs:element name="PassageRefs" type="tUUIDRefList" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Optionele lijst van relaties tot de wissel- of kruisbenen.</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-					</xs:sequence>
+					<xs:attribute name="passageRefs" type="tUUIDRefList" use="optional">
+						<xs:annotation>
+							<xs:documentation>Optionele lijst van relaties tot de wissel- of kruisbenen.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
 					<xs:attribute name="trackPhysicalViewRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Optionele relatie tot de fysieke spoortak.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>TrackPhysicalView</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="functionalBegin" type="xs:double">
 						<xs:annotation>
@@ -511,9 +503,6 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 		<xs:attribute name="nodeRef" type="tUUIDRef" use="required">
 			<xs:annotation>
 				<xs:documentation>Een referentie naar de Node in de RailTopology.</xs:documentation>
-				<xs:appinfo>
-					<ObjectTypeRef>MicroNode</ObjectTypeRef>
-				</xs:appinfo>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="portIndex" type="tPortIndex" use="required">
@@ -553,12 +542,6 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 			<xs:attribute name="junctionRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>PUIC verwijzing naar een bijbehorend Wissel of spoorbeeindigingsconstructie.</xs:documentation>
-					<xs:appinfo>
-						<ObjectTypeRef>Crossing</ObjectTypeRef>
-						<ObjectTypeRef>BufferStop</ObjectTypeRef>
-						<ObjectTypeRef>TerraIncognita</ObjectTypeRef>
-						<ObjectTypeRef>TrackEnd</ObjectTypeRef>
-					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -579,13 +562,11 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 			<xs:documentation xml:lang="NL">Interne Verbinding</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="PassageRefs" type="tUUIDRefList">
-					<xs:annotation>
-						<xs:documentation>De geordende lijst van PUIC referenties naar de wissel- of kruisbenen welke het pad van poort fromIndex tot poort toIndex beschrijven.</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-			</xs:sequence>
+			<xs:attribute name="passageRefs" type="tUUIDRefList" use="required">
+				<xs:annotation>
+					<xs:documentation>De geordende lijst van PUIC referenties naar de wissel- of kruisbenen welke het pad van poort fromIndex  tot poort  toIndex beschrijven.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 			<xs:attribute name="fromIndex" type="tPortIndex" use="required">
 				<xs:annotation>
 					<xs:documentation>Het beginpunt van de interne verbinding</xs:documentation>
@@ -631,7 +612,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 			<xs:attribute name="trackFunctionalViewRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>PUIC verwijzing naar de bijbehorende spoortak.</xs:documentation>
-					<xs:appinfo><ObjectTypeRef>TrackFunctionalView</ObjectTypeRef></xs:appinfo></xs:annotation>
+				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>

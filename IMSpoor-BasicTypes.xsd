@@ -131,9 +131,6 @@
 			<xs:attribute name="kmRibbonRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>PUIC verwijzging naar het kilometerlint.</xs:documentation>
-					<xs:appinfo>
-						<ObjectTypeRef>KilometerRibbon</ObjectTypeRef>
-					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:double" use="required">

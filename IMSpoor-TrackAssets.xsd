@@ -141,7 +141,7 @@
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de bijbehorende brug.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>CivilConstruction</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="hasBell" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
@@ -173,7 +173,7 @@
 					<xs:attribute name="levelCrossingRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de bijbehorende overpad/overweg.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>LevelCrossing</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="levelCrossingWarningInstallationType" type="tLevelCrossingWarningInstallationTypeEnum" use="required">
 						<xs:annotation>
@@ -226,7 +226,7 @@
 					<xs:attribute name="tunnelTubeRef" type="tUUIDRef" use="required">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de bijbehorende tunnelbuis.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>TunnelTube</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -295,7 +295,7 @@
 					<xs:attribute name="brakeTestingInstallationRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de bijbehorende Rembeproevingsinstallatie</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>BrakeTestingInstallation</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -359,7 +359,7 @@
 					<xs:attribute name="monitoringSystemCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de gerelateerde Systeemkast</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>MonitoringSystemCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -392,7 +392,7 @@
 					<xs:attribute name="monitoringSystemCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de gerelateerde Systeemkast</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>MonitoringSystemCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -446,7 +446,7 @@
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de bijbehorende brug.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>CivilConstruction</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -473,7 +473,7 @@
 					<xs:attribute name="lubricationSystemCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de gerelateerde SSCS-kast</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>LubricationSystemCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -654,7 +654,7 @@ en bestaande uit twee of meer compensatielassen.</xs:documentation>
 					<xs:attribute name="switchPointHeatingCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC relatie naar de Wisselverwarming-installatiekast (SwitchPointHeatingCabinet).</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>SwitchPointHeatingCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="divergingDirection" type="tSwitchSideEnum" use="required">
 						<xs:annotation>
@@ -801,7 +801,6 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 						<xs:element ref="ReflectorPost" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="StopConnection" minOccurs="0"/>
 						<xs:element ref="RouteTimer" minOccurs="0" maxOccurs="unbounded"/>
-						<xs:element ref="ATPType" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="signalType" type="tSignalEnum" use="required">
 						<xs:annotation>
@@ -831,7 +830,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="gantryRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC referentie naar het seinportaal waarop het lichtsein is gemonteerd.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Gantry</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="isOutOfService" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
@@ -856,11 +855,6 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="rollOnBlockDemarcationRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de afrijdlas behorende bij het lichtsein.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>InsulatedJoint</ObjectTypeRef>
-								<ObjectTypeRef>AudioFrequencyJoint</ObjectTypeRef>
-								<ObjectTypeRef>AxleCounterDetectionPoint</ObjectTypeRef>
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="tunnelTubeRef" type="tUUIDRef">
@@ -884,15 +878,12 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="backupSignalRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar lichtsein tbv een lampkoppeling. Bij een defect neemt het andere lichtsein het seinbeeld over.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>Signal</ObjectTypeRef>
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="stopMarkerBoardRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar Stopmarkeerbord.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>StopMarkerBoard</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="floodBarrierRef" type="tUUIDRef">
 						<xs:annotation>
@@ -925,7 +916,24 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 			<xs:complexContent>
 				<xs:extension base="tPointTrackAsset">
 					<xs:sequence>
-						<xs:element ref="DepartureCondition" minOccurs="0"/>
+						<xs:element name="DepartureCondition" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>De voorwaarden voor het tonen van een vertrekseinlicht.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="SignalCondition" type="tUUIDRefList" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Een lijst met PUIC verwijzingen naar seinen die uit de stand stop zijn. </xs:documentation>
+											<xs:appinfo>
+												<ObjectTypeRef>Signal</ObjectTypeRef>
+											</xs:appinfo>
+										</xs:annotation>
+									</xs:element>
+									<xs:element ref="SwitchPosition" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
 					</xs:sequence>
 					<xs:attribute name="departureSignalType" type="tDepartureSignalEnum" use="required">
 						<xs:annotation>
@@ -956,24 +964,6 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="DepartureCondition">
-		<xs:annotation>
-			<xs:documentation>De voorwaarden voor het tonen van een vertrekseinlicht.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="SignalConditionRefs" type="tUUIDRefList" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation>Een lijst met PUIC verwijzingen naar seinen die uit de stand stop zijn. </xs:documentation>
-						<xs:appinfo>
-							<ObjectTypeRef>Signal</ObjectTypeRef>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:element>
-				<xs:element ref="SwitchPosition" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
 	<xs:element name="FictitiousSignals">
 		<xs:annotation>
 			<xs:documentation>Een verzameling fictieve seinen.</xs:documentation>
@@ -995,21 +985,11 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="physicalObjectRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Het fysieke sein, bord of stootjuk waaraan het fictieve sein is gekoppeld.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>Signal</ObjectTypeRef>
-								<ObjectTypeRef>Sign</ObjectTypeRef>
-								<ObjectTypeRef>BufferStop</ObjectTypeRef>
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="rollOnBlockDemarcationRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de afrijdlas behorende bij het fictieve sein.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>InsulatedJoint</ObjectTypeRef>
-								<ObjectTypeRef>AudioFrequencyJoint</ObjectTypeRef>
-								<ObjectTypeRef>AxleCounterDetectionPoint</ObjectTypeRef>
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1054,11 +1034,6 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 			<xs:attribute name="blockDemarcationRef" type="tUUIDRef">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar de sectiescheider die de stop-door activeert. ES-las, Jade-las of assentellerpunt</xs:documentation>
-					<xs:appinfo>
-						<ObjectTypeRef>InsulatedJoint</ObjectTypeRef>
-						<ObjectTypeRef>AudioFrequencyJoint</ObjectTypeRef>
-						<ObjectTypeRef>AxleCounterDetectionPoint</ObjectTypeRef>
-					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="activationType" type="tActivationTypeEnum" use="required">
@@ -1069,17 +1044,12 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 			<xs:attribute name="sectionRef" type="tUUIDRef">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar de Sectie welke het medewerkerskastje vrijgeeft. Spoorstroomloop-sectie, JADE-Sectie, Assenteller-sectie</xs:documentation>
-					<xs:appinfo>
-						<ObjectTypeRef>TrackCircuit</ObjectTypeRef>
-						<ObjectTypeRef>AxleCounterSection</ObjectTypeRef>
-						<ObjectTypeRef>AFSection</ObjectTypeRef>
-					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="controllerCabinetRef" type="tUUIDRef">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar het medewerkerskastje</xs:documentation>
-					<xs:appinfo><ObjectTypeRef>ControllerCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="controlDelay" type="tTimerValue">
 				<xs:annotation>
@@ -1107,9 +1077,6 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tPointTrackAsset">
-					<xs:sequence>
-						<xs:element ref="ATPType" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
 					<xs:attribute name="signType" type="tSignEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Type van het bord. De lijst van opties is voorgedefiniëerd.</xs:documentation>
@@ -1138,11 +1105,6 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
-	</xs:element>
-	<xs:element name="ATPType" type="tATPTypeEnum">
-		<xs:annotation>
-			<xs:documentation>Type ATP of treinbeinvloedingssysteem.</xs:documentation>
-		</xs:annotation>
 	</xs:element>
 	<xs:element name="SpeedSign">
 		<xs:annotation>
@@ -1216,7 +1178,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="gantryRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC referentie naar het seinportaal waarop het lichtsein is gemonteerd.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Gantry</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="stopMarkerBoardPosition" type="tSignalPositionEnum" use="required">
 						<xs:annotation>
@@ -1231,7 +1193,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="tunnelTubeRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC relatie naar een tunnelbuis waarvan dit SMB de toegang geeft</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>TunnelTube</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="controlDelay" type="tTimerValue">
 						<xs:annotation>
@@ -1292,7 +1254,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					<xs:attribute name="signalRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar het gerelateerde lichtsein.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Signal</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1427,7 +1389,7 @@ assen telt.</xs:documentation>
 					<xs:attribute name="electronicsConnectionCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een EAK (Elektronische Aansluit Kast).</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>ElectronicsConnectionCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1631,7 +1593,7 @@ signaleringsfunctie boven de rijbaan te plaatsen.</xs:documentation>
 					<xs:attribute name="installationCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende InstallatieKast</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>InstallationCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1648,7 +1610,7 @@ signaleringsfunctie boven de rijbaan te plaatsen.</xs:documentation>
 					<xs:attribute name="installationCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende InstallatieKast</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>InstallationCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1700,7 +1662,7 @@ waarschuwt dat je een treinspoor oversteekt.</xs:documentation>
 					<xs:attribute name="poleInstallationRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een Paalinstallatie.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>PoleInstallation</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1729,7 +1691,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 					<xs:attribute name="poleInstallationRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een Paalinstallatie.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>PoleInstallation</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1760,17 +1722,17 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 					<xs:attribute name="signalRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar het gerelateerde sein.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Signal</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="bufferStopRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar het gerelateerde stootjuk.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>BufferStop</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="atbVvConnectionCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de gerelateerde ASK</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>AtbVvConnectionCabinet</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1834,7 +1796,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 					<xs:attribute name="signalRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar het bijbehorende lichtsein.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Signal</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1915,11 +1877,6 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 					<xs:attribute name="blockDemarcationRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar een sectiescheider tbv de aankondiging van een overweg. Jade-las, ES-las of assentellerpunt.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>InsulatedJoint</ObjectTypeRef>
-								<ObjectTypeRef>AudioFrequencyJoint</ObjectTypeRef>
-								<ObjectTypeRef>AxleCounterDetectionPoint</ObjectTypeRef>
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1947,7 +1904,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 					<xs:attribute name="levelCrossingRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de bijbehorende overweg.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>LevelCrossing</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
@@ -1974,12 +1931,6 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 					<xs:attribute name="switchRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar het bijbehorende wissel.</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>Crossing</ObjectTypeRef>						
-								<ObjectTypeRef>SingleSwitch</ObjectTypeRef>
-								<ObjectTypeRef>DoubleDiamondCrossing</ObjectTypeRef>
-								<ObjectTypeRef>SingleDiamondCrossing</ObjectTypeRef>							
-							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -2048,29 +1999,9 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 					<xs:attribute name="signalRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar het bijbehorende lichtsein.</xs:documentation>
-							<xs:appinfo><ObjectTypeRef>Signal</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-        	<xs:element name="MandatoryFlankProtection">
-		<xs:annotation>
-			<xs:documentation xml:lang="NL">Eis-wissel configuratie.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tSwitchMechanismPosition"/>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="OptionalFlankProtection">
-		<xs:annotation>
-			<xs:documentation xml:lang="NL">Verzoek-wissel configuratie.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tSwitchMechanismPosition"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -2098,18 +2029,6 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="tMultiLineTrackAsset">
-		<xs:annotation>
-			<xs:documentation>Generiek type voor een lijnvormig object dat direct aan spoortak is gerelateerd.</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tMultiLineObject">
-				<xs:sequence>
-					<xs:element ref="TrackFunctionalViewInfo" minOccurs="1" maxOccurs="unbounded"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>       
 	<xs:complexType name="tPolygonTrackAsset">
 		<xs:annotation>
 			<xs:documentation>Generiek type voor een vlakvormig object dat direct aan spoortak is gerelateerd.</xs:documentation>
@@ -2147,7 +2066,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 		<xs:attribute name="trackFunctionalViewRef" type="tUUIDRef" use="required">
 			<xs:annotation>
 				<xs:documentation>Referentie naar de fysieke spoortak waarop dit object wordt geprojecteerd.</xs:documentation>
-				<xs:appinfo><ObjectTypeRef>TrackFunctionalView</ObjectTypeRef></xs:appinfo></xs:annotation>
+			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="direction" type="tFunctionalDirectionEnum" use="required">
 			<xs:annotation>
@@ -2200,7 +2119,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 		<xs:attribute name="trackFunctionalViewRef" type="tUUIDRef" use="required">
 			<xs:annotation>
 				<xs:documentation>referentie naar de spoortak</xs:documentation>
-				<xs:appinfo><ObjectTypeRef>TrackFunctionalView</ObjectTypeRef></xs:appinfo></xs:annotation>
+			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="fromMeasure" type="xs:double">
 			<xs:annotation>
@@ -2220,12 +2139,6 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 		<xs:attribute name="installationRef" type="tUUIDRef" use="required">
 			<xs:annotation>
 				<xs:documentation>Een PUIC verwijzing naar een overweg (LevelCrossing) of waarschuwingsinstallatie (WIBR: BridgeWarningSystem, WIDO: LevelCrossingWarningSystem, WUBO: SightRestrictingObjectWarningSystem of WIT: TunnelWarningSystem).</xs:documentation>
-				<xs:appinfo>
-					<ObjectTypeRef>BridgeWarningSystem</ObjectTypeRef>
-					<ObjectTypeRef>LevelCrossingWarningSystem</ObjectTypeRef>
-					<ObjectTypeRef>SightRestrictingObjectWarningSystem</ObjectTypeRef>
-					<ObjectTypeRef>TunnelWarningSystem</ObjectTypeRef>
-				</xs:appinfo>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="delayTime" type="tTimerValue" use="required">
@@ -2252,7 +2165,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 		<xs:attribute name="switchMechanismRef" type="tUUIDRef" use="required">
 			<xs:annotation>
 				<xs:documentation>Een PUIC verwijzing naar een wisselsteller.</xs:documentation>
-				<xs:appinfo><ObjectTypeRef>SwitchMechanism</ObjectTypeRef></xs:appinfo></xs:annotation>
+			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="position" type="tSwitchSideEnum" use="required">
 			<xs:annotation>
@@ -2262,7 +2175,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 	</xs:complexType>
 	<xs:complexType name="tATBLoop">
 		<xs:complexContent>
-			<xs:extension base="tMultiLineTrackAsset">
+			<xs:extension base="tLineTrackAsset">
 				<xs:attribute name="turnOffTime" type="tTimerValue">
 					<xs:annotation>
 						<xs:documentation>Uitschakeltijd. De tijd dat de ATB lus actief blijft na activatie. </xs:documentation>
@@ -3559,40 +3472,6 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 			<xs:enumeration value="LastAxle">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Laatste as-werking</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="tATPTypeEnum">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Unknown">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="ATBEG_ATBVV">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">ATB-EG (ATBVV)</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="ATBNG">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">ATB-NG</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>			
-			<xs:enumeration value="ETCS_L1_L2_L3">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">ETCS L1, ETCS L2, ETCS L3</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>                        
-			<xs:enumeration value="PZB">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">PZB ("Indusi")</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="Memor">
-				<xs:annotation>
-					<xs:documentation xml:lang="NL">Memor ("Krokodillen")</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>

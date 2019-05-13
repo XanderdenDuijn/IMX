@@ -6,7 +6,7 @@
            elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Infra.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Groupings.xsd"/>
-	<xs:element name="ReturnCurrents">
+	<xs:element name="OR">
 		<xs:annotation>
 			<xs:documentation>Root element voor de beschrijving van OR.</xs:documentation>
 		</xs:annotation>
@@ -14,7 +14,7 @@
 			<xs:all>
 				<xs:element ref="RailSegments" minOccurs="0"/>
 				<xs:element ref="RailConnectionPoints" minOccurs="0"/>
-				<xs:element ref="ReturnCurrentTrackCircuits" minOccurs="0"/>
+				<xs:element ref="ORTrackCircuits" minOccurs="0"/>
 				<xs:element ref="CableConnections" minOccurs="0"/>
 				<xs:element ref="ReturnCurrentCables" minOccurs="0"/>
 				<xs:element ref="SerialCables" minOccurs="0"/>
@@ -96,27 +96,26 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>  
-	<xs:element name="ReturnCurrentTrackCircuits">
+	<xs:element name="ORTrackCircuits">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="ReturnCurrentTrackCircuit" maxOccurs="unbounded"/>
+				<xs:element ref="ORTrackCircuit" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="ReturnCurrentTrackCircuit">
+	<xs:element name="ORTrackCircuit">
 		<xs:annotation>
 			<xs:documentation>
                         Aanvullende informatie bij een spoorstroomloop-sectie voor toepassing bij OR
 			</xs:documentation>
-                        <xs:documentation xml:lang="NL">OR Spoorstroomloop-Sectie</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tReturnCurrentsExtension">
+				<xs:extension base="tORExtension">
 					<xs:sequence>
 						<xs:element ref="InsulatedRail" maxOccurs="unbounded"/>
 					</xs:sequence>
-					<xs:attribute name="trackCircuitRef" type="tUUIDRef">
+					<xs:attribute name="trackCircuitRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de spoorstroomloop-sectie</xs:documentation>
 							<xs:appinfo>
@@ -174,15 +173,14 @@
 	<xs:element name="TrackPhysicalViewSide">
 		<xs:annotation>
 			<xs:documentation>Spoortak Fysiekeview Zijde</xs:documentation>
-                        <xs:documentation xml:lang="NL">Spoortak Fysiekeview zijde</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tReturnCurrentsExtension">
+				<xs:extension base="tORExtension">
 					<xs:attribute name="trackPhysicalViewRef" type="tUUIDRef" use="required">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de spoortak fysieke view</xs:documentation>
-						<xs:appinfo><ObjectTypeRef>TrackPhysicalView</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="side" type="tSideEnum" use="required">
 						<xs:annotation>
@@ -196,15 +194,14 @@
 	<xs:element name="PassageSide">
 		<xs:annotation>
 			<xs:documentation>Wissel of Kruising Been zijde</xs:documentation>
-                        <xs:documentation xml:lang="NL">Wissel of Kruising Been zijde</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tReturnCurrentsExtension">
+				<xs:extension base="tORExtension">
 					<xs:attribute name="passageRef" type="tUUIDRef" use="required">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar het been.</xs:documentation>
-						<xs:appinfo><ObjectTypeRef>Passage</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="side" type="tSideEnum" use="required">
 						<xs:annotation>
@@ -306,7 +303,7 @@
 			<xs:complexContent>
 				<xs:extension base="tCableConnection">  
 					<xs:sequence>
-						<xs:element name="BridgeSwitchConnectionRefs" type="tUUIDRefList" minOccurs="0">
+						<xs:element name="bridgeSwitchConnectionRefs" type="tUUIDRefList" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>Een lijst met PUIC verwijzingen (maximaal 2) naar de brugschakelaars waar de ATB-EG Lus op aangesloten is.</xs:documentation>
 								<xs:appinfo>
@@ -339,7 +336,6 @@
 	<xs:element name="SerialCable">
 		<xs:annotation>
 			<xs:documentation>Serieverbinding</xs:documentation>
-                        <xs:documentation xml:lang="NL">Serieverbinding</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -388,11 +384,11 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tReturnCurrentsExtension">
+				<xs:extension base="tORExtension">
 					<xs:attribute name="insulatedJointRef" type="tUUIDRef" use="required">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar de ES-las die de secties, die gevoed worden door verschillende voedingsbronnen, scheidt.</xs:documentation>
-						<xs:appinfo><ObjectTypeRef>InsulatedJoint</ObjectTypeRef></xs:appinfo></xs:annotation>
+						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="isSwitchable" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
@@ -423,7 +419,7 @@
 			<xs:extension base="tBaseObject">
 				<xs:sequence>
 					<xs:element name="GeographicLocation" type="tLine"/>
-					<xs:element name="ConnectionPoint" type="tRailSegmentInfo" minOccurs="0" maxOccurs="2">
+					<xs:element name="ConnectionPoint" type="tRailSegmentInfo"  minOccurs="0" maxOccurs="2">
 						<xs:annotation>
 							<xs:documentation>Locatie van het connectie punt van de kabelverbinding.</xs:documentation>
 						</xs:annotation>
@@ -446,7 +442,7 @@
 		<xs:attribute name="railSegmentRef" type="tUUIDRef" use="required">
 			<xs:annotation>
 				<xs:documentation>PUIC verwijzing naar het rail segment</xs:documentation>
-			<xs:appinfo><ObjectTypeRef>RailSegment</ObjectTypeRef></xs:appinfo></xs:annotation>
+			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="atMeasure" type="xs:double" use="required">
 			<xs:annotation>
@@ -454,7 +450,7 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
-	<xs:complexType name="tReturnCurrentsExtension">
+	<xs:complexType name="tORExtension">
 		<xs:annotation>
 			<xs:documentation>Een lege abstractie om aan te geven dat het object alleen
                      aanvullende OR-informatie bevat bovenop het
@@ -476,7 +472,7 @@
 		<xs:attribute name="railSegmentRef" type="tUUIDRef" use="required">
 			<xs:annotation>
 				<xs:documentation>PUIC verwijzing naar het rail segment</xs:documentation>
-			<xs:appinfo><ObjectTypeRef>RailSegment</ObjectTypeRef></xs:appinfo></xs:annotation>
+			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="fromMeasure" type="xs:double" use="required">
 			<xs:annotation>
