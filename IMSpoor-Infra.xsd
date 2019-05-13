@@ -320,9 +320,6 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tJunction">
-					<xs:sequence>
-						<xs:element ref="ATPType" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
 					<xs:attribute name="signRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC relatie met een bijbehorend RS243 afsluitlantaarn stop</xs:documentation>
