@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IMSpoor-Groupings.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Groupings.xsd"/>
 	<xs:element name="TrainControl">
 		<xs:annotation>
 			<xs:documentation>bla bla trein beheersing</xs:documentation>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IMSpoor-Alignment.xsd"/>
-	<xs:include schemaLocation="IMSpoor-TrackAssets.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Alignment.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-TrackAssets.xsd"/>
 	<xs:annotation>
 		<xs:documentation>De elementen in deze XSD vormen de kern van IMSpoorXML. Ze beschrijven de abstracte railtopologie, de geografie en de fysieke implementatie door spoortakken en wissels. Iedere spoortak of wissel/kruisingbeen kan refereren naar de samenstellende alignementsgegevens.
 		</xs:documentation>

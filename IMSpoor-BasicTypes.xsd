@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:gml="http://www.opengis.net/gml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="IMSpoor-gml.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-gml.xsd"/>
 	<xs:complexType name="tBaseObject">
 		<xs:annotation>
 			<xs:documentation>Base type voor alle spoorse objecten.</xs:documentation>

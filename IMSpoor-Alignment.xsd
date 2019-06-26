@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IMSpoor-BasicTypes.xsd"/>
+	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-BasicTypes.xsd"/>
 	<xs:element name="AlignmentData">
 		<xs:annotation>
 			<xs:documentation>De alignement elementen dienen binnen het traject te worden aangeleverd met de oriëntering, gelijk aan de oriëntering van de spoortak waartoe deze behoren. De volgorde van de alignement elementen is gelijk aan de volgorde waarin zij gezamenlijk de vorm van de spoortak beschrijven. De elementen liggen dus “kop-staart”. Deze eis geldt ook voor de gerelateerde elementen van het lengteprofiel, het verkanting schema en het snelheidschema.</xs:documentation>
