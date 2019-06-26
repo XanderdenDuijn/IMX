@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:gml="http://www.opengis.net/gml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-gml.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="IMSpoor-gml.xsd"/>
 	<xs:complexType name="tBaseObject">
 		<xs:annotation>
 			<xs:documentation>Base type voor alle spoorse objecten.</xs:documentation>
@@ -131,6 +131,9 @@
 			<xs:attribute name="kmRibbonRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>PUIC verwijzging naar het kilometerlint.</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>KilometerRibbon</ObjectTypeRef>
+					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="value" type="xs:double" use="required">
@@ -496,7 +499,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="tLifeCycleStatusEnum">
 		<xs:annotation>
-			<xs:documentation>'bestaand' (as built) . Aanvullend IMSpoor: 'voorlopig ontwerp ', 'definitief  ontwerp' en 'Gesloopt' (was built). De statusovergang naar 'bestaand' (as built) vindt plaats nadat de gemeten geometrie is opgeleverd.</xs:documentation>
+			<xs:documentation>'Bestaand' (as built) . Aanvullend IMSpoor: 'Voorlopig ontwerp ', 'Definitief  ontwerp' en 'Gesloopt' (was built).</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Unknown">

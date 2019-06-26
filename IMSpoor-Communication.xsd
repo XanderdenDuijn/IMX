@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.prorail.nl/IMSpoor" xmlns:gml="http://www.opengis.net/gml" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.prorail.nl/IMSpoor" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-BasicTypes.xsd"/>
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Furniture.xsd"/>
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Infra.xsd"/>
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Groupings.xsd"/>
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-TrainControl.xsd"/>        
-	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-gml.xsd"/>
+	<xs:include schemaLocation="IMSpoor-BasicTypes.xsd"/>
+	<xs:include schemaLocation="IMSpoor-Furniture.xsd"/>
+	<xs:include schemaLocation="IMSpoor-Infra.xsd"/>
+	<xs:include schemaLocation="IMSpoor-Groupings.xsd"/>
+	<xs:include schemaLocation="IMSpoor-ReturnCurrents.xsd"/>
+	<xs:include schemaLocation="IMSpoor-TrainControl.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="IMSpoor-gml.xsd"/>
 	<xs:element name="IMSpoor">
 		<xs:annotation>
 			<xs:documentation>
         Root element van een IMSpoorXML document (IMX)
-      </xs:documentation>
+			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice>
 				<xs:element ref="Project"/>
 				<xs:element name="Situation" type="tSituation"/>
 			</xs:choice>
-			<xs:attribute name="imxVersion" type="tVersionString" use="required" fixed="1.2.1">
+			<xs:attribute name="imxVersion" type="tVersionString" use="required" fixed="1.3.0">
 				<xs:annotation>
 					<xs:documentation>Verplicht versienummer</xs:documentation>
 				</xs:annotation>
@@ -28,13 +29,14 @@
 		<xs:annotation>
 			<xs:documentation>
         Abstract type voor een sectie met spoorse gegevens
-      </xs:documentation>
+			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element ref="RailInfrastructure" minOccurs="0"/>
 			<xs:element ref="Groupings" minOccurs="0"/>
 			<xs:element ref="Furniture" minOccurs="0"/>
-			<xs:element ref="TrainControl" minOccurs="0"/>                       
+			<xs:element ref="ReturnCurrents" minOccurs="0"/>
+			<xs:element ref="TrainControl" minOccurs="0"/>
 			<xs:element ref="Extensions" minOccurs="0"/>
 			<xs:element name="Remarks" type="tRemarksString" minOccurs="0">
 				<xs:annotation>
@@ -58,7 +60,7 @@
 			<xs:annotation>
 				<xs:documentation>
           Type met samenvatting van Was/Wordt in de vorm van lijsten met UUIDs van de nieuwe, gewijzigde en verwijderde objecten.
-        </xs:documentation>
+				</xs:documentation>
 			</xs:annotation>
 			<xs:sequence>
 				<xs:element name="Created" type="tUUIDRefList" minOccurs="0"/>
@@ -156,7 +158,7 @@
 			<xs:annotation>
 				<xs:documentation>
           Reservering voor eventuele uitbreidingen die niet tot de kern van IMSpoor behoren. Op dit moment vallen hier de domeinen ERTMS en BGT onder.
-        </xs:documentation>
+				</xs:documentation>
 				<xs:documentation xml:lang="NL">Extensies</xs:documentation>
 			</xs:annotation>
 			<xs:sequence>
