@@ -3,7 +3,7 @@
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Groupings.xsd"/>
 	<xs:element name="TrainControl">
 		<xs:annotation>
-			<xs:documentation>bla bla trein beheersing</xs:documentation>
+			<xs:documentation>Een verzameling van (configuratie)objecten van trein beheersing</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
