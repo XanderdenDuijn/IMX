@@ -3,7 +3,7 @@
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Groupings.xsd"/>
 	<xs:element name="TrainControl">
 		<xs:annotation>
-			<xs:documentation>Een verzameling van (configuratie)objecten van trein beheersing</xs:documentation>
+			<xs:documentation>De elementen in deze XSD hebben betrekkeing op treinbeheersing.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -50,21 +50,33 @@
 					<xs:attribute name="fromSignalRef" type="tUUIDRef" use="required">
 						<xs:annotation>
 							<xs:documentation>Begin-object van de rijweg.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>Signal</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="toSignalRef" type="tUUIDRef" use="required">
 						<xs:annotation>
 							<xs:documentation>Eind-object van de rijweg.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>Signal</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="fromPPCTrackRef" type="tUUIDRef" use="optional">
 						<xs:annotation>
 							<xs:documentation>begin-spoor van de rijweg.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>PPCTrack</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="toPPCTrackRef" type="tUUIDRef" use="optional">
 						<xs:annotation>
 							<xs:documentation>eind-spoor van de rijweg.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>PPCTrack</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -79,6 +91,10 @@
 			<xs:attribute name="routeRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar een enkelvoudige of samengestelde route.</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>SingularRoute</ObjectTypeRef>
+						<ObjectTypeRef>CombinedRoute</ObjectTypeRef>
+					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="priority" type="xs:int">
@@ -126,35 +142,6 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:complexType name="tTrainControlRoute">
-		<xs:complexContent>
-			<xs:extension base="tRoute">
-				<xs:attribute name="startObjectRef" type="tUUIDRef" use="required">
-					<xs:annotation>
-						<xs:documentation>De PUIC verwijzing naar het beginobject van een EV-route. Dit object kan een Bord, Stop Marker Board, Fictief-sein of Lichtsein zijn</xs:documentation>
-						<xs:appinfo>
-							<ObjectTypeRef>Signal</ObjectTypeRef>
-							<ObjectTypeRef>StopMarkerBoard</ObjectTypeRef>
-							<ObjectTypeRef>Sign</ObjectTypeRef>
-							<ObjectTypeRef>FictitiousSignal</ObjectTypeRef>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="endObjectRef" type="tUUIDRef" use="required">
-					<xs:annotation>
-						<xs:documentation>De PUIC verwijzing naar het eindobject van een EV-route. (Bord,Stop Marker Board,Lichtsein,Fictief-sein of Stootjuk)</xs:documentation>
-						<xs:appinfo>
-							<ObjectTypeRef>Signal</ObjectTypeRef>
-							<ObjectTypeRef>StopMarkerBoard</ObjectTypeRef>
-							<ObjectTypeRef>Sign</ObjectTypeRef>
-							<ObjectTypeRef>BufferStop</ObjectTypeRef>
-							<ObjectTypeRef>FictitiousSignal</ObjectTypeRef>
-						</xs:appinfo>
-					</xs:annotation>
-				</xs:attribute>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:element name="FictitiousSignals">
 		<xs:annotation>
 			<xs:documentation>Een verzameling fictieve seinen.</xs:documentation>
@@ -209,8 +196,45 @@
 						<xs:element ref="MandatoryFlankProtection" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="OptionalFlankProtection" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
+					<xs:attribute name="switchMechanismRef" type="tUUIDRef" use="required">
+						<xs:annotation>
+							<xs:documentation>Een PUIC verwijzing naar de wisselsteller'</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>SwitchMechanism</ObjectTypeRef>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:complexType name="tTrainControlRoute">
+		<xs:complexContent>
+			<xs:extension base="tRoute">
+				<xs:attribute name="startObjectRef" type="tUUIDRef" use="required">
+					<xs:annotation>
+						<xs:documentation>De PUIC verwijzing naar het beginobject van een EV-route. Dit object kan een Bord, Stop Marker Board, Fictief-sein of Lichtsein zijn</xs:documentation>
+						<xs:appinfo>
+							<ObjectTypeRef>Signal</ObjectTypeRef>
+							<ObjectTypeRef>StopMarkerBoard</ObjectTypeRef>
+							<ObjectTypeRef>Sign</ObjectTypeRef>
+							<ObjectTypeRef>FictitiousSignal</ObjectTypeRef>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="endObjectRef" type="tUUIDRef" use="required">
+					<xs:annotation>
+						<xs:documentation>De PUIC verwijzing naar het eindobject van een EV-route. (Bord,Stop Marker Board,Lichtsein,Fictief-sein of Stootjuk)</xs:documentation>
+						<xs:appinfo>
+							<ObjectTypeRef>Signal</ObjectTypeRef>
+							<ObjectTypeRef>StopMarkerBoard</ObjectTypeRef>
+							<ObjectTypeRef>Sign</ObjectTypeRef>
+							<ObjectTypeRef>BufferStop</ObjectTypeRef>
+							<ObjectTypeRef>FictitiousSignal</ObjectTypeRef>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 </xs:schema>

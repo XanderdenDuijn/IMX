@@ -2,5 +2,4 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.prorail.nl/IMSpoor" targetNamespace="http://www.prorail.nl/IMSpoor">
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-ERTMS.xsd"/>
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-Communication.xsd"/>
-	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-SystemConfiguration.xsd"/>
 </xs:schema>
