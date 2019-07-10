@@ -12,7 +12,7 @@ for file in os.listdir(dir_path):
         with open(file, encoding="utf8") as f:
             newText=f.read().replace('"IMSpoor-', '"https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-')
 
-        with open(file, "w") as f:
+        with open(file, "w", encoding="utf8") as f:
             f.write(newText)
         print("succesfully renamed ",file) 
 
