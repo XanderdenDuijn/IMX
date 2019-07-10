@@ -34,7 +34,7 @@
 			</xs:attribute>
 			<xs:attribute name="sourceDataOwner" type="tString100">
 				<xs:annotation>
-					<xs:documentation>De bronhoudercode van het object. Per object (dus niet per objecttype) moet de bronhouder worden vastgelegd, zodat hieraan kan worden  gerefereerd bij terugmeldingen. Een object valt altijd geheel binnen het gebied van één bronhouder.</xs:documentation>
+					<xs:documentation>De bronhoudercode van het object. Per object (dus niet per objecttype) moet de bronhouder worden vastgelegd, zodat hieraan kan worden  gerefereerd bij terugmeldingen. Een object valt altijd geheel binnen het gebied van Ã©Ã©n bronhouder.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="registrationTime" type="xs:dateTime">
@@ -404,7 +404,7 @@
 	</xs:simpleType>
 	<xs:simpleType name="tDoubleList">
 		<xs:annotation>
-			<xs:documentation>Type voor een lijst van reële getallen</xs:documentation>
+			<xs:documentation>Type voor een lijst van reÃ«le getallen</xs:documentation>
 		</xs:annotation>
 		<xs:list itemType="xs:double"/>
 	</xs:simpleType>

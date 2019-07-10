@@ -182,7 +182,7 @@
 					</xs:attribute>
 					<xs:attribute name="levelCrossingWarningInstallationType" type="tLevelCrossingWarningInstallationTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type WaarschuwingsInstallatie Dienstoverpad. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Type WaarschuwingsInstallatie Dienstoverpad. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -671,7 +671,7 @@ en bestaande uit twee of meer compensatielassen.</xs:documentation>
 					</xs:sequence>
 					<xs:attribute name="flankProtectionObjectType" type="tFlankProtectionTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type van de flankbeveiliging. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Type van de flankbeveiliging. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="switchPointHeatingCabinetRef" type="tUUIDRef">
@@ -778,7 +778,7 @@ en bestaande uit twee of meer compensatielassen.</xs:documentation>
 				<xs:extension base="tPointObject">
 					<xs:attribute name="illuminatedSignType" type="tIlluminatedSignTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type Lichtbak. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Het type Lichtbak. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="text" type="tString50" use="required">
@@ -805,7 +805,7 @@ en bestaande uit twee of meer compensatielassen.</xs:documentation>
 				<xs:extension base="tPointObject">
 					<xs:attribute name="reflectorType" type="tReflectorPostTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type Gubela. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Het type Gubela. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1038,7 +1038,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 			</xs:attribute>
 			<xs:attribute name="stopConnectionControlCode" type="tStopConnectionControlCodeEnum" use="required">
 				<xs:annotation>
-					<xs:documentation>Stop-door bediencode. De lijst van opties is voorgedefiniëerd. </xs:documentation>
+					<xs:documentation>Stop-door bediencode. De lijst van opties is voorgedefiniÃ«erd. </xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="blockDemarcationRef" type="tUUIDRef">
@@ -1094,7 +1094,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 	</xs:element>
 	<xs:element name="Sign">
 		<xs:annotation>
-			<xs:documentation>Een bord is een sein met een vaste boodschap, verwoordt in tekst, pictogram of code. De betekenis is opgenomen in de Ministeriële Regeling Seinen.</xs:documentation>
+			<xs:documentation>Een bord is een sein met een vaste boodschap, verwoordt in tekst, pictogram of code. De betekenis is opgenomen in de MinisteriÃ«le Regeling Seinen.</xs:documentation>
 			<xs:documentation xml:lang="NL">Bordsein</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1105,7 +1105,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 					</xs:sequence>
 					<xs:attribute name="signType" type="tSignEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type van het bord. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Type van het bord. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="signValue" type="tString50">
@@ -1147,7 +1147,7 @@ Een lichtsein is een variabel sein waarvan de beelden door lichten (rood, geel o
 				<xs:extension base="tPointTrackAsset">
 					<xs:attribute name="speedSignType" type="tSpeedSignEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type van het snelheidsbord. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Type van het snelheidsbord. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="speed" type="xs:int" use="required">
@@ -1520,7 +1520,7 @@ en/of goederen kunnen worden aangenomen en afgeleverd.
 	</xs:element>
 	<xs:element name="LevelCrossing">
 		<xs:annotation>
-			<xs:documentation>Een overweg is een gebied waarin één of meer sporen een overwegpad gelijkvloers kruisen.</xs:documentation>
+			<xs:documentation>Een overweg is een gebied waarin Ã©Ã©n of meer sporen een overwegpad gelijkvloers kruisen.</xs:documentation>
 			<xs:documentation xml:lang="NL">Overweg</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1687,7 +1687,7 @@ bevestigd die bedoeld zijn om het verkeer te waarschuwen.</xs:documentation>
 				<xs:extension base="tPointObject">
 					<xs:attribute name="poleInstallationType" type="tPoleInstallationTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type paalinstallatie. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Type paalinstallatie. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1705,7 +1705,7 @@ waarschuwt dat je een treinspoor oversteekt.</xs:documentation>
 				<xs:extension base="tPointObject">
 					<xs:attribute name="crossbuckType" type="tCrossbuckEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type van het andreaskruis. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Type van het andreaskruis. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="poleInstallationRef" type="tUUIDRef">
@@ -1906,7 +1906,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 				<xs:extension base="tPointTrackAsset">
 					<xs:attribute name="detectorType" type="tDetectorTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type van de detector. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Type van de detector. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="rail" type="tRailEnum" use="required">
@@ -2565,7 +2565,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 			</xs:enumeration>
 			<xs:enumeration value="SignalCountdownMarker">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 251a/II = Aanduiding van de nadering van een lichtsein dat op ten minste remwegafstand voorafgaat aan een lichtsein of stopplaatsmarkering nr. 227a of nr. 227b voorzien van een bord bijzonder gevaarpunt nr. 251a/l. RS 249a = Snelheid begrenzen tot 40 km/u of zoveel minder als nodig om voor het eerstvolgende ‘stop’ tonende sein te kunnen stoppen.</xs:documentation>
+					<xs:documentation xml:lang="NL">RS 251a/II = Aanduiding van de nadering van een lichtsein dat op ten minste remwegafstand voorafgaat aan een lichtsein of stopplaatsmarkering nr. 227a of nr. 227b voorzien van een bord bijzonder gevaarpunt nr. 251a/l. RS 249a = Snelheid begrenzen tot 40 km/u of zoveel minder als nodig om voor het eerstvolgende â€˜stopâ€™ tonende sein te kunnen stoppen.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="BEG_DOORRIJ_GEB">
@@ -2740,7 +2740,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 			</xs:enumeration>
 			<xs:enumeration value="WeighBridgeSpeed">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 274= Berijden van de weegbrug toegestaan met de voor die brug geldende snelheid overeenkomstig sein ‘Nr. 324 Snelheidsbord Overweg/Weegbrug’.</xs:documentation>
+					<xs:documentation xml:lang="NL">RS 274= Berijden van de weegbrug toegestaan met de voor die brug geldende snelheid overeenkomstig sein â€˜Nr. 324 Snelheidsbord Overweg/Weegbrugâ€™.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="WeighBridgeLocalSpeed">
@@ -2780,7 +2780,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 			</xs:enumeration>
 			<xs:enumeration value="DoubleLevelCrossingAnnouncement">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 318b= Aanduiding van het beginpunt van de aankondiging van twee, achter elkaar gelegen aki’s, ahob’s of aob’s. De cijfers op de borden geven de kilometeren hectometeraanduiding van de spoorwegovergangen aan, waarbij het bovenste cijfer betrekking heeft op de verst verwijderde spoorwegovergang.</xs:documentation>
+					<xs:documentation xml:lang="NL">RS 318b= Aanduiding van het beginpunt van de aankondiging van twee, achter elkaar gelegen akiâ€™s, ahobâ€™s of aobâ€™s. De cijfers op de borden geven de kilometeren hectometeraanduiding van de spoorwegovergangen aan, waarbij het bovenste cijfer betrekking heeft op de verst verwijderde spoorwegovergang.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="StartLocalSpeedLimit">
@@ -2815,7 +2815,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 			</xs:enumeration>
 			<xs:enumeration value="SignalingOutOfService">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 350= Aanduiding van een of meer volgende lichtseinen overeenkomstig ‘Nr. 351 Afgekruist lichtsein’ die zo mogelijk zijn gedoofd.</xs:documentation>
+					<xs:documentation xml:lang="NL">RS 350= Aanduiding van een of meer volgende lichtseinen overeenkomstig â€˜Nr. 351 Afgekruist lichtseinâ€™ die zo mogelijk zijn gedoofd.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="TrainLengthAntiicing">
@@ -2835,7 +2835,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 			</xs:enumeration>
 			<xs:enumeration value="StopBeforeSignal">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 513= Stoppen vóór het sein.</xs:documentation>
+					<xs:documentation xml:lang="NL">RS 513= Stoppen vÃ³Ã³r het sein.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ATBBrakeCriterium">
@@ -2928,7 +2928,7 @@ oneffenheden gelijkvloers kan oversteken.</xs:documentation>
 			<xs:enumeration value="TunnelEntryDecelerateToSpeed">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">RS 286 Snelheid begrenzen tot de door het
-getal aangegeven snelheid. Deze snelheid moet bereikt zijn bij het eerstvolgende sein ‘Nr. 281 Entreesnelheidsbord’. Geldt alleen voor bestuurders van treinen bestemd voor het vervoer van goederen en van treinen die door de betrokken spoorwegonderneming zijn aangewezen.</xs:documentation>
+getal aangegeven snelheid. Deze snelheid moet bereikt zijn bij het eerstvolgende sein â€˜Nr. 281 Entreesnelheidsbordâ€™. Geldt alleen voor bestuurders van treinen bestemd voor het vervoer van goederen en van treinen die door de betrokken spoorwegonderneming zijn aangewezen.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="LevelCrossingWeighBridgeSpeed">
@@ -2939,7 +2939,7 @@ overweg is gepasseerd; of b. de gehele trein de weegbrug is gepasseerd.</xs:docu
 			</xs:enumeration>
 			<xs:enumeration value="TemporarySpeedSign">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">RS 325b= Snelheid begrenzen tot de door het getal aangegeven snelheid, met dien verstande dat bij een bord met twee getallen: – het onderste getal geldt voor treinen bestemd voor het vervoer van goederen en met een snelheid lager dan 120 km/u en voor losse locomotieven; en – het bovenste getal voor de overige treinen.</xs:documentation>
+					<xs:documentation xml:lang="NL">RS 325b= Snelheid begrenzen tot de door het getal aangegeven snelheid, met dien verstande dat bij een bord met twee getallen: â€“ het onderste getal geldt voor treinen bestemd voor het vervoer van goederen en met een snelheid lager dan 120 km/u en voor losse locomotieven; en â€“ het bovenste getal voor de overige treinen.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>

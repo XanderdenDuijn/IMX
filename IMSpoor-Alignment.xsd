@@ -3,7 +3,7 @@
 	<xs:include schemaLocation="https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-BasicTypes.xsd"/>
 	<xs:element name="AlignmentData">
 		<xs:annotation>
-			<xs:documentation>De alignement elementen dienen binnen het traject te worden aangeleverd met de oriÎntering, gelijk aan de oriÎntering van de spoortak waartoe deze behoren. De volgorde van de alignement elementen is gelijk aan de volgorde waarin zij gezamenlijk de vorm van de spoortak beschrijven. De elementen liggen dus ìkop-staartî. Deze eis geldt ook voor de gerelateerde elementen van het lengteprofiel, het verkanting schema en het snelheidschema.</xs:documentation>
+			<xs:documentation>De alignement elementen dienen binnen het traject te worden aangeleverd met de ori√´ntering, gelijk aan de ori√´ntering van de spoortak waartoe deze behoren. De volgorde van de alignement elementen is gelijk aan de volgorde waarin zij gezamenlijk de vorm van de spoortak beschrijven. De elementen liggen dus ‚Äúkop-staart‚Äù. Deze eis geldt ook voor de gerelateerde elementen van het lengteprofiel, het verkanting schema en het snelheidschema.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -26,9 +26,9 @@
 							<xs:documentation>De hoek aangegeven in radialen.De hoek gerekend vanaf de positieve X-as. De rotatie is tegen de richting van de klok in.
 Voor de horizontale elementen gelden de volgende waarden:
 Richting Oost = 0 = 2 PI
-Richting Noord = Ω PI
+Richting Noord = ¬Ω PI
 Richting West = PI
-Richting Zuid = 1 Ω PI
+Richting Zuid = 1 ¬Ω PI
 </xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
@@ -65,8 +65,8 @@ Richting Zuid = 1 Ω PI
 	</xs:element>
 	<xs:element name="HorizontalTransitionCurve">
 		<xs:annotation>
-			<xs:documentation>Horizontale Overgangsboog (ClothoÔde). Een positieve boogstraal betreft een rotatie met de richting van de klok mee ( CW ) en een negatieve straal betreft een rotatie tegen de richting van de klok in ( CCW ). Voor een rechtstand, straal oneindig, dient 0 te worden ingevoerd. Het toepassen van ÈÈn overgangsboog in een S-boog (straalwaarden tegengesteld) is niet toegestaan</xs:documentation>
-			<xs:documentation xml:lang="NL">Horizontale Overgangsboog (ClothoÔde)</xs:documentation>
+			<xs:documentation>Horizontale Overgangsboog (Clotho√Øde). Een positieve boogstraal betreft een rotatie met de richting van de klok mee ( CW ) en een negatieve straal betreft een rotatie tegen de richting van de klok in ( CCW ). Voor een rechtstand, straal oneindig, dient 0 te worden ingevoerd. Het toepassen van √©√©n overgangsboog in een S-boog (straalwaarden tegengesteld) is niet toegestaan</xs:documentation>
+			<xs:documentation xml:lang="NL">Horizontale Overgangsboog (Clotho√Øde)</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -94,7 +94,7 @@ Richting Zuid = 1 Ω PI
 				<xs:sequence>
 					<xs:element name="VerticalAlignment" type="tVerticalAlignment" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>Verticale alignementen dienen binnen het horizontale alignement element te worden aangeleverd met de oriÎntering, gelijk aan de oriÎntering van de horizontale alignement element waartoe deze behoren. Deze gegevens dienen beschikbaar te zijn voor de volledige lengte van het element waartoe deze behoren.</xs:documentation>
+							<xs:documentation>Verticale alignementen dienen binnen het horizontale alignement element te worden aangeleverd met de ori√´ntering, gelijk aan de ori√´ntering van de horizontale alignement element waartoe deze behoren. Deze gegevens dienen beschikbaar te zijn voor de volledige lengte van het element waartoe deze behoren.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element ref="CantValues" minOccurs="0"/>
@@ -140,7 +140,7 @@ Richting Zuid = 1 Ω PI
 	</xs:element>
 	<xs:element name="CantValue">
 		<xs:annotation>
-			<xs:documentation>Verkantingen dienen binnen het horizontale alignement element te worden aangeleverd met de oriÎntering, gelijk aan de oriÎntering van de horizontale alignement element waartoe deze behoren. Deze gegevens dienen beschikbaar te zijn voor de volledige lengte van het element waartoe deze behoren.</xs:documentation>
+			<xs:documentation>Verkantingen dienen binnen het horizontale alignement element te worden aangeleverd met de ori√´ntering, gelijk aan de ori√´ntering van de horizontale alignement element waartoe deze behoren. Deze gegevens dienen beschikbaar te zijn voor de volledige lengte van het element waartoe deze behoren.</xs:documentation>
 			<xs:documentation xml:lang="NL">Verkanting</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -178,7 +178,7 @@ Richting Zuid = 1 Ω PI
 	</xs:element>
 	<xs:element name="DesignSpeedValue">
 		<xs:annotation>
-			<xs:documentation>De ontwerpsnelheid van het allignement, deze dienen binnen het horizontale alignement element te worden aangeleverd met de oriÎntering, gelijk aan de oriÎntering van de horizontale alignement element waartoe deze behoren. Deze gegevens dienen beschikbaar te zijn voor de volledige lengte van het element waartoe deze behoren.</xs:documentation>
+			<xs:documentation>De ontwerpsnelheid van het allignement, deze dienen binnen het horizontale alignement element te worden aangeleverd met de ori√´ntering, gelijk aan de ori√´ntering van de horizontale alignement element waartoe deze behoren. Deze gegevens dienen beschikbaar te zijn voor de volledige lengte van het element waartoe deze behoren.</xs:documentation>
 			<xs:documentation xml:lang="NL">Ontwerpsnelheid</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -290,9 +290,9 @@ Richting Zuid = 1 Ω PI
 	De hoek gerekend vanaf de positieve X-as. De rotatie is tegen de richting van de klok in.<br/>
 Voor de horizontale elementen kom je uit op de volgende waarden:<br/>
 Richting Oost = 0 = 2 PI<br/>
-Richting Noord = Ω PI<br/>
+Richting Noord = ¬Ω PI<br/>
 Richting West = PI<br/>
-Richting Zuid = 1 Ω PI<br/>
+Richting Zuid = 1 ¬Ω PI<br/>
 Voor verticale elementen:<br/>
 Waterpas = 0<br/>
 Stijgende helling &gt; 0<br/>

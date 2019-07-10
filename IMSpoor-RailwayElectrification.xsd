@@ -48,7 +48,7 @@
 				<xs:extension base="tOverheadLinePointTrackAsset">
 					<xs:attribute name="insulatorType" type="tInsulatorTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type isolator. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Het type isolator. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="isDriveable" type="tTrueFalseEnum" use="required">
@@ -84,13 +84,13 @@
 					</xs:sequence>
 					<xs:attribute name="overheadLineSectionBreakType" type="tOverheadLineSectionBreakEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het soort spaninrichting. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Het soort spaninrichting. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="overheadLineSectionBreakVoltageType" type="tOverheadLineSectionBreakVoltageTypeEnum"
                         use="required">
 						<xs:annotation>
-							<xs:documentation>Type afspaninrichting. De lijst met opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Type afspaninrichting. De lijst met opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="phaseBreakRef" type="tUUIDRef">
@@ -174,7 +174,7 @@
 	</xs:element>
 	<xs:element name="CatenaryWire">
 		<xs:annotation>
-			<xs:documentation>Een draagkabel is een horizontaal, ongeïsoleerd, meeraderig geslagen leiding, onderdeel van de bovenleiding en bedoeld voor het direct of indirect dragen van de rijdraad  zodanig dat de doorhang van de rijdraad tussen de bovenleidingspalen beperkt blijft.</xs:documentation>
+			<xs:documentation>Een draagkabel is een horizontaal, ongeÃ¯soleerd, meeraderig geslagen leiding, onderdeel van de bovenleiding en bedoeld voor het direct of indirect dragen van de rijdraad  zodanig dat de doorhang van de rijdraad tussen de bovenleidingspalen beperkt blijft.</xs:documentation>
 			<xs:documentation xml:lang="NL">Draagkabel</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>

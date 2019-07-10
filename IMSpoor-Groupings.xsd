@@ -318,7 +318,7 @@
 					</xs:attribute>
 					<xs:attribute name="function" type="tOperationalPointTrackFunctionEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>De functiecode van het dienstregelpuntspoor. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>De functiecode van het dienstregelpuntspoor. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -334,7 +334,7 @@
 	</xs:element>
 	<xs:element name="PPCTrack">
 		<xs:annotation>
-			<xs:documentation>Een spoor is een ononderbroken, benaamd deel van één of meer spoortakken, eenduidig begrensd door daarvoor
+			<xs:documentation>Een spoor is een ononderbroken, benaamd deel van Ã©Ã©n of meer spoortakken, eenduidig begrensd door daarvoor
 geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danwel als opstelplaats voor materieel. Primary Process Control (PPC = PPLG) </xs:documentation>
 			<xs:documentation xml:lang="NL">PPLG-Spoor</xs:documentation>
 		</xs:annotation>
@@ -948,7 +948,7 @@ geldige spoorgrenzen en bedoeld als van- of naar-locatie voor een beweging, danw
 	</xs:element>
 	<xs:element name="OpenLine">
 		<xs:annotation>
-			<xs:documentation>Een vrije baan is een gebied dat twee dienstregelpunten of twee PPLG´s met elkaar verbindt.</xs:documentation>
+			<xs:documentation>Een vrije baan is een gebied dat twee dienstregelpunten of twee PPLGÂ´s met elkaar verbindt.</xs:documentation>
 			<xs:documentation xml:lang="NL">Vrijebaan</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -981,12 +981,12 @@ en dat een functie vervult bij het opzetten en vastleggen van de dienstregeling.
 					</xs:sequence>
 					<xs:attribute name="operationalPointType" type="tOperationalPointEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type van het dienstregelpunt. De keuzes zijn voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Het type van het dienstregelpunt. De keuzes zijn voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="serviceCode" type="tServiceEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het bedieningscode van het dienstregelpunt. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Het bedieningscode van het dienstregelpunt. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="isControlled" type="tTrueFalseEnum" use="required">
@@ -1074,7 +1074,7 @@ en dat een functie vervult bij het opzetten en vastleggen van de dienstregeling.
 		<xs:complexType>
 			<xs:attribute name="releasePrinciple" type="tReleasePrincipleEnum" use="required">
 				<xs:annotation>
-					<xs:documentation>Vrijmakingsprincipe. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+					<xs:documentation>Vrijmakingsprincipe. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="direction" type="tFunctionalDirectionEnum" use="required">
@@ -1087,7 +1087,7 @@ en dat een functie vervult bij het opzetten en vastleggen van de dienstregeling.
 	<xs:element name="TrackCircuit">
 		<xs:annotation>
 			<xs:documentation>Een spoorstroomloop-Sectie is een door sectiescheidingen afgebakend gebied dat als geheel in de beveiliging beschikbaar of
-bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor één doel tegelijk in gebruik kan zijn.</xs:documentation>
+bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor Ã©Ã©n doel tegelijk in gebruik kan zijn.</xs:documentation>
 			<xs:documentation xml:lang="NL">Spoorstroomloop-Sectie</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1102,7 +1102,7 @@ bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor één doel
 					</xs:sequence>
 					<xs:attribute name="trackCircuitType" type="tTrackCircuitTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type detectiesysteem binnen de sectie. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Het type detectiesysteem binnen de sectie. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="isLampSection" type="tTrueFalseEnum" use="required">
@@ -1152,7 +1152,7 @@ bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor één doel
 					</xs:attribute>
 					<xs:attribute name="afSectionType" type="tAfSectionTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type JADE dat is gebruikt. De lijst van opties is voorgedefiniëerd.</xs:documentation>
+							<xs:documentation>Het type JADE dat is gebruikt. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1786,7 +1786,7 @@ bezet wordt gemeld. Dus de kleinste eenheid railinfrastructuur die voor één doel
 			</xs:enumeration>
 			<xs:enumeration value="AZ_L90">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">AZA (Achsen Zählauswertung)</xs:documentation>
+					<xs:documentation xml:lang="NL">AZA (Achsen ZÃ¤hlauswertung)</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="GE_SCA2">

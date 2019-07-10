@@ -325,7 +325,7 @@
   </xs:element>
   <xs:element name="Packet_41">
     <xs:annotation>
-      <xs:documentation>Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTR’s go from the highest priority level to the lowest one.</xs:documentation>
+      <xs:documentation>Packet to identify where a level transition shall take place. In case of mixed levels, the successive M_LEVELTRâ€™s go from the highest priority level to the lowest one.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
@@ -376,7 +376,7 @@
   </xs:element>
   <xs:element name="Packet_46">
     <xs:annotation>
-      <xs:documentation>Packet for a conditional level transition. The successive M_LEVELTR’s go from the highest priority level to the lowest one.</xs:documentation>
+      <xs:documentation>Packet for a conditional level transition. The successive M_LEVELTRâ€™s go from the highest priority level to the lowest one.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
@@ -528,7 +528,7 @@
   </xs:element>
   <xs:element name="Packet_69">
     <xs:annotation>
-      <xs:documentation>The packet gives details concerning the location and height of station platforms for use by the train’s door control system.</xs:documentation>
+      <xs:documentation>The packet gives details concerning the location and height of station platforms for use by the trainâ€™s door control system.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
