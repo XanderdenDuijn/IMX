@@ -176,7 +176,7 @@
 			<xs:extension base="tPointObject">
 				<xs:attribute name="operatingType" type="tOperatingTypeEnum" use="required">
 					<xs:annotation>
-						<xs:documentation>Bedientype. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+						<xs:documentation>Bedientype. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>
@@ -523,7 +523,7 @@ beweging van de wisseltongen verzorgt.</xs:documentation>
 					</xs:attribute>
 					<xs:attribute name="trainType" type="tTrainTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type trein waar de spoortak voor bedoeld is. De lijst van opties is voorgedefiniÃ«erd..</xs:documentation>
+							<xs:documentation>Type trein waar de spoortak voor bedoeld is. De lijst van opties is voorgedefiniëerd..</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>

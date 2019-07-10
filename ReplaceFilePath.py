@@ -9,7 +9,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 for file in os.listdir(dir_path):
     if file.endswith(".xsd"):
-        with open(file) as f:
+        with open(file, encoding="utf8") as f:
             newText=f.read().replace('"IMSpoor-', '"https://raw.githubusercontent.com/XanderdenDuijn/IMX/master/IMSpoor-')
 
         with open(file, "w") as f:

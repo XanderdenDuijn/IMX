@@ -139,7 +139,7 @@
 					</xs:sequence>
 					<xs:attribute name="polarity" type="tPolarityEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Polariteit van de geisoleerde spoorstaaf. De lijst met opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Polariteit van de geisoleerde spoorstaaf. De lijst met opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -234,7 +234,7 @@
 				<xs:extension base="tCableConnection">
 					<xs:attribute name="cableConnectionType" type="tCableConnectionTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Type kabelverbinding. De lijst met opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Type kabelverbinding. De lijst met opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="equipmentRoomRef" type="tUUIDRef" use="required">
@@ -436,7 +436,7 @@
 				</xs:sequence>
 				<xs:attribute name="cableType" type="tCableTypeEnum" use="required">
 					<xs:annotation>
-						<xs:documentation>Kabeltype. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+						<xs:documentation>Kabeltype. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="numberOfCables" type="xs:int" use="required">

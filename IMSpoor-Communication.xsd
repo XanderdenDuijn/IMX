@@ -18,7 +18,7 @@
 				<xs:element ref="Project"/>
 				<xs:element name="Situation" type="tSituation"/>
 			</xs:choice>
-			<xs:attribute name="imxVersion" type="tVersionString" use="required" fixed="1.3.0">
+			<xs:attribute name="imxVersion" type="tVersionString" use="required" fixed="1.4.0">
 				<xs:annotation>
 					<xs:documentation>Verplicht versienummer</xs:documentation>
 				</xs:annotation>

@@ -122,12 +122,12 @@
 				<xs:extension base="tPointObject">
 					<xs:attribute name="equipmentRoomFunction" type="tEquipmentRoomFunctionEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het soort van technische-ruimte. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het soort van technische-ruimte. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="equipmentRoomType" type="tEquipmentRoomTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type van technische-ruimte. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het type van technische-ruimte. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -222,7 +222,7 @@
 					</xs:attribute>
 					<xs:attribute name="keyType" type="tKeyTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het sleuteltype van de bediening. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het sleuteltype van de bediening. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -571,7 +571,7 @@
 				<xs:extension base="tPointObject">
 					<xs:attribute name="switchPointHeatingCabinetType" type="tSwitchPointHeatingCabinetTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type wisselverwarmingskast. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het type wisselverwarmingskast. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="masterSwitchPointHeatingCabinetRef" type="tUUIDRef">
@@ -602,7 +602,7 @@
 	<xs:element name="TerrainLightingInstallation">
 		<xs:annotation>
 			<xs:documentation>Terreinverlichting is het verlichtingssysteem dat bij paden en sporen wordt aangebracht ten
-behoeve van de oriÃ«ntatie en zichtbaarheid van spoorobjecten bij afwezigheid van daglicht.</xs:documentation>
+behoeve van de oriëntatie en zichtbaarheid van spoorobjecten bij afwezigheid van daglicht.</xs:documentation>
 			<xs:documentation xml:lang="NL">Terreinverlichting</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -638,9 +638,9 @@ behoeve van de oriÃ«ntatie en zichtbaarheid van spoorobjecten bij afwezigheid va
 	</xs:element>
 	<xs:element name="AntiSuicideLightingInstallation">
 		<xs:annotation>
-			<xs:documentation>De anti-suÃ¯cideverlichting is verlichting parallel aan de buitenzijde van het spoor, die aangeschakeld
+			<xs:documentation>De anti-suïcideverlichting is verlichting parallel aan de buitenzijde van het spoor, die aangeschakeld
 wordt d.m.v. bewegingsdetectie als er in het donker iemand loopt.</xs:documentation>
-			<xs:documentation xml:lang="NL">Anti-suÃ¯cideverlichting</xs:documentation>
+			<xs:documentation xml:lang="NL">Anti-suïcideverlichting</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -655,7 +655,7 @@ wordt d.m.v. bewegingsdetectie als er in het donker iemand loopt.</xs:documentat
 	<xs:element name="AntiSuicideLampPost">
 		<xs:annotation>
 			<xs:documentation>Een paal van een AntiSuicide verlichtingsinstallatie.</xs:documentation>
-			<xs:documentation xml:lang="NL">Anti-suÃ¯cideverlichtingspaal</xs:documentation>
+			<xs:documentation xml:lang="NL">Anti-suïcideverlichtingspaal</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -790,7 +790,7 @@ diersoorten.</xs:documentation>
 	</xs:element>
 	<xs:element name="RoeTrench">
 		<xs:annotation>
-			<xs:documentation>Voorziening voor de geleiding van reeÃ«n.</xs:documentation>
+			<xs:documentation>Voorziening voor de geleiding van reeën.</xs:documentation>
 			<xs:documentation xml:lang="NL">Reegoot</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1115,17 +1115,17 @@ t.b.v. hulpdiensten.</xs:documentation>
 					</xs:attribute>
 					<xs:attribute name="type" type="tCivilConstructionTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type kunstwerk. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het type kunstwerk. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="material" type="tMaterialTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het materiaal type van het kunstwerk. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het materiaal type van het kunstwerk. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="wildlifeCrossing" type="tWildlifeCrossingTypeEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Een indicatie van het soort faunavoorziening waarmee het kunstwerk is uitgevoerd. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Een indicatie van het soort faunavoorziening waarmee het kunstwerk is uitgevoerd. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="roadName" type="tString50">
@@ -1385,7 +1385,7 @@ treinvervoer.</xs:documentation>
 				<xs:extension base="tPointObject">
 					<xs:attribute name="infoPanelType" type="tInfoPanelEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type van het RIS-bord. De lijst voor opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het type van het RIS-bord. De lijst voor opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1413,12 +1413,12 @@ gebied te reduceren.</xs:documentation>
 				<xs:extension base="tLineObject">
 					<xs:attribute name="noiseBarrierType" type="tNoiseBarrierEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type van het geluidsscherm. De lijst voor opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het type van het geluidsscherm. De lijst voor opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="materialType" type="tNoiseBarrierMaterialEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het materiaal van het geluidscherm. De lijst voor opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het materiaal van het geluidscherm. De lijst voor opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="height" type="xs:double">
@@ -1792,7 +1792,7 @@ is.</xs:documentation>
 	<xs:element name="LightTower">
 		<xs:annotation>
 			<xs:documentation>Een lichttoren is het verlichtingssysteem dat bij
-terreinen/emplacementen wordt aangebracht ten behoeve van de oriÃ«ntatie en zichtbaarheid van spoorobjecten bij afwezigheid van daglicht.</xs:documentation>
+terreinen/emplacementen wordt aangebracht ten behoeve van de oriëntatie en zichtbaarheid van spoorobjecten bij afwezigheid van daglicht.</xs:documentation>
 			<xs:documentation xml:lang="NL">Lichttoren</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -1977,12 +1977,12 @@ in het spoor kunnen worden gezet.</xs:documentation>
 			<xs:extension base="tPointObject">
 				<xs:attribute name="controlType" type="tControlTypeEnum" use="required">
 					<xs:annotation>
-						<xs:documentation>Bedieningstype. De lijst voor opties is voorgedefiniÃ«erd.</xs:documentation>
+						<xs:documentation>Bedieningstype. De lijst voor opties is voorgedefiniëerd.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="authority" type="tAuthorityEnum" use="required">
 					<xs:annotation>
-						<xs:documentation>Bedienautoriteit De lijst voor opties is voorgedefiniÃ«erd.</xs:documentation>
+						<xs:documentation>Bedienautoriteit De lijst voor opties is voorgedefiniëerd.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 				<xs:attribute name="controlCount" type="xs:int">

@@ -281,8 +281,8 @@
 			<xs:documentation>Een vertrek- en keerspoor in de context van ERTMS is een spoor
                      waarbij een Movement Authority nodig is voor een vertrek op
                      basis van een vervolgrijweg (in dezelfde richting of voor
-                     een kerende trein). Een spoor â€“ en daarmee ook een
-                     vertrekspoor â€“ bestaat uit een verzameling secties en een
+                     een kerende trein). Een spoor – en daarmee ook een
+                     vertrekspoor – bestaat uit een verzameling secties en een
                      sein dat de begrenzing van het vertrekspoor vormt.</xs:documentation>
 			<xs:documentation xml:lang="NL">Vertrekspoor-CBG</xs:documentation>
 		</xs:annotation>
@@ -423,7 +423,7 @@
 	<xs:element name="DepartureTrackExtension">
 		<xs:annotation>
 			<xs:documentation>Een vertrekspooruitbreiding breidt een vertrekspoor uit.
-                     Het spoorgedeelte mag maximaal Ã©Ã©n sectie ten behoeve van
+                     Het spoorgedeelte mag maximaal één sectie ten behoeve van
                      treindetectie bevatten. Er mogen wissels in voorkomen, maar
                      geen overwegen of beweegbare bruggen.</xs:documentation>
 			<xs:documentation xml:lang="NL">Vertrekspoor Uitbreiding</xs:documentation>
@@ -1537,7 +1537,7 @@
 	</xs:element>
 	<xs:element name="StartConditions">
 		<xs:annotation>
-			<xs:documentation>Dit element definieert de startcondities voor het tonen van een bericht. De startcondities bestaan uit een locatie, een ERTMS level en een mode. In de TextMessageMarker wordt gedefinieerd of aan Ã©Ã©n conditie of aan alle condities voldaan moet worden voor het tonen van het bericht (Q_TEXTDISPLAY).</xs:documentation>
+			<xs:documentation>Dit element definieert de startcondities voor het tonen van een bericht. De startcondities bestaan uit een locatie, een ERTMS level en een mode. In de TextMessageMarker wordt gedefinieerd of aan één conditie of aan alle condities voldaan moet worden voor het tonen van het bericht (Q_TEXTDISPLAY).</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -1549,7 +1549,7 @@
 	</xs:element>
 	<xs:element name="EndConditions">
 		<xs:annotation>
-			<xs:documentation>Dit element definieert de eindcondities voor het tonen van een bericht. De eindcondities bestaan uit een afstand, eem duur en een ERTMS level. In de TextMessageMarker wordt gedefinieerd of aan Ã©Ã©n conditie of aan alle condities voldaan moet worden voor het doven van het bericht (Q_TEXTDISPLAY).</xs:documentation>
+			<xs:documentation>Dit element definieert de eindcondities voor het tonen van een bericht. De eindcondities bestaan uit een afstand, eem duur en een ERTMS level. In de TextMessageMarker wordt gedefinieerd of aan één conditie of aan alle condities voldaan moet worden voor het doven van het bericht (Q_TEXTDISPLAY).</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>

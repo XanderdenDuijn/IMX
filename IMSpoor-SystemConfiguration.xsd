@@ -335,7 +335,7 @@
 				<xs:extension base="tPointObject">
 					<xs:attribute name="openLineSafetySystemType" type="tOpenLineSafetySystemEnum" use="required">
 						<xs:annotation>
-							<xs:documentation>Het type vrijebaan beveiligingssysteem type. De lijst van opties is voorgedefiniÃ«erd.</xs:documentation>
+							<xs:documentation>Het type vrijebaan beveiligingssysteem type. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="controlledOperationalPointRef" type="tUUIDRef" use="required">
