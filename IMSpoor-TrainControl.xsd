@@ -196,14 +196,6 @@
 						<xs:element ref="MandatoryFlankProtection" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="OptionalFlankProtection" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
-					<xs:attribute name="switchMechanismRef" type="tUUIDRef" use="required">
-						<xs:annotation>
-							<xs:documentation>Een PUIC verwijzing naar de wisselsteller'</xs:documentation>
-							<xs:appinfo>
-								<ObjectTypeRef>SwitchMechanism</ObjectTypeRef>
-							</xs:appinfo>
-						</xs:annotation>
-					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
