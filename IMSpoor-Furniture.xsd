@@ -29,7 +29,7 @@
 				<xs:element ref="TensionWireLights" minOccurs="0"/>
 				<xs:element ref="AntiSuicideLightingInstallations" minOccurs="0"/>
 				<xs:element ref="TerrainLightingInstallations" minOccurs="0"/>
-				<xs:element ref="SwitchHeatingInstallations" minOccurs="0"/>
+				<xs:element ref="SwitchPointHeatingInstallations" minOccurs="0"/>
 				<xs:element ref="WildlifeGuards" minOccurs="0"/>
 				<xs:element ref="DeerEscapes" minOccurs="0"/>
 				<xs:element ref="BadgerTunnels" minOccurs="0"/>
@@ -40,8 +40,8 @@
 				<xs:element ref="RetainingWalls" minOccurs="0"/>
 				<xs:element ref="ElectronicsConnectionCabinets" minOccurs="0"/>
 				<xs:element ref="AtbVvConnectionCabinets" minOccurs="0"/>
-				<xs:element ref="BrakeTestingInstallationCabinets" minOccurs="0"/>
-				<xs:element ref="Tuningunits" minOccurs="0"/>
+				<xs:element ref="BrakeTestingInstallations" minOccurs="0"/>
+				<xs:element ref="TuningUnits" minOccurs="0"/>
 				<xs:element ref="MonitoringSystemCabinets" minOccurs="0"/>
 				<xs:element ref="LubricationSystemCabinets" minOccurs="0"/>
 				<xs:element ref="HighVoltageDetectionCabinets" minOccurs="0"/>
@@ -93,6 +93,9 @@
 					<xs:attribute name="temporaryShuntingAreaRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar het vrijgave-rangeer-gebied.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>TemporaryShuntingArea</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -152,6 +155,9 @@
 					<xs:attribute name="bridgeWarningSystemRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de WIBR</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>BridgeWarningSystem</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -179,6 +185,9 @@
 					<xs:attribute name="bridgeWarningSystemRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de WIBR schel.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>BridgeWarningSystem</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -206,6 +215,9 @@
 					<xs:attribute name="switchMechanismRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende wisselsteller.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>SwitchMechanism</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="keyType" type="tKeyTypeEnum" use="required">
@@ -248,6 +260,9 @@
 					<xs:attribute name="operationalPointTrackRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar het bijbehorende spoor.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>OperationalPointTrack</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -278,6 +293,9 @@
 					<xs:attribute name="signalRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende lichtsein.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>Signal</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -305,7 +323,7 @@
 					<xs:sequence>
 						<xs:element name="WorkzoneRefs" type="tUUIDRefList">
 							<xs:annotation>
-								<xs:documentation>Een lijst vanPUIC verwijzingen naar werkzones.</xs:documentation>
+								<xs:documentation>Een lijst van PUIC verwijzingen naar werkzones.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
@@ -334,6 +352,9 @@
 					<xs:attribute name="switchMechanismRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende wisselsteller.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>SwitchMechanism</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -361,6 +382,9 @@
 					<xs:attribute name="levelCrossingRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de bijbehorende overweg.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>LevelCrossing</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -388,11 +412,17 @@
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een beweegbare brug</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>CivilConstruction</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="floodBarrierRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een waterkering</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>FloodBarrier</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -420,6 +450,9 @@
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een beweegbare brug</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>CivilConstruction</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -447,6 +480,9 @@
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een beweegbare brug</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>CivilConstruction</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -495,17 +531,17 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="SwitchHeatingInstallations">
+	<xs:element name="SwitchPointHeatingInstallations">
 		<xs:annotation>
 			<xs:documentation>Een verzameling Wisselverwarmingsinstallaties</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="SwitchHeatingInstallation" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="SwitchPointHeatingInstallation" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="SwitchHeatingInstallation">
+	<xs:element name="SwitchPointHeatingInstallation">
 		<xs:annotation>
 			<xs:documentation>Wisselverwarming is apparatuur waarmee de wisseltong van een wissel kan worden verwarmd.</xs:documentation>
 			<xs:documentation xml:lang="NL">Wisselverwarminginstallatie</xs:documentation>
@@ -514,7 +550,7 @@
 			<xs:complexContent>
 				<xs:extension base="tPointObject">
 					<xs:sequence>
-						<xs:element ref="SwitchHeatingCabinet" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element ref="SwitchPointHeatingCabinet" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="type" type="tHeatingTypeEnum" use="required">
 						<xs:annotation>
@@ -525,7 +561,7 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="SwitchHeatingCabinet">
+	<xs:element name="SwitchPointHeatingCabinet">
 		<xs:annotation>
 			<xs:documentation>De wisselverwarmingskast bevat de bij wissels horende apparatuur waarmee de wisseltong, het beweegbare puntstuk of het beweegbare punt van het kruisstuk van het wissel van worden verwarmd.</xs:documentation>
 			<xs:documentation xml:lang="NL">Wisselverwarmingskast</xs:documentation>
@@ -533,17 +569,20 @@
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tPointObject">
-					<xs:attribute name="switchHeatingCabinetType" type="tSwitchHeatingCabinetTypeEnum" use="required">
+					<xs:attribute name="switchPointHeatingCabinetType" type="tSwitchPointHeatingCabinetTypeEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Het type wisselverwarmingskast. De lijst van opties is voorgedefiniëerd.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
-					<xs:attribute name="masterSwitchHeatingCabinetRef" type="tUUIDRef">
+					<xs:attribute name="masterSwitchPointHeatingCabinetRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>
-        Een PUIC verwijzing naar een (master) wisselverwarmingskast waarmee de
-        (slave) wisselverwarmingskast verbonden is
-       </xs:documentation>
+        Een PUIC verwijzing naar een (master) wisselverwarmingskast (SwitchPointHeatingCabinet) waarmee de
+        (slave) wisselverwarmingskast verbonden is.
+							</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>SwitchHeatingCabinet</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1012,6 +1051,9 @@ t.b.v. hulpdiensten.</xs:documentation>
 					<xs:attribute name="civilConstructionRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>PUIC verwijzing naar een kunstwerk.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>CivilConstruction</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1050,6 +1092,11 @@ t.b.v. hulpdiensten.</xs:documentation>
 					<xs:sequence>
 						<xs:element ref="CivilConstructionPart" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="Lock" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="SignRefs" type="tUUIDRefList" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Een lijst met PUIC verwijzingen met het bijbehorende bord RS 243 en/of RS 244</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 					<xs:attribute name="abbreviation" type="tAbbreviationString">
 						<xs:annotation>
@@ -1089,11 +1136,6 @@ t.b.v. hulpdiensten.</xs:documentation>
 					<xs:attribute name="waterWayName" type="tString50">
 						<xs:annotation>
 							<xs:documentation>De naam van de waterweg waarmehet kunstwerk kruist.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="signRefs" type="tUUIDRefList">
-						<xs:annotation>
-							<xs:documentation>Een PUIC relatie met een bijbehorend bord RS 243 en/of RS 244</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="hasBridgeWatcherFunction" type="tTrueFalseEnum" use="required">
@@ -1149,6 +1191,9 @@ treinvervoer.</xs:documentation>
 					<xs:attribute name="tunnelRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar een bijbehorende Tunnel</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>Tunnel</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="abbreviation" type="tAbbreviationString">
@@ -1198,6 +1243,9 @@ treinvervoer.</xs:documentation>
 			<xs:attribute name="signalRef" type="tUUIDRef" use="required">
 				<xs:annotation>
 					<xs:documentation>Een PUIC verwijzing naar een Signal of StopMarkerBoard</xs:documentation>
+					<xs:appinfo>
+						<ObjectTypeRef>Signal</ObjectTypeRef>
+					</xs:appinfo>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="delayTime" type="xs:int" use="required">
@@ -1216,13 +1264,13 @@ treinvervoer.</xs:documentation>
 			<xs:complexContent>
 				<xs:extension base="tPolygonObject">
 					<xs:sequence>
+						<xs:element ref="TunnelTrackFragment" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Een lijst van Spoortak-fragmenten, inclusief bodem- en civiele snelheid, die zich bevinden in de tunnelbuis.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 						<xs:element ref="TTITimer" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
-					<xs:attribute name="tunnelFloorSpeed" type="xs:int">
-						<xs:annotation>
-							<xs:documentation>De bodemsnelheid voor de tunnelbuis. In km/u.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
 					<xs:attribute name="ttiHasStallDetection" type="tTrueFalseEnum" use="required">
 						<xs:annotation>
 							<xs:documentation>Indicatie of de Tunnel Technische Installatie stilstandbepaling heeft</xs:documentation>
@@ -1231,6 +1279,28 @@ treinvervoer.</xs:documentation>
 					<xs:attribute name="ttiName" type="tString50" use="required">
 						<xs:annotation>
 							<xs:documentation>Naam van de Tunnel Technische Installatie van de tunnelbuis</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TunnelTrackFragment">
+		<xs:annotation>
+			<xs:documentation>Een spoortak fragment in de tunnelbuis. In een tunnelbuis liggen mogelijk meerdere spoortakken met verschillende bodem- en civiele snelheden..</xs:documentation>
+			<xs:documentation xml:lang="NL">TunnelSpoor</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tTrackFragment">
+					<xs:attribute name="tunnelFloorSpeed" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>De bodemsnelheid voor goederentreinen op de spoortak in de tunnelbuis. In km/u.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="tunnelCivilSpeed" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>De maximaal toegestane civiele snelheid op de spoortak in de  tunnelbuis. In km/u.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1255,6 +1325,9 @@ treinvervoer.</xs:documentation>
 					<xs:attribute name="tunnelTubeRef" type="tUUIDRef">
 						<xs:annotation>
 							<xs:documentation>Een PUIC verwijzing naar de tunnelbuis.</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>TunnelTube</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1395,7 +1468,6 @@ gebied te reduceren.</xs:documentation>
 						<xs:element ref="Pole" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="Arm" minOccurs="0" maxOccurs="unbounded"/>
 						<xs:element ref="Shore" minOccurs="0" maxOccurs="unbounded"/>
-						<xs:element ref="Tensioner" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attribute name="voltageClass" type="tVoltageClassEnum" use="required">
 						<xs:annotation>
@@ -1452,17 +1524,6 @@ gebied te reduceren.</xs:documentation>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Tensioner">
-		<xs:annotation>
-			<xs:documentation>Afspaninrichting</xs:documentation>
-			<xs:documentation xml:lang="NL">Afspaninrichting</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="tPointObject"/>
-			</xs:complexContent>
-		</xs:complexType>
-	</xs:element>
 	<xs:element name="HectometerSigns">
 		<xs:annotation>
 			<xs:documentation>Een verzameling hectometerbordjes</xs:documentation>
@@ -1505,24 +1566,30 @@ gebied te reduceren.</xs:documentation>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Tuningunits">
+	<xs:element name="TuningUnits">
 		<xs:annotation>
-			<xs:documentation>Een verzameling Tunerunits</xs:documentation>
+			<xs:documentation>Een verzameling Tuningunits</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Tuningunit" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="TuningUnit" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Tuningunit">
+	<xs:element name="TuningUnit">
 		<xs:annotation>
 			<xs:documentation>Het kastje is de Trackside Connection Box en behuist de tuner die het spoor met de zender en de ontvanger verbindt.</xs:documentation>
-			<xs:documentation xml:lang="NL">Tuningunit</xs:documentation>
+			<xs:documentation xml:lang="NL">TuningUnit</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPointObject"/>
+				<xs:extension base="tPointObject">
+					<xs:attribute name="frequency" type="xs:int" use="required">
+						<xs:annotation>
+							<xs:documentation>De toon frequentie die de tuner uitzendt in hertz</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1565,9 +1632,19 @@ gebied te reduceren.</xs:documentation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tPointObject">
-					<xs:attribute name="electronicsConnectionCabinetRefs" type="tUUIDRefList">
+					<xs:sequence>
+						<xs:element name="ElectronicsConnectionCabinetRefs" type="tUUIDRefList" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Een lijst van PUIC verwijzingen naar EAK's</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="equipmentRoomRef" type="tUUIDRef">
 						<xs:annotation>
-							<xs:documentation>Een lijst van verwijzingen naar EAK's</xs:documentation>
+							<xs:documentation>Een PUIC verwijzing naar een relaiskast (EquipmentRoom van het type 'RK').</xs:documentation>
+							<xs:appinfo>
+								<ObjectTypeRef>EquipmentRoom</ObjectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>
@@ -1608,7 +1685,7 @@ gebied te reduceren.</xs:documentation>
 	<xs:element name="SwitchConnectionCabinet">
 		<xs:annotation>
 			<xs:documentation>De wisselaansluitkast (WAK) wordt geplaatst in de keten tussen de wisselsteller en het relaishuis of relaiskast. Deze vormt de overgang tussen een grondkabel en een flexibele leiding om de wisselsteller aan te sturen.</xs:documentation>
-			<xs:documentation xml:lang="NL">WAK</xs:documentation>
+			<xs:documentation xml:lang="NL">Wisselaansluitkast</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -1637,22 +1714,22 @@ gebied te reduceren.</xs:documentation>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="BrakeTestingInstallationCabinets">
+	<xs:element name="BrakeTestingInstallations">
 		<xs:annotation>
 			<xs:documentation>Een verzameling rembeproevingsinstallaties</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="BrakeTestingInstallationCabinet" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="BrakeTestingInstallation" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="BrakeTestingInstallationCabinet">
+	<xs:element name="BrakeTestingInstallation">
 		<xs:annotation>
-			<xs:documentation>De rembeproevingsinstallatiekast is een installatie waarmee de remmen van een of meerdere
+			<xs:documentation>De rembeproevingsinstallatie is een installatie waarmee de remmen van een of meerdere
 gekoppelde wagens worden getest (m.b.v. perslucht) zonder dat er een locomotief aanwezig
 is.</xs:documentation>
-			<xs:documentation xml:lang="NL">Rembeproevingsinstallatiekast</xs:documentation>
+			<xs:documentation xml:lang="NL">Rembeproevingsinstallatie</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -1694,7 +1771,7 @@ is.</xs:documentation>
 	<xs:element name="AtbVvConnectionCabinet">
 		<xs:annotation>
 			<xs:documentation>ASK of AanSluitKast wordt gebruikt als onderdeel van een ATB Vv installatie.</xs:documentation>
-			<xs:documentation xml:lang="NL">ASK</xs:documentation>
+			<xs:documentation xml:lang="NL">ATB Vv ASK</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
@@ -1822,16 +1899,22 @@ op de onderzijde van rijtuigen aan te brengen.</xs:documentation>
 	</xs:element>
 	<xs:element name="OHSFence">
 		<xs:annotation>
-			<xs:documentation>Een vast Arbo-veiligheidshekwerk kennen we in twee vormen: een vaste en een opklapbare
-vorm.</xs:documentation>
+			<xs:documentation>Een ARBO Veiligheidshekwerk is bedoeld als een fysieke afscherming bij onderhoudswerkzaamheden op emplacementen en meersporige baanvakken, waarbij het gewenst is dat in het onderhoudsrooster of bij storingsonderhoud het nevenspoor/sporen in dienst blijft/ blijven. Het doel is, bij werk aan het spoor, het voorkomen van aanrijdgevaar van werkenden aan het spoor door een trein op het in dienst zijnde nevenspoor. Hierbij wordt uitgegaan van een maximale baanvaksnelheid van 140 km/u.</xs:documentation>
 			<xs:documentation xml:lang="NL">Arbo-veiligheidshekwerk</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="tLineObject">
-					<xs:attribute name="switchRef" type="tUUIDRef">
+					<xs:attribute name="fencedObjectRef" type="tUUIDRef">
 						<xs:annotation>
-							<xs:documentation>Een PUIC verwijzing naar het wissel dat wordt beveiligd met dit hekwerk.</xs:documentation>
+							<xs:documentation>Een PUIC verwijzing naar het wissel, dienstregelpuntspoor of PPLG-spoor dat wordt beveiligd met dit hekwerk.</xs:documentation>
+							<xs:appinfo>
+								<objectTypeRef>Switch</objectTypeRef>
+								<objectTypeRef>SingleDiamondCrossing</objectTypeRef>
+								<objectTypeRef>DoubleDiamondCrossing</objectTypeRef>
+								<objectTypeRef>PPCTrack</objectTypeRef>
+								<objectTypeRef>OperationalPointTrack</objectTypeRef>
+							</xs:appinfo>
 						</xs:annotation>
 					</xs:attribute>
 					<xs:attribute name="isCollapsible" type="tTrueFalseEnum" use="required">
@@ -1882,7 +1965,7 @@ in het spoor kunnen worden gezet.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="tPolygonObject"/>
+				<xs:extension base="tPointObject"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -2014,7 +2097,7 @@ in het spoor kunnen worden gezet.</xs:documentation>
 			</xs:enumeration>
 			<xs:enumeration value="ConcreteAndTransparant">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">BE: Beton en Transparantmateriaal</xs:documentation>
+					<xs:documentation xml:lang="NL">BE: beton en transparant materiaal</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Brick">
@@ -2044,12 +2127,12 @@ in het spoor kunnen worden gezet.</xs:documentation>
 			</xs:enumeration>
 			<xs:enumeration value="SandAndConcrete">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">FB:  zand of aarde en beton</xs:documentation>
+					<xs:documentation xml:lang="NL">FB: zand of aarde en beton</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="SandAndBrick">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">FC: aarde en baksteen</xs:documentation>
+					<xs:documentation xml:lang="NL">FC: zand of aarde en baksteen</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="Stone">
@@ -2253,6 +2336,11 @@ in het spoor kunnen worden gezet.</xs:documentation>
 					<xs:documentation xml:lang="NL">Perronviaduct</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="PlatformBridge">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Perronbrug</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="tMaterialTypeEnum">
@@ -2319,6 +2407,11 @@ in het spoor kunnen worden gezet.</xs:documentation>
 			<xs:documentation>Enumeratie van watervoorzieningstypes.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Onbekend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="None">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">geen water</xs:documentation>
@@ -2437,7 +2530,7 @@ in het spoor kunnen worden gezet.</xs:documentation>
 			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="tSwitchHeatingCabinetTypeEnum">
+	<xs:simpleType name="tSwitchPointHeatingCabinetTypeEnum">
 		<xs:annotation>
 			<xs:documentation>Enumeratie van types wisselverwarmingskasten</xs:documentation>
 		</xs:annotation>
@@ -2465,6 +2558,11 @@ in het spoor kunnen worden gezet.</xs:documentation>
 			<xs:enumeration value="GasPressureBooster">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">BlowerKast/Gasdrukverhoger</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TransformerCabinet">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Trafokast</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -2888,12 +2986,17 @@ in het spoor kunnen worden gezet.</xs:documentation>
 			</xs:enumeration>
 			<xs:enumeration value="TFM">
 				<xs:annotation>
-					<xs:documentation xml:lang="NL">Wissel Verdeel Kast</xs:documentation>
+					<xs:documentation xml:lang="NL">Trackside Functional Module</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="ATS">
 				<xs:annotation>
 					<xs:documentation xml:lang="NL">Auto Transformator Station</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CathodicProtection">
+				<xs:annotation>
+					<xs:documentation xml:lang="NL">Kathodische Bescherming Kast</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
